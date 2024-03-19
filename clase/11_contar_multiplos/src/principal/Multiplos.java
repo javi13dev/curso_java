@@ -7,16 +7,22 @@ public class Multiplos {
 		
 		// programa que solicite dos números y nos diga cuántos 
 		// múltiplos de 5 hay entre ambos
+		// si alguno de los números negativo se vuelve a pedir
 		Scanner sc = new Scanner(System.in);
 		
 		int n1;
 		int n2;
 		int contador = 0;
 		
-		System.out.println("introduce un número:");
-		n1 = sc.nextInt();
-		System.out.println("introduce otro número:");
-		n2 = sc.nextInt();
+		do {
+			System.out.println("introduce un número:");
+			n1 = sc.nextInt();
+		}while(n1<0);
+		
+		do {
+			System.out.println("introduce otro número:");
+			n2 = sc.nextInt();			
+		}while(n2<0);
 		
 		int mayor = 0;
 		int menor = 0;
@@ -28,16 +34,14 @@ public class Multiplos {
 			mayor = n2;
 			menor = n1;
 		}
+		
 		for(int i=menor; i<mayor; i++) {
 			if(i%5==0) {
 				contador++;
 				System.out.println(i);
 			}
 		}
-		System.out.println("hay "+ contador + " multiplos de 5");
-		
-		
-
+		System.out.println("hay "+ contador + " múltiplos de 5 entre "+ mayor + " y " + menor);
+	
 	}
-
 }
