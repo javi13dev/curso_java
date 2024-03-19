@@ -26,5 +26,34 @@ public class Switch {
 		
 		// El ejercicio pedia indicar desde el 1 al 4, debería recogerlo
 		
+		
+		// Desde java 14:
+		switch(nota) {
+			case 1,2,3,4:
+				System.out.println("Suspenso"); 
+				break;
+			case 5,6: System.out.println("aprobado");
+				break;
+			case 7,8: System.out.println("notable");
+				break;
+			case 9,10: System.out.println("sobresaliente");
+				break;
+			default:
+				System.out.println("Introduce una nota válida");
+		}
+		
+		// Podemos también, guardar en variable el resultado para simplificar el código
+		// Switch con expresiones
+		String resultado;
+		
+		resultado=switch(nota) {
+			case 1,2,3,4->"Suspenso";
+			case 5,6    ->"Aprobado";
+			case 7,8	->"Notable";
+			case 9,10 	->"Sobresaliente";
+			default		->"Nota no válida";
+		};
+		
+		System.out.println(resultado);
 	}
 }
