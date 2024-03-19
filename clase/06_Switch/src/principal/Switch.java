@@ -48,6 +48,8 @@ public class Switch {
 		
 		resultado=switch(nota) {
 			case 1,2,3,4->"Suspenso";
+			// case 1,2,3,4->{int z = 0; yield "Suspenso";} 
+			// yield para lo que queremos devolver y debe estar entre llaves
 			case 5,6    ->"Aprobado";
 			case 7,8	->"Notable";
 			case 9,10 	->"Sobresaliente";
