@@ -4,17 +4,16 @@ public class SumarHastaMil {
 
 	public static void main(String[] args) {
 		// 
-		int num = 1;
+		int num = 0;
 		int suma = 0;
 		
-		while(suma <= 1000) {
-			System.out.println("el numero es "+num);
-			suma = num + (num + 1);
 		
-			System.out.println(suma);
+		do {
 			num++;
-		}
+			suma+=num;
+		}while(suma<1000);
 		System.out.println(num);
+
 	}
 
 }
