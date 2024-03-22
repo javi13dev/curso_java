@@ -8,7 +8,19 @@ Vistas:
 - Envoltorio
 
 
+
+
 // Ejercicio loteria
 
 // 6 números aleatorios diferentes del 1 al 49
 // orenados de mayor a menor
+
+
+
+// 2º
+
+Segundo ejercicio vacaciones: String facturacion="ventas-20800,administracion-17900,informatica-35000,RRHH-10350";
+El programa mostrará:
+
+Nombre del departamento que más a facturado
+Nombres de todos los departamentos, ordenados de menos a más facturación 
