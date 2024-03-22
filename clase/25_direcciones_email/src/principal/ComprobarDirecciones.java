@@ -10,7 +10,10 @@ public class ComprobarDirecciones {
 		String[] direcciones=emails.split(",");
 		
 		// Obtengo los dominios
-		String [] dominios = dominios(direcciones);
+		//String [] dominios = dominios(direcciones);
+		String [] dominios = dominios2(direcciones);
+		
+		
 		// recorro los dominios y con cada uno llamamos al segundo método
 		// para que nos diga el número de veces que ese dominio aparece
 		// en el aray de direcciones
@@ -60,5 +63,26 @@ public class ComprobarDirecciones {
 		String [] doms = dominios.split(",");
 
 		return doms;
+	}
+	
+	static String[] dominios2(String [] dirs) {
+		// uso de StringBuilder
+		
+		StringBuilder dominios = new StringBuilder("");
+		
+		for(String dir: dirs) {
+			String dom = dir.substring(dir.indexOf(".")+1,dir.length());
+	
+			// Otra forma de compararlo:
+			if(dominios.indexOf(dom)==-1) {
+				dominios.append(dom);
+				dominios.append(",");
+			}
+		}
+		
+		// quitamos la ultima coma:
+		dominios.delete(dominios.length() -1, dominios.length());
+
+		return dominios.toString().split(",");
 	}
 }
