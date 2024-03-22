@@ -6,3 +6,9 @@ Vistas:
 - Math
 - String, StringBuilder
 - Envoltorio
+
+
+// Ejercicio loteria
+
+// 6 números aleatorios diferentes del 1 al 49
+// orenados de mayor a menor
