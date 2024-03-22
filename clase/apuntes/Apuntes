@@ -1,5 +1,5 @@
 Clases básicas Java SE
-
+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
 Vistas:
 
 - Scanner
@@ -24,3 +24,21 @@ El programa mostrará:
 
 Nombre del departamento que más a facturado
 Nombres de todos los departamentos, ordenados de menos a más facturación 
+
+
+
+***
+
+Sobre git:
+
+token, 
+
+seleccionar windows, show view, repositories
+
+Cuando queramos preparar el repositorio:
+settings: team: share project
+
+Y después en 
+seleccionar windows, show view, repositories: stagging 
+
+para hacer los push
