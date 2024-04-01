@@ -47,3 +47,20 @@ seleccionar windows, show view, repositories: stagging
 
 https://github.com/amartinsierra/basicos_javase_2024
 
+
+
+
+******************************************
+
+Diapositiva 15 - envoltorio
+
+Se encapsulan porque hay algunas acciones que sólo se pueden hacer con objetos.
+
+Ej: uso de colecciones.
+
+* Las variables objeto, no contienen el objeto sino la referencia.
+Ej, si quiero colecciones de números tienen que ser de objetos, no de enteros primitivos.
+pero no usaremos integer para operaciones aritméticas, porque al modificarse generan un 
+nuevo objeto y basura del anterior.
+
+
