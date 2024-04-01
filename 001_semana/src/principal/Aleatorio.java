@@ -81,6 +81,6 @@ public class Aleatorio {
 		return aparece;
 	}
 
-	 */
+	*/
 
 }
