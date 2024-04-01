@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Primitiva {
+public class PorcentajeLoteria {
 	
 	public static void main(String[] args) {
 		// introducir una combinación;
@@ -19,18 +19,26 @@ public class Primitiva {
 		
 		String combinacion;
 		String [] misNumeros;
-		int [] miApuesta = new int[6];
-		Scanner sc = new Scanner(System.in);
 		int contador = 0;
 		
-		System.out.println("Introduce tu combinación de 6 números de dos cifras separados por comas:");
-		combinacion = sc.nextLine();
-		misNumeros= combinacion.split(",");
+		// Cuantas veces tengo que jugar para poder conseguir 6 aciertos
+		long veces = 0;
+		
+		do {
+			for(int i=0;i<=intentos-1;i++) {
+				int num=rnd.nextInt(49)+1;
+				if(comprobar(numeros, num)) {
+					numeros[i] = num;
+				}else {
+					i--;
+				}
+			}
+			veces++;
+		}while(contador<6);
+		System.out.println("he tenido que jugar: "+ veces + " veces");
 		
 		// Aqui guardo los números en un array de enteros
-		for(int i=0; i<intentos; i++) {
-			miApuesta[i] = Integer.parseInt(misNumeros[i]);
-		}
+
 		// para obtener los números de la combinación ganadora
 		for(int i=0;i<=intentos-1;i++) {
 			int num=rnd.nextInt(49)+1;
@@ -46,9 +54,9 @@ public class Primitiva {
 		// Aqui tengo la combinación ganadora:
 		
 		System.out.println("\nEsta es la combinación ganadora: " + Arrays.toString(numeros));
-		System.out.println("\nTu combinación es: " + Arrays.toString(miApuesta));
+		System.out.println("\nTu combinación es: " + Arrays.toString(numeros));
 		
-		for(int n:miApuesta) {
+		for(int n:numeros) {
 			contador = comprobarAciertos(numeros,n, contador);
 		}
 		System.out.println("\nHas tenido " + contador + " aciertos");
