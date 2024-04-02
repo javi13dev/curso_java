@@ -64,3 +64,19 @@ pero no usaremos integer para operaciones aritméticas, porque al modificarse ge
 nuevo objeto y basura del anterior.
 
 
+
+******************************************
+******************************************
+******************************************
+
+		Estructura de un programa:
+
+
+capa					capa
+Presentación			Lógica de negocio
+
+- imprimir y recoger 
+datos.
+						- funciones
+						- acceso a bbdd
+						
