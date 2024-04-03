@@ -7,7 +7,8 @@ import service.EmpleadosService;
 public class Empleados {
 	
 	/**
-	 * Realizar un programa para la gestión de empleados de una empresa. Un empleado se caracteriza por un nombre, y tiene asociado un código de empleado.
+	 * Realizar un programa para la gestión de empleados de una empresa. 
+	 * Un empleado se caracteriza por un nombre y tiene asociado un código de empleado.
 		al iniciar el programa, aparecerá el siguiente menú:
 		1.- Nuevo empleado
 		2.- Buscar empleado
@@ -108,7 +109,6 @@ public class Empleados {
 		}else {
 			System.out.println("El empleado eliminado es " + nombre);
 		}
-
 	}
 	
 	static void mostrarEmpleados() {
