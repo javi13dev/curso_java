@@ -80,3 +80,48 @@ datos.
 						- funciones
 						- acceso a bbdd
 						
+
+						
+******************************************
+******************************************
+******************************************
+04/04
+
+JUnit, pruebas unitarias
+
+En el proyecto seleccionamos: new>JUnit
+
+Elegimos la versión, y seleccionamos la clase y sus métodos que queremos testear.
+
+Vemos que nos crea la clase para Test con sus anotaciones correspondientes.
+
+
+** Para importar métodos estáticos de una clase ya predefinida:
+EJ: 
+import static java.lang.Math.*;
+**
+
+Una vez definidas las pruebas, se lanza la prueba. 
+Run la clase de Junit
+
+La herramienta Maven, nos permite lanzar las pruebas que tengamos configuradas.
+
+
+
+**************************
+Ej:
+
+Desarrollar un programa para gestión de ciudades.
+Una ciudad se caracteriza por nombre, habitantes y pais.
+
+El programa mostrará el siguiente menú:
+
+1. Nueva ciudad
+2. Ciudad más poblada
+3. Buscar por pais
+4. Salir
+
+1: Se piden los datos de la ciudad y se guardan. (Lo guardamos como mejor queramos)
+   No puede haber dos ciudades con el mismo nombre en el mismo pais.
+2: Muestra directamente los datos de la ciudad más poblada.
+3: Se pide un nombre de pais y se muestra los datos de todas las ciudades de ese pais.
