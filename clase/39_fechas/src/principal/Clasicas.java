@@ -30,6 +30,17 @@ public class Clasicas {
 		System.out.println(f3);
 		
 		
+		// Métodos:
+		
+		// comparteTo(): permite comparar dos fechas y devuelve 1, 0 o -1 en función de si es mayor, igual o menor
+		System.out.println(date.compareTo(f2));
+		System.out.println(f3.compareTo(f2));
+		
+		// before(): muestra true o false si la fecha es anterior o posterior
+		System.out.println(date.before(f2));
+		System.out.println(f3.before(f2));
+		
+		
 	}
 
 }
