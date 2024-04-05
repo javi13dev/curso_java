@@ -129,14 +129,46 @@ El programa mostrará el siguiente menú:
 
 **********************************************
 
-Date.
+	``````Date``````
 
 No son inmutables, puden modificacrse a través de .setTime(milisegundos)
 Los demás métodos están deprecados.
 
-LocalDate
+
+	``````LocalDate``````
 
 Son inmutables.
 Los cambios generan nuevos objetos.
+
+
+	```````Period``````
+
+Para periodos años, meses, dias
+* Para periodos de tiempo (horas, minutos, segundos) está la clase duration
+
+
+
+
+^*******************
+Ejercicio:
+
+	/**
+	 * Programa para manejar pedidos. Un pedido se caracteriza por producto,unidades,fechaPedido.
+	Se presenta el siguiente menú:
+	1.- Nuevo pedido
+	2.- Pedido más reciente
+	3.- Pedidos entre dos fechas
+	4.- Pedido proximo a fecha
+	5.- Salir
+	
+	2: Muestra los datos del pedido más reciente
+	3: Se solicitan dos fechas, y se muestran los pedidos realizados
+	   en ese rango de fechas 
+	4: Se solicita una fecha y nos muestra el pedido más cercano a dicha fecha
+	   (Por arriba y por abajo. Contando el valor absoluto si es negativo)
+	   
+	 * Completar en el proyecto 42 y añadir también el test el método necesario
+	 
+	 */
 
 
