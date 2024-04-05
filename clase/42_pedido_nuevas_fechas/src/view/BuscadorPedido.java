@@ -1,8 +1,8 @@
 package view;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -76,12 +76,10 @@ public class BuscadorPedido {
 		int unidades = Integer.parseInt(sc.nextLine());
 		System.out.println("Fecha: dd/mm/yyyy ");
 		String fecha = sc.nextLine();
+		DateTimeFormatter format=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+		LocalDate dateFromString=LocalDate.parse(fecha, format);
 		
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-		Date fechaPedido = format.parse(fecha);
-		
-		
-		Pedido pedido = new Pedido(producto, unidades, fechaPedido);
+		Pedido pedido = new Pedido(producto, unidades, dateFromString);
 		
 		if(service.addPedido(pedido)) {
 			System.out.println("Pedido agregado");
@@ -91,30 +89,32 @@ public class BuscadorPedido {
 	static void pedidoMasReciente() {
 	
 		Pedido pedido = service.buscarPedidoMasReciente();
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		DateTimeFormatter format=DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		System.out.println("Pedido: " + pedido.getNombre());
-		System.out.println("Fecha " + format.format(pedido.getFecha()));
+		//System.out.println("Fecha " + format.format(pedido.getFecha()));
 	}
 	
 	static void entreDosFechas() throws ParseException {
 		Scanner sc = new Scanner(System.in);
-		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		DateTimeFormatter format=DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		
 		System.out.println("Introduce una fecha inicial: ");
 		String fechaInicial = sc.nextLine();
-		Date fInicial = format.parse(fechaInicial);
+		LocalDate dateInicio=LocalDate.parse(fechaInicial, format);
+		
 	
 		System.out.println("Introduce una fecha final: ");
 		String fechaFinal = sc.nextLine();
-		Date fFinal = format.parse(fechaFinal);
+		LocalDate dateFinal=LocalDate.parse(fechaFinal, format);
+
 		
-		pedidos = service.buscarPedidos(fInicial, fFinal);
+		pedidos = service.buscarPedidos(dateInicio, dateFinal);
 		// El otro método de ejemplo devolvia un arraylist que también habría que recorrer y mostrar
 		
 		for(Pedido p:pedidos) {
 			System.out.print("Pedido: " + p.getNombre() +  " ");
 			System.out.print("Unidades: " + p.getNombre() + " ");
-			System.out.println("Fecha del pedido: " + format.format(p.getFecha()));
+			System.out.println("Fecha del pedido: "  +format.format(p.getFecha()));
 		}
 	}
 

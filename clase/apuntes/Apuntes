@@ -125,3 +125,18 @@ El programa mostrará el siguiente menú:
    No puede haber dos ciudades con el mismo nombre en el mismo pais.
 2: Muestra directamente los datos de la ciudad más poblada.
 3: Se pide un nombre de pais y se muestra los datos de todas las ciudades de ese pais.
+
+
+**********************************************
+
+Date.
+
+No son inmutables, puden modificacrse a través de .setTime(milisegundos)
+Los demás métodos están deprecados.
+
+LocalDate
+
+Son inmutables.
+Los cambios generan nuevos objetos.
+
+
