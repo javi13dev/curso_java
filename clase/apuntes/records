@@ -1,0 +1,47 @@
+******************************************
+******************************************
+******************************************
+
+Records
+
+para crear javabeans
+
+genera los getters, y no permite crear setters.
+No se puede alterar el objeto
+
+Solo lectura
+Creado a partir de java17
+
+Ej:
+	* constructor canónico
+	
+	public record Persona(String nombre, String email, int telefono) {
+	}
+	Persona persona=new Persona("fulanito","fulanito@gmail.com",22);
+
+	
+	* ver ejemplo de constructor canónico y compacto en el pdf
+	
+	
+******************************************
+******************************************
+******************************************
+
+LOMBOK
+
+Es una librería, nos permite también crear javabeans
+Similar al record pero permite el uso de setters
+
+A nivel empresarial es lo que se utiliza para crear javabeans
+
+
+Al ser una librería externa, la descargamos y situamos el archivo .jar
+Creamos un proyecto y en properties del proyecto:
+
+properties>build path>add external library 
+
+y seleccionamos.
+
+Añadido al proyecto, si es la primera vez que lo usamos en eclipse, hay que hacer una configuración:
+se intala un parche.
+Ejecutando el archivo .jar, seleccionamos la ubicación de nuestro IDE
