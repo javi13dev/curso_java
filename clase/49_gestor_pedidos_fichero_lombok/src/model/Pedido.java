@@ -25,7 +25,7 @@ public class Pedido {
 	en ese rango de fechas 
 	 */
 
-	private String nombre;
+	private String producto;
 	private int unidades;
 	private LocalDate fecha;
 

@@ -41,7 +41,7 @@ class TestPedido {
 
 	@Test
 	void testBuscarPedidoMasReciente() {
-		assertEquals("coca cola", service.buscarPedidoMasReciente().getNombre());
+		assertEquals("coca cola", service.buscarPedidoMasReciente().getProducto());
 	}
 	
 	@Test

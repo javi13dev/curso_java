@@ -90,7 +90,7 @@ public class BuscadorPedido {
 	
 		Pedido pedido = service.buscarPedidoMasReciente();
 		DateTimeFormatter format=DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		System.out.println("Pedido: " + pedido.getNombre());
+		System.out.println("Pedido: " + pedido.getProducto());
 		//System.out.println("Fecha " + format.format(pedido.getFecha()));
 	}
 	
@@ -112,8 +112,8 @@ public class BuscadorPedido {
 		// El otro método de ejemplo devolvia un arraylist que también habría que recorrer y mostrar
 		
 		for(Pedido p:pedidos) {
-			System.out.print("Pedido: " + p.getNombre() +  " ");
-			System.out.print("Unidades: " + p.getNombre() + " ");
+			System.out.print("Pedido: " + p.getProducto() +  " ");
+			System.out.print("Unidades: " + p.getProducto() + " ");
 			System.out.println("Fecha del pedido: "  +format.format(p.getFecha()));
 		}
 	}

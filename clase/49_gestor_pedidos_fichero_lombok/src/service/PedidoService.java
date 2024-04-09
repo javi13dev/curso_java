@@ -47,7 +47,7 @@ public class PedidoService {
 		String pedidoString;
 		try(FileOutputStream fos=new FileOutputStream(fichero, true);
 			PrintStream out=new PrintStream(fos);){
-			pedidoString = pedido.getNombre()+","+pedido.getUnidades()+","+pedido.getFecha();
+			pedidoString = pedido.getProducto()+","+pedido.getUnidades()+","+pedido.getFecha();
 			out.println(pedidoString);
 			// out.println(pedido.Util.convertirObjetoAString(pedido));
 			return true;

@@ -12,6 +12,6 @@ public class Util {
 		return new Pedido(datos[0], Integer.parseInt(datos[1]), LocalDate.parse(datos[2]));
 	}
 	public static String convertirPedidoACadena(Pedido pedido) {
-		return pedido.getNombre()+","+pedido.getUnidades()+","+pedido.getFecha();
+		return pedido.getProducto()+","+pedido.getUnidades()+","+pedido.getFecha();
 	}
 }
