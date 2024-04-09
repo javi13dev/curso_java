@@ -3,14 +3,12 @@ package model;
 import java.time.LocalDate;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 // Ponemos anotaciones de lombok:
 @AllArgsConstructor
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 
 public class Pedido {
 	
