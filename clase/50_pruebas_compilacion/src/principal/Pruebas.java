@@ -186,6 +186,64 @@ public class Pruebas {
 			// x seguiría siendo 10
 			// a al entrar como parámetro apunta a 10, pero al sumarle b seria 13 pero siendo un nuevo objeto.
 		 */
+		
+		
+		
+		// *******************************************************************
+		// *******************************************************************
+		// *******************************************************************
+		// *******************************************************************
+		
+		/**
+		Given:
+		class Test{
+			var datas=new ArrayList<Integer>();
+			public void print(){
+				System.out.println(datas.get(0));
+			}
+		}
+		
+		Test t=new Test();
+		t.print();
+		
+		
+		a.) 0
+		b.) null
+		c.) error de compilación
+		d.) excepción NullPointerException 
+		
+		// Seria error de compilacion porque var, no puede ser atributo de clase, solo puede usarse como variables locales.
+		  
+		  
+		  
+		 Given:
+		class Test{
+			ArrayList<Integer> datas=new ArrayList<Integer>();
+			public void print(){
+				System.out.println(datas.get(0));
+			}
+		}
+		
+		Test t=new Test();
+		t.print();
+		
+		
+		a.) 0
+		b.) null
+		c.) error de compilación
+		d.) excepción NullPointerException 
+		e.) excepción IndexOutOfBoundException
+		
+		
+		// No puede ser NullPointerException, porque no es null el objeto, sí sería indexOutOfBoundException
+
+		 */
+		
+		
+		
+		
+		
+		
 	}
 }
 
