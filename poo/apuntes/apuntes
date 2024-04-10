@@ -71,6 +71,11 @@ print(25);  //imprime uno
 
 
 Sobreescritura
+
+
+Volver a escribir el método, respetando la estructura
+
+
 Clases abstractas
 Interfaces
 Polimorfismo
