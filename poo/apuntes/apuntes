@@ -1,0 +1,64 @@
+poo
+
+Herencia
+
+Todas las clases Java heredan Object.
+Si una clase no hereda ninguna otra de forma explícita, implícitamente heredará Object 
+
+ventajas de la herencia: Reutilización de código.
+
+Si tiene un extends, ahora hereda de esa clase.
+
+Al ejecutar el constructor de la clase hija, se ejecuta el constructor de la clase padre.
+Es implícita la llamada al constructor sin parámetro ->   super();
+
+	public static void main(String[] args) {
+		Punto3D pd = new Punto3D(25);
+		
+		// ahora pd. tiene todos los métodos, tanto de object como de la clase padre Punto.
+		pd.imprimir();
+
+	}
+	
+En el momento de crear pd, se ejecuta el constructor de Punto. Por tanto, el constructor de la clase padre debe estar definida,sino da un error
+de compilación.
+
+Si la clase padre NO tiene constructores, java crea un constructor vacío por defecto. En este caso si se crea pd no daría problemas.
+
+
+
+
+Sobrecarga 
+
+De métodos o de constructores.
+
+
+public void print(int a){
+	System.out.println("uno");
+}
+public void print(String a){
+	System.out.println("dos");
+}
+public void print(int a,int b){
+	System.out.println("tres");
+}
+public void print(long r){
+	System.out.println("cuatro");
+}
+
+print(25);  //imprime uno 
+
+
+
+
+
+
+
+
+
+
+
+Sobreescritura
+Clases abstractas
+Interfaces
+Polimorfismo

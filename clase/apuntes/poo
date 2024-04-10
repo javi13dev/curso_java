@@ -1,0 +1,48 @@
+poo
+
+Herencia
+
+Todas las clases Java heredan Object.
+Si una clase no hereda ninguna otra de forma explícita, implícitamente heredará Object 
+
+ventajas de la herencia: Reutilización de código.
+
+
+
+
+
+Sobrecarga 
+
+De métodos o de constructores.
+
+
+public void print(int a){
+	System.out.println("uno");
+}
+public void print(String a){
+	System.out.println("dos");
+}
+public void print(int a,int b){
+	System.out.println("tres");
+}
+public void print(long r){
+	System.out.println("cuatro");
+}
+
+print(25);  //imprime uno 
+
+
+
+
+
+
+
+
+
+
+
+Sobreescritura
+Clases abstractas
+Interfaces
+Polimorfismo
+

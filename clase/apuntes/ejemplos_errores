@@ -27,3 +27,8 @@ b. cadena vacía
 c. error de compilación
 d. NullPointerException 
 
+
+1-int b='f';//
+2-int a=3.4f;//
+3-char b=(char)5.7;//
+4-int a=3;byte c=a;// 
