@@ -1,0 +1,29 @@
+// ejemplos errores
+
+
+class Test{
+	String s;
+	public void m(){
+		print(s);
+	}
+}
+
+a. null
+b. cadena vacía
+c. error de compilación
+d. NullPointerException
+
+class Test{
+	ArrayList<Ciudad> ciudades=new ArrayList<>();
+	Ciudad c=new Ciudad();
+	public void m(){
+		ciudades.add(c);
+		print(ciudades.get(0).getNombre());;
+	}
+}
+
+a. null
+b. cadena vacía
+c. error de compilación
+d. NullPointerException 
+
