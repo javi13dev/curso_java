@@ -12,6 +12,18 @@ Si tiene un extends, ahora hereda de esa clase.
 Al ejecutar el constructor de la clase hija, se ejecuta el constructor de la clase padre.
 Es implícita la llamada al constructor sin parámetro ->   super();
 
+	public Punto(int x, int y) {
+		this.x=x;
+		this.y=y;
+	}
+	public Punto() {
+		x=5;
+		y=10;
+	}
+	
+	
+	---------->
+
 	public static void main(String[] args) {
 		Punto3D pd = new Punto3D(25);
 		
