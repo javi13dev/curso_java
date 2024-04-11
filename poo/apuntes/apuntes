@@ -1,6 +1,10 @@
 poo
 
 Herencia
+********************************************
+********************************************
+********************************************
+
 
 Todas las clases Java heredan Object.
 Si una clase no hereda ninguna otra de forma explícita, implícitamente heredará Object 
@@ -38,9 +42,27 @@ de compilación.
 Si la clase padre NO tiene constructores, java crea un constructor vacío por defecto. En este caso si se crea pd no daría problemas.
 
 
+super:  para llamar también a métodos de la superclase, cuando por ejemplo hay duplicidad de métodos.
+		Si no hay lugar a confusión, podriamos usarlo sin el super.
+		
+		
+		
+----> Algunas clases no se pueden heredar. 
+Las clases final no se pueden heredar.
+Ej, los String, las clases envotorio, LocalDate.
+(Clases que tienen funcionalidad muy definida)
 
+final: en métodos, supone que no se pueden sobreescribir.
+
+
+
+
+ 
 
 Sobrecarga 
+********************************************
+********************************************
+********************************************
 
 De métodos o de constructores.
 
@@ -71,11 +93,94 @@ print(25);  //imprime uno
 
 
 Sobreescritura
+********************************************
+********************************************
+********************************************
 
 
 Volver a escribir el método, respetando la estructura
+	
+	// método imprimir de la clase padre
+	
+	public void imprimir() {
+		System.out.print("Las coordenadas son: "+x+","+y);
+	}
 
+	// para sobreescribir métodos, en source>override/implementsmethods
+	
+	@Override
+	public void imprimir() {
+		// Llamada a super porque primero llama al método del padre si es necesario y después lo modificamos/añadimos
+		super.imprimir();
+		System.out.println(","+z);
+	}
+
+
+Reglas:
+
+- respetar el nombre y la lista de parámetros
+- el ámbito public/privado no tiene por qué ser el mismo, pero el posterior debe ser menos restrictivo.	
+  Siempre puede ampliarse la visibilidad.
+- tipo de devolución, no tiene por qué ser el mismo. Puede ser el mismo o un subtipo del original.
+
+Ej: correcto.
+
+	class C1{
+		Number calcular(){
+		}
+	}
+	
+	class C2 extends C1{
+		Integer calcular(){
+		}
+	}
+	
+- sobre excepciones, el método posterior no debe propagar excepciones que no estén definidas en el original.
+  Esto no afecta a las excepciones del Runtime.
+  
+  	class C1{
+		public void m(){
+		}
+	}
+	
+	class C2 extends C1{
+		@override
+		public void m() throws IOException{ // Error, al no haber estado declarada en la original.
+		}
+	}
+	
+	--------------------
+	
+  	class C1{
+		public void m() throws IOException{
+		}
+	}
+	
+	class C2 extends C1{
+		@override
+		public void m() throws FileNotFoundException{ // correcto, ya que es hija de la exception padre.
+		}
+	}
+  
+  
+  
+  
+  
+  
+  
+  
 
 Clases abstractas
+********************************************
+********************************************
+********************************************
+
 Interfaces
+********************************************
+********************************************
+********************************************
+
 Polimorfismo
+********************************************
+********************************************
+********************************************
