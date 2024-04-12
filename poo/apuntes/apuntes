@@ -186,3 +186,24 @@ Polimorfismo
 ********************************************
 ********************************************
 ********************************************
+
+
+
+
+
+
+Accesibilidad/ Visibilidad
+********************************************
+********************************************
+********************************************
+
+Public(desde cualquier ámbito)
+
+Default(ámbito de paquete)
+
+Private(uso interno de la propia clase)
+No está permitido en clases.
+Ej de clase con constructor privado: LocalDate
+
+
+
