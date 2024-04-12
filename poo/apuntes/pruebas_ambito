@@ -1,0 +1,60 @@
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////1
+
+Sobre ámbito.
+
+Con un objeto de una clase, solo puedo acceder a las propiedades que sean públicas.
+
+package p1;
+
+public class C1{
+	protected int a;
+	int b;
+	static int c;
+}
+
+package p2;
+import p1.*;
+public class C2 extends C1{
+	public C2(){
+		a=10;//bien
+		b=2;//error
+		c=1;//error
+	}
+	
+	public void m(){
+		C1 c=new C1();
+		c.a=5;//error, porque está accediendo desde una instancia, no accede a a por herencia.
+		a=5;//OK, porque aquí sí que accede a a por herencia.
+	}
+
+} 
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////2
+
+
+package p1;
+public class C1{
+	protected void print(){
+		System.out.println("c1");
+	}
+}
+package p2;
+import p1.*;
+public class C2 extends C1{
+	@Override	
+	public void print(){
+		System.out.println("c2");
+		super.print();
+	}
+}
+
+main(){
+	C2 c=new C2();
+	c.print(); // c2c1, válido porque la sobreescritura amplia el ámbito del método, de protected a public.
+
+} 

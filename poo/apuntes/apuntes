@@ -176,6 +176,30 @@ Clases abstractas
 ********************************************
 ********************************************
 ********************************************
+El objetivo es definir la plantilla para que las clases hijas las desarrollen.
+
+
+Las clases hijas deben sobreescribir los métodos abstractos heredados, salvo que se declaren como abstractas.
+
+Si queremos un método abstracto, la clase también debe ser asbtracta.
+
+No podemos instanciar objetos de clase abstracta.
+
+
+	package service;
+	
+	public abstract class Figura {
+		private String color;
+		
+		public Figura(String color) {
+			this.color = color;
+		}
+		
+		public abstract double area();
+	}
+
+
+
 
 Interfaces
 ********************************************
@@ -199,11 +223,56 @@ Accesibilidad/ Visibilidad
 
 Public(desde cualquier ámbito)
 
-Default(ámbito de paquete)
+Default(ámbito de paquete en el que está definido)
 
 Private(uso interno de la propia clase)
 No está permitido en clases.
 Ej de clase con constructor privado: LocalDate
 
 
+Protected:
+
+Es más que default y menos que public.
+
+
+El modificador de acceso protected puede utilizarse en la declaración de atributos y métodos. 
+Si uno de estos elementos se declara como protected, significa que es accesible desde 
+cualquier clase de su mismo paquete y de sus subclases, independientemente de donde estas 
+se encuentren.
+Por tanto, el modificador protected establece una visibilidad a los miembros de una clase que 
+es superior a la default (ámbito de paquete), pero inferior a la public.
+El acceso desde una subclase a un miembro protected de la superclase se debe hacer siempre 
+dentro del contexto de la herencia. Veamos un ejemplo, tenemos la siguiente clase:
+
+	package p1;
+	public class Prueba{
+		protected int k=2;
+		protected void metodo(){}
+	}
+	
+Si definimos una subclase de Prueba en otro paquete, desde el interior de esta clase se tendrá 
+acceso a k y metodo():
+
+
+	package p2;
+	public class Test extends Prueba{
+		public void nuevoMetodo(){
+			this.k=10;// correcto
+			this.metodo();
+		}
+	}
+
+Sin embargo, si desde una subclase que se encuentre en otro paquete distinto a p1 creamos 
+un objeto de la clase Prueba, no tendremos acceso a los miembros protegidos a través de 
+este objeto. Esto es lo que significa que el acceso solo sea a través del contexto de la herencia:
+
+
+	package p3;
+	public class Nueva extends Prueba{
+		public void miMetodo(){
+			Prueba p=new Prueba();
+			p.k=3; //error de compilación
+			p.metodo(); //error de compilación
+		}
+	}
 
