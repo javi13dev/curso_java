@@ -211,7 +211,15 @@ Polimorfismo
 ********************************************
 ********************************************
 
+Muy habitual, guardar variables de una clase, en una variable de la superclase.
 
+Ej:
+
+String s = "hello";
+Object ob = s;
+
+Integer n=200;
+Number f=n;
 
 
 
