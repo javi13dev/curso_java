@@ -1,0 +1,343 @@
+// Pruebas:
+
+class C1{
+	C1(){
+		print("c1");
+	}
+}
+class C2 extends C1{
+	C2(int a){
+		print("c2 con a");
+	}
+}
+class C3 extends C2{
+	C3(){
+		print("c3");
+	}
+}
+
+C3 a=new C3(); 
+
+
+Daría error de compilación, porque la llamada del constructor en C3 llama al super() de C2 pero que no está definido
+
+class C1{
+	C1(){
+		print("c1");
+	}
+}
+class C2 extends C1{
+	C2(int a){
+		print("c2 con a");
+	}
+}
+class C3 extends C2{
+	C3(){ // error de compilación
+		print("c3");
+	}
+}
+
+C3 a=new C3(); 
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////2
+
+class C1{
+	C1(){
+		print("c1");
+	}
+}
+
+class C2 extends C1{
+
+}
+
+class C3 extends C2{
+	C3(){
+		print("c3");
+	}
+}
+
+C3 a=new C3(); // c1c3
+
+* Cuando se llama al constructor, primero se llama al super().
+Si la clase está vacía, se crea un constructor vacío por defecto.
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////3
+
+
+class C1{
+	C1(){
+		print("c1");
+	}
+}
+
+class C2 extends C1{
+	C2(int a){
+		print("c2 con a");
+	}
+	C2(){
+		this(1)
+	}
+}
+
+class C3 extends C2{
+	C3(){
+		print("c3");
+	}
+}
+
+C3 a=new C3(); // c1c2 con ac3
+
+// Mostraría todo, porque el constructor de C2 con this, llama al constructor con parámetro entero, 
+// y que ya tiene implícitamente el super(), por lo tanto sí sería válido.
+
+Pero es importante que en un constructor no puede haber dos llamadas a constructores, ej:
+
+class C2 extends C1{
+	C2(int a){ 
+		print("c2 con a");
+	}
+	C2(){// Esto no es posible
+		super();  
+		this(1)
+	}
+}
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////4
+
+
+class C1{
+	C1(){
+		print("c1");
+	}
+}
+
+class C2 extends C1{
+	C2(int a){
+		print("c2 con a");
+	}
+	C2(){
+		C2(20); // Error sintáctico, los constructores no son métodos, no se les llama por su nombre.
+				// Podemos llamarlos con super o this, no de otra forma.
+	}
+}
+
+class C3 extends C2{
+	C3(){
+		print("c3");
+	}
+}
+
+C3 a=new C3(); // 
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////5
+
+
+class C1{
+	C1(){
+		print("c1");
+	}
+	C1(int s){
+		print("c1 con s");
+	}
+}
+
+class C2 extends C1{
+	C2(int a){
+		print("c2 con a");
+		super(a); // Error de compilación, la llamada al super debe ser única y la primera instrucción del constructor.
+	}
+}
+
+class C3 extends C2{
+	C3(){
+		super(2);
+		print("c3");
+	}
+}
+
+C3 a=new C3(); // 
+
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////6
+
+
+class C1{
+	int a = 1;
+	static int b=1;
+	
+	C1(){
+		a++;
+		b++;
+	}
+	void imprimir(){
+		System.Out.Println(a+" : "+b);
+	}
+}
+
+class C2 extends C1{
+
+}
+
+En un main:
+
+C2 a=new C2(); // 
+C2 y=new C2();
+y.imprimir(); 
+
+// 2 : 3, porque en la primera llamada b = 2 al ser static, y cuando se crea y incrementa en 1, siendo 3 
+// Porque a se incrementa solo una ve en cada llamada al constructor, siendo independientes en ambas clases.
+// Mientras que b, al ser static es compartida por las clases, y por tanto en cada llamada se va a incrementando la misma variable.
+
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////7
+
+class C1{
+
+	void m(){
+		System.Out.Println("c1");
+	}
+}
+
+class C2 extends C1{
+	int m(){
+		System.Out.Println("c2");
+		return 1;
+	}
+}
+
+En un main:
+
+C2 a=new C2(); // 
+c.m(); 
+// Error de compilación, porque en la sobreescritura del metodo m, no se puede pasar de void a int
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////8
+
+class C1{
+
+	void m(){
+		System.Out.Println("c1");
+	}
+}
+
+class C2 extends C1{
+	int m(int x){
+		System.Out.Println("c2");
+		return 1;
+	}
+}
+
+En un main:
+
+C2 a=new C2(); // 
+c.m(); 
+// Imprime c1, porque al no ser sobreescritura hay dos métodos m, uno sin parámetros y otro que recibe un int.
+
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////9
+
+class C1{
+
+	void C1(int s){
+		System.Out.Println("c1");
+	}
+}
+
+class C2 extends C1{
+	C2(){
+		System.Out.Println("c2");
+		C1(2);
+	}
+
+}
+
+En un main:
+
+C2 z=new C2(); // 
+
+// Imprime c2c1, porque hay llamada implícita al super y en C1 también se crea ya que por defecto hay un constructor vacío.
+
+
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////10
+
+class C1{
+
+	void m(int s){
+		System.Out.Println("c1");
+	}
+}
+
+class C2 extends C1{
+	void m(long a){
+		System.Out.Println("c2");
+	}
+
+}
+
+En un main:
+
+C2 x=new C2(10); // 
+
+// Error, no hay constructor con parámetros
+
+
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////11
+
+class C1{
+
+	void m(int s){
+		System.Out.Println("c1");
+	}
+}
+
+class C2 extends C1{
+	void m(long a){
+		System.Out.Println("c2");
+	}
+
+}
+
+En un main:
+
+C2 x=new C2(10);
+x.m(10);
+
+// c1
+
+// Para que se imprima c2 debe especificarse que se le pasa un long, ej:
+x.m(5L);
+

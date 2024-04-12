@@ -45,7 +45,8 @@ Si la clase padre NO tiene constructores, java crea un constructor vacío por de
 super:  para llamar también a métodos de la superclase, cuando por ejemplo hay duplicidad de métodos.
 		Si no hay lugar a confusión, podriamos usarlo sin el super.
 		
-		
+this y super, no sirven para llamar nada estático, a lo estático se le llama con el nombre de la clase . 
+Ej:  Clase.metodo()
 		
 ----> Algunas clases no se pueden heredar. 
 Las clases final no se pueden heredar.

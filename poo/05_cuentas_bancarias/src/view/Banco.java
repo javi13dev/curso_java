@@ -1,15 +1,15 @@
 package view;
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import service.CuentaLimite;
-import service.CuentaMovimientos;
 import model.Movimiento;
+import service.CuentaMovimientos;
 
 
 public class Banco {
-	static CuentaMovimientos service = new CuentaMovimientos(0, 0);
+	static CuentaMovimientos cm;
 	public static void main(String[] args) {
 		
 		/**
@@ -32,7 +32,8 @@ public class Banco {
 		System.out.println("Límite: ");
 		limite = Double.parseDouble(sc.nextLine());
 		
-		CuentaLimite cuenta = new CuentaLimite(saldo, limite);
+		cm = new CuentaMovimientos(saldo, limite);
+		
 		
 		int opcion;
 		do {
@@ -74,7 +75,9 @@ public class Banco {
 		
 		System.out.println("Ingresar cantidad: ");
 		cantidad = Double.parseDouble(sc.nextLine());
-		service.ingresar(cantidad);
+		
+		cm.ingresar(cantidad);
+		System.out.println("Se ha ingresado: " + cantidad);
 	}
 	static void extraer() {
 		Scanner sc = new Scanner(System.in);
@@ -82,16 +85,28 @@ public class Banco {
 		
 		System.out.println("Extraer cantidad: ");
 		cantidad = Double.parseDouble(sc.nextLine());
-		service.extraer(cantidad);
 		
+		cm.extraer(cantidad);
 		System.out.println("Se ha extraido: " + cantidad);
 	}
 	static void verMovimientos() {
 		
-		ArrayList<Movimiento> movimientos = service.obtenerMovimientos();
+		/**
+		 * toString en json: 
+			@Override
+			 
+			public String toString() {
+				return """
+						{"cantidad" : %s, "fechaHora" : "%s", "tipo" : "%s"}""".stripIndent().formatted(cantidad, fechaHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss")), tipo);
+			} 
+		 */
 		
+		ArrayList<Movimiento> movimientos = cm.obtenerMovimientos();
+		
+		System.out.println("Saldo: " + cm.obtenerSaldo());
+		System.out.println("Movimientos: ");
 		for(Movimiento m:movimientos) {
-			System.out.println(m.getCantidad() + " " + m.getFechaHora()+ " " +  m.getTipo() );
+			System.out.println( "Cantidad: " + m.getCantidad() + " Fecha: " + m.getFechaHora().format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"))+ " Tipo: " +  m.getTipo());
 		}
 	}
 }
