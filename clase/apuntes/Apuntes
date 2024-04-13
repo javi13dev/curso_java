@@ -173,3 +173,32 @@ Ejercicio:
 
 
 	Ejercicio Empleados javabean, en versión fichero
+	
+	
+	
+	
+	
+	
+	
+	
+	*********************************************************
+		*********************************************************
+			*********************************************************
+				*********************************************************
+				
+Sobre ArrayList, métodos:
+- para añadir tiene el add()
+- para el tamaño size()
+- para saber su índice, indexOf()
+- para eliminar elemento remove(indice), y también hay removeFirst() y removeLast()
+- para comprobar si contiene un elemento contains()
+- si queremos vaciarlo clear()
+
+
+	*********************************************************
+		*********************************************************
+			*********************************************************
+				*********************************************************
+				
+Sobre HashMap, en el proyecto 32 vemos dos formas de recorrerlas.
+
