@@ -263,6 +263,7 @@ EJ:
 // Como en este ejemplo que indica que se devolverá un List<E>
 Ej: static <E> List<E>         checkedList(List<E> list, Class<E> type)
 
+USO:
 Se gana asi eficiencia en el código. Desacoplamiento entre capas.(Uno de los principios de clean code).
 Si devolvemos interfaces no debería requerir de muchos cambios si se usa una clase diferente que lo implemente.
 
