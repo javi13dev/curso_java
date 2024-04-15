@@ -344,3 +344,16 @@ x.m(5L);
 
 
 
+
+
+
+///////////////
+
+
+// Escribir un método que sirva para mostrar por consola
+// el Hashcode de cualquier objeto java
+
+
+	public void mostrarHashCode(Object ob){
+		System.Out.Println(ob.hashCode());
+	}
