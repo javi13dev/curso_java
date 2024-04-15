@@ -206,6 +206,70 @@ Interfaces
 ********************************************
 ********************************************
 
+Descripción de métodos abstractos públicos.
+Sin atributos ni constructores.
+
+Posteriormente las clases se encargarán de implementarlas.
+
+Puede tener constantes.
+
+Una clase que implementa una interfaz está obligada a sobreescribir(implementar) todos los métodos de la misma.
+Debe respetarse el modificador.
+
+Así las clases que implementen, respetan el formato establecido.
+
+
+Aporta flexibilidad, una clase a diferencia de las abstractas, puede implementar distintas interfaces.
+Además, una subclase, puede implementar interfaces.
+
+Una interfaz puede heredar de otra o varias.
+Así va sumando métodos.
+
+Ej: interfaz Collection es padre de las demás collecciones
+
+Con las interfaces también se puede usar polimorfismo.
+Ej:
+
+Interface I1{
+
+}
+class C1 implements I1{
+
+}
+class C2 extends C1{
+
+}
+
+I1 i = new C2(); // Sí, porque C2 al ser extends C1, hereda la interfaz I1
+C2 x = newC1(); // No
+I1 r = new C1(); C2 a = (C1) r ;  // No, una hija no se puede igualar al padre
+C1 v = (C1) new I1(); // No, no se puede instanciar una intefaz
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Polimorfismo
 ********************************************
 ********************************************
