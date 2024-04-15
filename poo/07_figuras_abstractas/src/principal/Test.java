@@ -3,6 +3,7 @@ package principal;
 import service.Circulo;
 import service.Figura;
 import service.Mesa;
+import service.Operaciones;
 import service.Triangulo;
 
 public class Test {
@@ -28,9 +29,25 @@ public class Test {
 		System.out.println("Ancho " + mesa.getAncho());
 		System.out.println("largo " + mesa.getLargo());
 		System.out.println("Eje x: " + mesa.invertir());
+		
+		
+		// Ejecucion del método operar:
+		System.out.println("Método operar:");
+		// Está mostrando el método invertir en mesa
+		operar(mesa);
 	}
 	
 	public static void mostrar(Figura f) {
 		System.out.println("Color: " + f.getColor() + " Área. " + f.area());
 	}
+	
+	// Ejemplo de interfaz y polimorfismo:
+	public static void operar(Operaciones op) {
+		// Es decir, este método recibe una interfaz y puede hacerse uso de los métodos de la interfaz
+		op.girar(50);
+		System.out.println(op.invertir());
+		// Y lo ejecutamos en el main
+	}
+	
+	
 }

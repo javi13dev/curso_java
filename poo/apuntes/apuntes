@@ -246,12 +246,27 @@ I1 r = new C1(); C2 a = (C1) r ;  // No, una hija no se puede igualar al padre
 C1 v = (C1) new I1(); // No, no se puede instanciar una intefaz
 
 
+Uso mayoritario:
+
+métodos que nos encontramos en clases, al que se le pasa un parámetro que es una interfaz
+EJ:
+	usoPolimorfismo(new Test(..));
+	usoPolimorfismo(new Circulo(..));
+	:
+	void usoPolimorfismo(Operaciones op){
+		 op.girar(200);
+		 op.invertir();
+	}
 
 
+// Hay posibilidad donde se indica que se devuelve una interfaz, lo que quiere decir es que será un objeto de ese tipo.
+// Como en este ejemplo que indica que se devolverá un List<E>
+Ej: static <E> List<E>         checkedList(List<E> list, Class<E> type)
 
+Se gana asi eficiencia en el código. Desacoplamiento entre capas.(Uno de los principios de clean code).
+Si devolvemos interfaces no debería requerir de muchos cambios si se usa una clase diferente que lo implemente.
 
-
-
+Ej: en el proyecto 47 d gestor pedidos, habría que cambiar el ArrayList por un List.
 
 
 
