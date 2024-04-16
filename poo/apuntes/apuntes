@@ -246,9 +246,11 @@ I1 r = new C1(); C2 a = (C1) r ;  // No, una hija no se puede igualar al padre
 C1 v = (C1) new I1(); // No, no se puede instanciar una intefaz
 
 
-Uso mayoritario:
+>>>>>>>>>>>Uso mayoritario:
+métodos que nos encontramos en clases, al que se le pasa un parámetro que es una interfaz.
+El uso es más flexible y amplio que las clases abstractas.
 
-métodos que nos encontramos en clases, al que se le pasa un parámetro que es una interfaz
+
 EJ:
 	usoPolimorfismo(new Test(..));
 	usoPolimorfismo(new Circulo(..));

@@ -1,0 +1,190 @@
+
+
+Dadas esta clase e interfaces:
+
+class C1{}
+interface I1{}
+interface I2{}
+
+¿Cuales de las siguientes definiciones son correctas?
+
+a.-class C2 implements I2 extends C1{} // error, primero extends y después implements
+b.-class C3 extends I1, I2{}  // Error , una clase se implementa
+c.-interface IA implements I1{} // Error, una interfaz puede heredar de otra no implementarla.
+d.-class C4 extends C1 implements I1, I2{}
+e.-interface IB extends C1, I1, I2{} // Error, sobra el C1, porque puede heredar otras interfaces (incluso de forma múltiple)
+
+////////////////////////////////////////
+////////////////////////////////////////2
+
+interface I1{
+	void print();
+}
+class CA implements I1{ //l1
+	public void print(){
+		System.out.println("CA");
+	}
+}
+
+I1 i=new CA(); //l2
+i.print(); //l3 
+
+// imprime CA
+
+
+////////////////////////////////////////
+////////////////////////////////////////3
+
+interface I1{
+	void print();
+}
+interface I2{
+	void print();
+}
+class CA implements I1{ //l1
+	public void print(){
+		System.out.println("CA");
+	}
+}
+
+I1 i=new CA(); //l2
+i.print(); //l3 
+I2 i2=new CA(); //l4
+i2.print(); //l5
+
+// imprime CA CA
+
+
+
+////////////////////////////////////////
+////////////////////////////////////////4
+
+
+interface I1{
+	void print();
+}
+class CA implements I1{ 
+	public void print(){
+		System.out.println("CA");
+	}
+}
+class CB extends CA{
+	public void print(){
+		System.out.println("CB");
+	}
+}
+I1 i=(CA)(new CB()); // Sin error. 
+>>>>>>>>>>>>>>>>Sigue siendo un objeto CB, ya que el casting no transforma el objeto, solo le cambia el tipo.
+>>>>>>>>>>>>>>>>Por tanto se imprimirá el método de la clase CB.
+>>>>>>>>>>>>>>>>Mientras haya relación de herencia, no habría problema de casting entre clases.
+>>>>>>>>>>>>>>>>Otra cosa es en ejecución. 
+i.print(); 
+
+imprimer CB
+
+
+
+////////////////////////////////////////
+////////////////////////////////////////5
+
+
+interface I1{
+	void print();
+}
+class CA implements I1{ 
+	public void print(){
+		System.out.println("CA");
+	}
+}
+class CB extends CA{
+	public void print(){
+		System.out.println("CB");
+	}
+}
+
+class CC extends CB{
+}
+
+
+CC c = new CC();
+c.print();
+CB b=c;
+b.print();
+CA a = c;
+a.print();
+I1 i = c;
+i.print();
+
+
+// El objeto siempre es el mismo y el método al que se llama siempre es el mismo.
+CBCBCBCB
+
+
+
+
+////////////////////////////////////////
+////////////////////////////////////////6
+
+
+interface I{
+	void send();
+}
+class A implements I{ 
+	void send(){ //l1
+		System.out.println("s1");
+	}
+	void send(int a){ //l2
+		System.out.println("s2");
+	}
+
+}
+
+I i=new A(); //l3
+
+A a=(A)i; //l4
+
+a.send(2);
+
+Eror compilación en l1, el método debe ser public 
+
+
+
+////////////////////////////////////////
+////////////////////////////////////////7
+
+
+Escribe un método que nos muestre la parte entera
+de cualquier objeto numérico de envoltorio:
+
+Double d=2.3;
+Integer integ=7;
+Float ft=3.4f;
+
+metodo(d) -> 2
+metodo(integ) ->7
+metodo(ft) -> 3
+
+
+
+public int metodo(Number num){
+	int i = num.intValue();
+	return i;
+}
+
+
+
+
+////////////////////////////////////////
+////////////////////////////////////////8
+
+
+
+
+
+
+
+
+
+
+
+

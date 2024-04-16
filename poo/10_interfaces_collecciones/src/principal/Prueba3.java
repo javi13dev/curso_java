@@ -19,6 +19,7 @@ public class Prueba3 {
 		
 		List<Integer> sublista = nums.subList(3, 7);
 		
+	
 		for(Integer n:sublista) {
 			System.out.println(n);
 		}
