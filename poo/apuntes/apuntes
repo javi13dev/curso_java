@@ -275,9 +275,20 @@ Ej: en el proyecto 47 d gestor pedidos, habría que cambiar el ArrayList por un 
 
 
 
+>>>>>>>>>>> Interfaz que tiene sólo un método abstracto, es una interfaz funcional.
+Opcionalmente puede tener la anotación:
+@FunctionalInterface
 
 
-
+Ejemplo de interfaz funcional:
+@FunctionalInterface
+interface InterC{
+	 void m();
+	 String toString(); //los métodos abstractos que 
+						//coincidan con algún método de
+						//Object no se tiene en cuenta de 
+						//cara a la característica de ser funcional
+}
 
 
 
