@@ -1,8 +1,11 @@
 package principal_test;
 
+import java.util.List;
+
 import principal.ListNumber;
 import service.Condicion;
 import service.Operacion;
+import principal.OperacionesService;
 
 
 /**
@@ -49,6 +52,16 @@ public class Test {
 		System.out.println(lista.first());
 		System.out.println(lista.last());
 		System.out.println(lista.sum());
+		
+		
+		List<Integer> numeros = List.of(3,5,80,-2,4,-10,17);
+		
+		// Vamos a simplificar con lambdas
+		// Aqui usamos del paquete function, la interfaz Predicate desde OperacionesService
+		OperacionesService service = new OperacionesService();
+		// Donde se usan, donde vayamos a usar la llamada al objeto
+		System.out.println("Suma positivos: "+service.sumaPorCondicion(numeros, n->n>0));
+		System.out.println("Suma pares: "+service.sumaPorCondicion(numeros, n->n%2==0));
 		
 		
 		
