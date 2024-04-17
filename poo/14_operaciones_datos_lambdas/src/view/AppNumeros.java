@@ -4,7 +4,7 @@ import java.util.List;
 
 import inter.InterfazCondicion;
 import service.OperacionesService;
-
+/**
 class Pares implements InterfazCondicion{
 	@Override
 	public boolean test(Integer n) {
@@ -20,6 +20,7 @@ class Positivos implements InterfazCondicion{
 		return n>0;
 	}
 }
+*/
 
 public class AppNumeros {
 
@@ -27,26 +28,17 @@ public class AppNumeros {
 		
 		List<Integer> numeros = List.of(3,5,80,-2,4,-10,17);
 		
-		// Teniendo la lógica de negocio del service y la interfaz:
-		
-		// Imprimir, por una lado, la suma de los pares.
-		// Y la suma de los positivos.
-		
-		// Para eso hay que llamar a operacionesService.
+		// Vamos a simplificar con lambdas
 		
 		OperacionesService service = new OperacionesService();
+		// Donde se usan, donde vayamos a usar la llamada al objeto
+		System.out.println("Suma positivos: "+service.sumaPorCondicion(numeros, n->n>0));
+		System.out.println("Suma pares: "+service.sumaPorCondicion(numeros, n->n%2==0));
 		
-		// Pares pares = new Pares();
-		
-		/**
-		 * 
-		for(Integer i : numeros) {
-			
-			service.sumaPorCondicion(numeros, new Positivos());
-		}
-		 */
-		System.out.println("Suma positivos: "+service.sumaPorCondicion(numeros, new Positivos()));
-		//System.out.println(service.sumaPorCondicion(numeros, new Positivos());
+		// O bien si me intersa:
+		// InterfazCondicion pares = n->n>0;
+		// para después usarla.
+		// System.out.println("Suma positivos: "+service.sumaPorCondicion(numeros, pares));
 	}
 
 }

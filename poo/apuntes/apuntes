@@ -292,6 +292,32 @@ interface InterC{
 
 
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Lambdas
+
+Son la solución a que no sea necesario cada implementación de las interfaces.
+
+Es la implementación de una interfaz funcional, sin necesidad de crear una clase.
+
+Ej:
+
+// Interfaz funcional
+public interface Inter1{
+	 void met(int data);
+	 default int res(){return 1;}
+}
+
+
+// Expresión lambda
+Inter1 i1=(a)->System.out.println(a);
+// Con esto, se implementa/genera un objeto de la interfaz.
+
+
+
+
+
+
+
+
 
 
 
