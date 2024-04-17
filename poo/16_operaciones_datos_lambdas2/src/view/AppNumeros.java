@@ -77,6 +77,16 @@ public class AppNumeros {
 				e.printStackTrace();
 			}
 		});
+		
+		
+		
+		// método que recibe una lista y devuelve la suma de todos los elementos de la lista, 
+		// añadiendo el valor que se extraiga de un fichero.
+		// método que recibe una lista y devuelve la suma de todos los elementos de la lista, 
+		// a le añadimos un número léido desde un puerto externo.
+		
+		
+		
 	}
 }
 
