@@ -15,6 +15,9 @@ public class Prueba3 {
 		System.out.println("Total dias primer periodo: " + dias1);
 		System.out.println(ChronoUnit.DAYS.between(f1, f2)); 
 		
+		System.out.println("Meses entre: ");
+		System.out.println(ChronoUnit.MONTHS.between(f1, f2));
+		
 		System.out.println(p.getMonths() + " meses");
 		System.out.println(p);
 		
@@ -25,7 +28,8 @@ public class Prueba3 {
 		Period p2 = Period.between(f3, f4);
 		long dias2 = p.get(ChronoUnit.DAYS);
 		System.out.println(ChronoUnit.DAYS.between(f3, f4)); 
-		
+		System.out.println("Meses entre: ");
+		System.out.println(ChronoUnit.MONTHS.between(f3, f4)); 
 		System.out.println("Total dias segundo periodo: " + dias2);
 		
 		System.out.println(p.getMonths() + " meses");

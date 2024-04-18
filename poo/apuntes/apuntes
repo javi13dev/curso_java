@@ -319,6 +319,132 @@ Se usan como parámetros en una función.
 
 
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Programación funcional
+
+
+Podemos crear nuestras funciones y usar expresiones lambdas para su posterior implementación:
+
+Ej:
+
+
+	package service;
+	
+	import java.util.List;
+	import java.util.Map;
+	import java.util.Set;
+	import java.util.function.BiConsumer;
+	import java.util.function.BiFunction;
+	import java.util.function.BiPredicate;
+	import java.util.function.BinaryOperator;
+	import java.util.function.Consumer;
+	import java.util.function.Function;
+	import java.util.function.IntSupplier;
+	import java.util.function.Supplier;
+	
+	public class FuncionalesService {
+		
+		// Práctica común, encontrarse con clases y métodos de llamadas funcionales/lambdas
+		
+		public void m1(Set<Integer> nums, Function<String, Integer> fn) {
+		
+		}
+		
+		public void m2(Supplier<String> sp, Consumer<Integer> cs) {
+			
+		}
+		
+		public void m3(BinaryOperator<Double> db, BiFunction<Integer, String, Integer> bf ) {
+			
+		}
+		
+		public void m4(BiConsumer <String, Double> bc, BiPredicate<String, Long> bp) {
+			
+		}
+		
+		public void m5(IntSupplier is, List<String> lst) {
+			
+		}
+		
+		public void m6(Map <String, Integer> mp, BiConsumer<String, Long> bc) {
+			
+		}
+		
+		public void m7(Function<String, List<Integer>> fn) {
+			
+		}
+		
+	}
+
+
+O bien, utilizar las nuevas funciones que reciben como parámetros expresiones lambdas:
+
+		package service;
+		import java.util.ArrayList;
+		import java.util.List;
+		
+		import model.Producto;
+		
+		public class ProductoService {
+			List<Producto> lst = new ArrayList<Producto>();
+		
+			/**
+			 *  Programa para gestión de productos.
+		
+				Cada producto tendrá: nombre, precio, categoria
+				
+				La lógica de negocio, expondrá los siguientes métodos:
+				
+				-eliminarPorCategoria: elimina de la lista aquellos productos que pertenezcan a la categoría indicada
+				
+				-bajarPrecio: Baja el precio de todos productos en el porcentaje indicado
+				
+				-subirPrecioCategoria: Sube el precio a todos los productos de la categoría indicada, en el porcentaje indicado
+				
+				-obtenerProductos: Devuelve la lista de productos existentes
+				-agregarProducto: Añade el producto recibido 
+			 */
+			
+			public void eliminarPorCategoria( String categoria) {
+				
+				lst.removeIf(p -> p.getCategoria().equals(categoria));	
+			}
+			
+			public void bajarPrecio(int porcentaje) {
+				lst.forEach(p -> p.setPrecio(p.getPrecio() - p.getPrecio()*porcentaje/100));
+			}
+			
+			public void subirPrecioCategoria(int porcentaje, String categoria) {
+				
+				lst.replaceAll(p -> {
+					if(p.getCategoria().equals(categoria)) {
+						 p.setPrecio(p.getPrecio() + p.getPrecio()*porcentaje/100);
+					}
+					return p;
+				});
+				
+				lst.forEach(p -> p.setPrecio(p.getPrecio() + p.getPrecio()*porcentaje/100));	
+			}
+			
+			
+			public List<Producto> obtenerProductos(){
+				return lst;
+			}
+			
+			public void altaProdcuto(Producto producto){
+				lst.add(producto);
+			}
+			 
+		}
+
+// En este caso lst utiliza directamente las funciones nuevas.
+
+
+
+
+
+
+
 
 
 

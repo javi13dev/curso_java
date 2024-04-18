@@ -42,8 +42,7 @@ public class ProductoService {
 			return p;
 		});
 		
-		lst.forEach(p -> p.setPrecio(p.getPrecio() + p.getPrecio()*porcentaje/100));
-		
+		lst.forEach(p -> p.setPrecio(p.getPrecio() + p.getPrecio()*porcentaje/100));	
 	}
 	
 	
@@ -55,9 +54,12 @@ public class ProductoService {
 		lst.add(producto);
 	}
 	 
-	
-
-	
-	
-
 }
+
+
+
+
+
+
+
+
