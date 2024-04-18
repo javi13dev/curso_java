@@ -91,6 +91,25 @@ public class OperacionesService{
 		suma+=sup.get();
 		return suma;
 	}
+	
+	/**
+	 * 
+	 	//simula la obtención de una conexión
+		//con una base de datos
+		Supplier<Connection> sp=()->{
+			 String cad="cadena conexión BD";
+			 String user="usuario";
+			 String pwd="password";
+			 Connection cn;
+			 cn=DriverManager.getConnection(cad,user,pwd);
+			 return cn;
+		}
+		
+		//uso
+		Connection cn=sp.get();
+
+	 */
+	
 }
 
 

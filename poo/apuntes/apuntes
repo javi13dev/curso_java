@@ -291,8 +291,10 @@ interface InterC{
 }
 
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> LAMBDAS
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> 
 
->>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Lambdas
 
 Son la solución a que no sea necesario cada implementación de las interfaces.
 
@@ -312,6 +314,7 @@ Inter1 i1=(a)->System.out.println(a);
 // Con esto, se implementa/genera un objeto de la interfaz.
 
 
+Se usan como parámetros en una función.
 
 
 
