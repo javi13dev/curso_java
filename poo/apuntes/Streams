@@ -1,0 +1,105 @@
+
+Streams: objeto para manipulación de datos.
+
+Nunca se usa con bases de datos, sino con datos procedentes de arrays, collección o fichero, etc.
+
+	Objeto que proporciona métodos para realizar de forma 
+	rápida y sencilla operaciones de búsqueda, filtrado, 
+	recolección, etc. sobre un grupo de datos (array, colección o 
+	serie discreta de datos)
+	
+>>>>Para trabajar con streams utilizamos la interfaz Stream de 
+	java.util.stream
+	Es un objeto de esa interfaz.
+	
+	Otras variantes como IntStream, LongStream o 
+	DoubleStream se emplean para trabajar con tipos primitivos
+	
+	// No es una colección.
+	Recorre los datos desde el principio hasta el final y durante 
+	el recorrido realiza algún tipo de cálculo u operación
+	
+	Una vez realizado el recorrido, el stream se cierra y no
+	puede volver a utilizarse
+	
+>>>>>>>>>>>>>>>Se crea:
+
+	A partir de una colección:
+	ArrayList<Integer> nums=new ArrayList<>();
+	nums.add(20);nums.add(100);nums.add(8);
+	Stream<Integer> st=nums.stream();
+	
+	A partir de un array:
+	String[] cads={“a”,”xy”,”jk”,”mv”};
+	Stream<String>st= Arrays.stream(cads);
+	
+	A partir de una serie discreta de datos:
+	Stream<Double> st=Stream.of(2.4, 7.4, 9.1);
+	
+	A partir de un rango de datos:
+	IntStream stint=IntStream.range(1,10);
+	IntStream stint2=IntStream.rangeClosed(1,10);
+	
+	
+Además del método generate.
+
+>>>>>>>
+>>>>>>>
+>>>>>>> MÉTODOS:
+>>>>>>>
+>>>>>>>
+	
+	Métodos intermedios. El resultado de su ejecución es 
+	un nuevo Stream, para seguir aplicando más métodos. 
+	Ejemplos: filtrado y transformación 
+	de datos, ordenación, etc.
+	
+	Métodos finales. Generan un resultado. Pueden ser 
+	void o devolver un valor resultado de alguna 
+	operación. Ejemplos: calculo (suma, mayor, menor, …), 
+	búsquedas, reducción, etc.
+
+El proceso de aplicar sobre un objeto stream, un método intermedio, después otro método intermedio, 
+y finalmente un método final.
+
+Con un objeto stream, sólo puede hacerse una llamada.
+
+
+Comprobaciones: métodos finales.
+
+	boolean anyMatch(Predicate<? super T> predicate). 
+	Devuelve true si algún elemento del Stream cumple con la 
+	condición del predicado: 
+	boolean allMatch(Predicate<? super T> predicate). 
+	Devuelve true si todos cumplen con la condición del 
+	predicado.
+	boolean noneMatch(Predicate<? super T> predicate). 
+	Devuelve true si ninguno cumple con la condición del 
+	predicado.
+
+Filtrado: otro intermedio, muy utilizado:
+
+	Stream<T> filter(Predicate<? super T> predicate). 
+	Aplica un filtro sobre el Stream, devolviendo un nuevo 
+	Stream con los elementos que cumplen el predicado
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

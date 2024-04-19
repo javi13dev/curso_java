@@ -514,6 +514,15 @@ Sólo se pueden usar cuando el código de la expresión lambda es una llamada al
 
 // Es para casos donde se pueda deducir los datos que recibe.
 
+Ej:
+service.m1(Set.of(8,4,7), s->s.length());
+service.m1(Set.of(8,4,7), String::length);
+
+service.m2(()-> "miString", (s)->System.out.println(s));
+service.m2(()-> "miString", System.out::println);
+
+// Y casos en los que no es poible:
+service.m4( (a,b)->System.out.println(), (a,b)-> a.length()>b);
 
 
 
