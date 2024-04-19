@@ -53,13 +53,16 @@ public class ProductoService {
 	public void altaProdcuto(Producto producto){
 		lst.add(producto);
 	}
+	
+	// Visto en método sort(),
+	// Añadimos método para ordenar por Precio.
+	public void ordenarPorPrecio() {
+		
+		lst.sort((a,b)->Double.compare(a.getPrecio(),b.getPrecio()));
+		
+	}
 	 
 }
-
-
-
-
-
 
 
 

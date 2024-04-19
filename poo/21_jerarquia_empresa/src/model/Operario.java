@@ -9,7 +9,7 @@ public class Operario extends Empleado{
 	
 	public Operario(String nombre, int edad, LocalDate fechaIngreso, double salario, int nivel) {
 		super(nombre, edad, fechaIngreso, salario);
-		this.nivel = nivel;
+		this.setNivel(nivel);
 	}
 	
 	public int getNivel() {
@@ -17,9 +17,14 @@ public class Operario extends Empleado{
 	}
 
 	public void setNivel(int nivel) {
-		this.nivel = nivel;
+		if(nivel<=5&&nivel>=1) {
+			this.nivel = nivel;			
+		}else {
+			this.nivel = 1;
+		}
 	}
-
+	
+	@Override
 	public void incentivar() {
 		/**
 		 *  Si tiene más de 30 años de edad y su nivel es superior a 2, se le incrementará su salario con el doble del bono. 
@@ -27,10 +32,10 @@ public class Operario extends Empleado{
 			y si no cumple ninguna, no se hará nada.
 		 */
 		
-		if( getEdad() > 30  && this.nivel > 2) {
-			this.setSalario(this.getSalario() + this.BONO*2);
-		}else if(getEdad() > 30  || this.nivel > 20) {
-			this.setSalario(this.getSalario() + this.BONO);
+		if( getEdad() > 30  && this.getNivel() > 2) {
+			this.setSalario(this.getSalario() + Empleado.BONO*2);
+		}else if(getEdad() > 30  || this.getNivel() > 2) {
+			this.setSalario(this.getSalario() + Empleado.BONO);
 		}
 	}
 	
@@ -43,7 +48,7 @@ public class Operario extends Empleado{
 		 */
 		LocalDate fecha_actual = LocalDate.now();
 		
-		if(ChronoUnit.YEARS.between(fecha_actual, this.getFechaIngreso() ) > 2 && this.nivel <5) {
+		if(ChronoUnit.YEARS.between(fecha_actual, this.getFechaIngreso() ) > 2 && this.getNivel() <5) {
 			this.setNivel(this.getNivel()+1);
 		}
 	}

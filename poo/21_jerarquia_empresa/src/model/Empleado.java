@@ -7,7 +7,8 @@ public abstract class Empleado {
 	private int edad;
 	private LocalDate fechaIngreso;
 	private double salario;
-	final double BONO = 100.0;
+	public static final double BONO = 600.0; // tiene sentido que una constante sea static, ya que es la misma para todos
+	// Y public, porque suele ser utilizable fuera de la clase. Y al ser constante no ser necesario getter y setter.
 	
 	public Empleado(String nombre, int edad, LocalDate fechaIngreso, double salario) {
 		super();
@@ -49,5 +50,5 @@ public abstract class Empleado {
 		this.salario = salario;
 	}
 	
-	abstract void incentivar();
+	public abstract void incentivar();
 }
