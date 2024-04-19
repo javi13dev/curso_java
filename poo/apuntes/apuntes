@@ -475,6 +475,56 @@ O bien, utilizar las nuevas funciones que reciben como parámetros expresiones l
 
 
 
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Referencias a métodos  ::
+
+Representan una forma aún más abreviada de representar la implementación de una interfaz funcional.
+Aunque con limitaciones.
+
+Sólo se pueden usar cuando el código de la expresión lambda es una llamada al método.
+
+	
+	Sustituyen a expresiones lambda cuya única instrucción 
+	consiste en una llamada a un método.
+	
+	Indica que método debe ser llamado en circunstancias 
+	donde los parámetros y objeto al que aplicarlo pueden ser 
+	deducidos por el contexto.
+	
+	Sintaxis:
+	clase/objeto::nombre_metodo
+
+
+>>> Tipos y casos:
+	Referencia a método estático
+	s->String.valueOf(s)       String::valueOf
+	
+	
+	Referencia a método de objeto específico
+	s->System.out.println(s)   System.out::println
+	
+	
+	Referencia a método de  objeto arbitrario
+	(a,b)->a.equals(b)         String::equals
+	
+	
+	Referencia a constructor 
+	a->new MiClase(a) MiClase::new
+
+
+// Es para casos donde se pueda deducir los datos que recibe.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 Polimorfismo
