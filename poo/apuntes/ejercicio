@@ -1,0 +1,11 @@
+
+
+(x,y) -> x.length()>y      =>  BiPredicate<String, Integer>
+
+(a,b) -> a-b               =>  BinaryOperator<Integer>  // los parámetros de entradas y salida son iguales.
+
+() -> 0                    =>  Supplier<Integer>  / IntSupplier
+
+x -> System.out.println(x) => Consumer<Object>
+
+s -> s.equals(20)          => Predicate<Integer>
