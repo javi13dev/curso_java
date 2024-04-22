@@ -34,5 +34,11 @@ class TestCuentasService {
 	void testBuscarCuentaPorTitular() {
 		assertTrue(service.buscarCuentaPorTitular("Fernando López Gómez").isPresent());
 	}
-
+	
+	
+	// test de cuentas Map.
+	@Test
+	void testCuentasAgrupadasPorDivisa() {
+		assertEquals(2, service.cuentasPorDivisa().get("JPY").size());
+	}
 }

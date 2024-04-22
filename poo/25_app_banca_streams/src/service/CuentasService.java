@@ -4,7 +4,9 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import model.Cuenta;
 
@@ -88,6 +90,38 @@ public class CuentasService {
 		.min(Comparator.comparingDouble(c -> c.getSaldo()))
 		.orElse(null);
 	}
+	
+	// >>>>> Usando Collector, Reducción a Colección
+	// Método que a partir de un nombre de divisa nos dice las cuentas que hay de dicha divisa
+	public List<Cuenta> cuentasDivisas(String divisa) {
+		 return cuentas.stream()
+				.filter(d -> d.getDivisa().equalsIgnoreCase(divisa))
+				//.collect(Collectors.toList());
+				.toList();
+	}
+	// A partir de java 16, está disponible ese método toList()
+	
+	
+	
+	// Método que devuelva un Map con los números de cuenta como claves 
+	// y saldo como valor
+	
+	public Map<String, Double> cuentasSaldo(){
+		
+		return cuentas.stream()
+				.collect(Collectors.toMap(c -> c.getNumeroCuenta(), s -> s.getSaldo()));
+				//.collect(Collectors.toMap(Cuenta::getNumeroCuenta, Cuenta::getSaldo));
+	}
+	
+	
+	// Método que devuelve en una tabla de cuentas agrupadas por divisas:
+	public Map<String, List<Cuenta>> cuentasPorDivisa(){
+		return cuentas.stream()
+				.collect(Collectors.groupingBy(c -> c.getDivisa()));
+				// Así devuelve directamente la agrupación.
+	}
+	
+	
 	
 	
 }
