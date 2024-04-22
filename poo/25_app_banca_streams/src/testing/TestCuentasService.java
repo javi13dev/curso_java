@@ -27,5 +27,12 @@ class TestCuentasService {
 	void testNumeroDivisas() {
 		assertEquals(2, service.numeroDivisas("EUR"));
 	}
+	
+	// Probando test de los últimos métodos
+	// Ejemplo de método que me devuelve un optional y lo comprobamos con sus métodos.
+	@Test
+	void testBuscarCuentaPorTitular() {
+		assertTrue(service.buscarCuentaPorTitular("Fernando López Gómez").isPresent());
+	}
 
 }

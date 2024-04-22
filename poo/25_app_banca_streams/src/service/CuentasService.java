@@ -2,7 +2,9 @@ package service;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import model.Cuenta;
 
@@ -40,5 +42,52 @@ public class CuentasService {
 	
 	//método que a partir de una fecha, nos indique cuantas
 	//cuentas se crearon a partir de dicha fecha 
+	public int contarCuentasDespuesFecha(LocalDate fecha) {
+		return (int)cuentas.stream()
+				.filter(c->c.getFechaApertura().isAfter(fecha))
+				.count();
+	}
+	
+	
+	// Probando Optional:
+	// Método que devuelva la cuenta asociada a una determinada cuenta.
+	public Cuenta buscarCuenta(String numero) {
+		return cuentas.stream()
+		.filter(c -> c.getNumeroCuenta().equals(numero)) // Hasta aqui es un Stream<Cuenta>
+		.findFirst() // Aqui es un Optional<Cuenta>
+		.orElse(null); // Como alternativa en caso de que no lo encuentre.
+	}
+	
+	// Otro ejemplo:
+	public Optional<Cuenta> buscarCuentaPorTitular(String titular) {
+		return cuentas.stream()
+		.filter(c -> c.getTitular().equals(titular)) // Hasta aqui es un Stream<Cuenta>
+		.findFirst(); // Optional<Cuenta>
+		
+		// >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		// Es mejor devolver un Optional, en lugar de preguntar si es null.
+	}
+	
+	// Método, la cuenta con menor saldo:
+	public Cuenta menorSaldo(){
+		return cuentas.stream()
+		.sorted((a,b) -> Double.compare(a.getSaldo() , b.getSaldo()))
+		.findFirst()
+		.orElse(null);
+	}
+	
+	// O bien usar el max o min:
+	public Cuenta cuentaMenorSaldo(){
+		return cuentas.stream()
+		.min((a,b) -> Double.compare(a.getSaldo() , b.getSaldo()))
+		.orElse(null);
+	}
+	// O bien, con la implementación de métodos de Comparator:
+	public Cuenta cuentaSaldoMenor(){
+		return cuentas.stream()
+		.min(Comparator.comparingDouble(c -> c.getSaldo()))
+		.orElse(null);
+	}
+	
 	
 }
