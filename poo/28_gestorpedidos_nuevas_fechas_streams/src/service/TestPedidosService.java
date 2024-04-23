@@ -1,6 +1,7 @@
 package service;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDate;
 import java.util.Calendar;
@@ -33,6 +34,8 @@ class TestPedidosService {
 	@Test
 	void testPedidoMasReciente() {
 		assertEquals("coca cola", service.pedidoMasReciente().getProducto());
+		// para el optional:
+		// assertTrue(service.pedidoMasReciente().getProducto().isPresent());
 	}
 
 	@Test

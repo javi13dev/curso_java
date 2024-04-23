@@ -2,7 +2,7 @@ package view;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Pedido;
@@ -69,6 +69,18 @@ public class PedidosMenu {
 		System.out.print("Producto: "+p.getProducto()+" ");
 		System.out.print("Unidades: "+p.getUnidades()+" ");
 		System.out.println("Fecha pedido: "+p.getFechaPedido().format(sdf)+" ");
+		
+		// >>>>>>>>>>>>>>>>  para la devolución del optional:
+		/**
+		service.pedidoMasReciente().ifPresentOrElse(p->{
+						DateTimeFormatter sdf=DateTimeFormatter.ofPattern("dd/MM/yyyy");
+						System.out.print("Producto: "+p.getProducto()+" ");
+						System.out.print("Unidades: "+p.getUnidades()+" ");
+						System.out.println("Fecha pedido: "+p.getFechaPedido().format(sdf)+" ");
+					}, () -> System.out.println("no existen pedidos")
+				);
+		*/
+		// Porque de la forma sin optional, habría dado un NullPointerException
 	}
 	static void pedidosEntreFechas(){
 		Scanner sc=new Scanner(System.in);
@@ -77,7 +89,7 @@ public class PedidosMenu {
 		LocalDate fecha1=LocalDate.parse(sc.nextLine(),sdf);	
 		System.out.println("Fecha límite (dia/mes/año):");
 		LocalDate fecha2=LocalDate.parse(sc.nextLine(),sdf);	
-		ArrayList<Pedido> pedidosEncontrados=service.pedidosEntreFechas(fecha1, fecha2);
+		List<Pedido> pedidosEncontrados=service.pedidosEntreFechas(fecha1, fecha2);
 		for(Pedido p:pedidosEncontrados) {
 			System.out.print("Producto: "+p.getProducto()+" ");
 			System.out.print("Unidades: "+p.getUnidades()+" ");

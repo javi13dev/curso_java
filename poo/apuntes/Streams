@@ -152,5 +152,18 @@ Hay un tipo de agrupación diferente: Partición, resultado boolean.
 	
 	
 	
+>>>>>>>>>>>>>>>>>>>> flatMap
+
+>>>>>>>>>>>>>>>>>>>> peek, método intermedio.
+
+Diferencia del foreach es que devuelve el stream para seguir utilizándolo.
+
+	Stream<T> peek(Consumer<? super T> proceso). Aplica
+	el consumer a cada elemento del Stream, devolviendo un 
+	nuevo stream idéntico para continuar con la 
+	manipulación de los elementos: 
 	
 	
+	
+>>>>>>>>>>>>>>>>>>>> otro uso de métodos intermedios:
+>>>>>>>>>>>>>>>>>>>> funcionan en modo lazy, es decir, lo que hacen se realiza en memoria.
