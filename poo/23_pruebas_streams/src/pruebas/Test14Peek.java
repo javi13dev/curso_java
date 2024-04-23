@@ -18,10 +18,6 @@ public class Test14Peek {
 		.peek(n->System.out.println(n))
 		.anyMatch(n->n<0)
 		);
-		
-		
-		
-		
+			
 	}
-
 }
