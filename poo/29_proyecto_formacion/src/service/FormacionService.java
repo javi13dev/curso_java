@@ -3,6 +3,8 @@ package service;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -121,18 +123,34 @@ public class FormacionService {
 			return cursos.stream() 
 					.collect(Collectors.toMap(c ->(int) ChronoUnit.MONTHS.between(c.getFechaInicio(), c.getFechaFin()), c -> c.getNombre()));
 		} 
+		
+		/**
+		public Map<Integer, String> cursosDuracionNombre() {
+			return cursos.stream() 
+					.collect(Collectors.toMap(c ->(int) Period.between(c.getFechaInicio(), c.getFechaFin()).toTotalMonths(), c -> c.getNombre()));
+		} 
+		*/
 		 
 		//Tabla de cursos, donde la clave sea la duración del curso(en meses) y el valor la lista de cursos con dicha duración
 		 
-		
+		public Map<Integer, List<Curso>> tablaListaCursos() {
+			return cursos.stream() 
+					.collect(Collectors.groupingBy(c ->(int) ChronoUnit.MONTHS.between(c.getFechaInicio(), c.getFechaFin())));
+		} 
 		 
 		//tabla con los cursos divididos entre caros y baratos. Caros, los que superen el precio recibido como parámetro
 		//baratos los que no lo superen o lo igualen
 		
-		 
+		
+		public Map<Boolean, List<Curso>> tablaCursosPrecios(double precio){
+			return cursos.stream()
+					.collect(Collectors.partitioningBy(c -> c.getPrecio() > precio));
+		}
+		
+	
 		//cadena con los nombres de todos los cursos, separados por una coma
 		 
-		
+		// Se pasa a map porque quiero un Stream de String. Y Map permite esa conversión.
 		public String nombreCursos() {
 			return cursos.stream() 
 					.map(c->c.getNombre()) 
@@ -140,21 +158,93 @@ public class FormacionService {
 					.collect(Collectors.joining(","));
 		} 
 		
-		
 		// nota media de un curso
 		
+		public double notaMediaCurso(String curso) {
+			/*
+			return cursos.stream() // Stream<Curso>
+					.filter(c -> c.getNombre().equals(curso)) // Stream<Curso>
+					.findFirst() // Optional<Curso>
+					.orElse(new Curso()) // Curso. En caso de no haberlo, devuelve un curso vacío.
+					.getAlumnos() // List<Alumno>
+					.stream()	// Stream<Alumno>
+					.collect(Collectors.averagingDouble(a -> a.getNota())); // double
+			*/
+			return cursos.stream() // Stream<Curso>
+					.filter(c -> c.getNombre().equals(curso)) // Stream<Curso>
+					.flatMap(c -> c.getAlumnos().stream()) // Stream<Alumno>
+					.collect(Collectors.averagingDouble(a -> a.getNota()));
+					/* flatMap reduce estas dos siguientes lineas
+					.map(c->c.getAlumnos()) Stream<List<Alumno>>
+					.map(l->l.stream()) Stream<Alumno>
+					*/
+		}	
+		
+		public double mediaCurso(String curso) {
+			 /*return 
+				cursos.stream
+				()//Stream<Curso>
+									 .filter(c->c.getNombre().equals(curso))//Stream<Curso>
+									 .findFirst() //Optional<Curso>
+									 .orElse(new Curso()) //Curso
+									 .getAlumnos() //List<Alumno>
+									 .stream()//Stream<Alumno>
+									 .collect(Collectors.averagingDouble(a->a.getNota()));//double*/
+							 return cursos.stream()
+									 .filter(c->c.getNombre().equals(curso))//Stream<Curso>
+									 .flatMap(c->c.getAlumnos().stream())//Stream<Alumno>
+									 /*.map(c->c.getAlumnos())//Stream<List<Alumno>>
+									 .map(l->
+				l.stream
+				())//Stream<Alumno>*/
+									 .collect(Collectors.averagingDouble(a->a.getNota()));
+									 
+									 
+		 }
 		
 		 
 		//lista con los nombres de todos los alumnos
 		
 		public List<String> nombresAlumnos() {
 			return cursos.stream() 
-					.map(c -> c.getNombre())
+					.flatMap(c -> c.getAlumnos().stream())
+					.map(a -> a.getNombre())
 					.toList();
 		} 
 		 
 		//lista de alumnos matriculados en cursos de determinada temática
+		
+		
+		public List<Alumno> alumnosMatriculados(String tematica) {
+			return cursos.stream() 
+					.filter( c -> c.getTemática().equals(tematica))
+					.flatMap(c -> c.getAlumnos().stream())
+					.toList();
+		} 
 		 
 		//alumno con mayor nota 
+		
+		public Alumno alumnoMayorNota() {
+			return cursos.stream()
+					.flatMap(c -> c.getAlumnos().stream())
+					.max(Comparator.comparingDouble(c -> c.getNota()))
+					.orElse(null);
+		}
+		
+		// lista de cursos ordenados por fechas:
+		// Vemos uso de comparing, que se va a usar para comparar cuando no sea int, double
+		public List<Curso> cursosOrdenadosFechas(){
+			return cursos.stream()
+					.sorted(Comparator.comparing(c -> c.getFechaInicio()))
+					.toList();
+		}
+		
+		
+		
+		
+		
+		
+		
+		
 		
 }
