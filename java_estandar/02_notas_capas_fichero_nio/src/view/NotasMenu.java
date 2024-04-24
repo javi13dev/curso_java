@@ -1,8 +1,9 @@
 package view;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
+import exceptions.ErrorFuenteDatosException;
 import service.NotasService;
 
 public class NotasMenu {
@@ -40,6 +41,7 @@ public class NotasMenu {
 	
 	static void presentarMenu() {
 		System.out.println("""
+				
 				1.- Agregar nota
 				2.- Calcular nota media
 				3.- Notas extremas
@@ -56,18 +58,31 @@ public class NotasMenu {
 		service.agregarNota(nota);
 	}
 	static void presentarMedia() {
-		System.out.println("La media es: "+service.media());
+		try {
+			System.out.println("La media es: "+service.media());
+		} catch (ErrorFuenteDatosException e) {
+			System.out.println("Error en la lectura de datos.");
+			System.out.println(e.getMessage());
+		}
 	}
 	static void presentarExtremas() {
-		System.out.println("Nota más alta: "+service.max());
-		System.out.println("Nota más baja: "+service.min());
+		try {
+			System.out.println("Nota más alta: "+service.max());
+		} catch (ErrorFuenteDatosException e) {
+			System.out.println("Error en la lectura de datos.");
+		}
+		try {
+			System.out.println("Nota más baja: "+service.min());
+		} catch (ErrorFuenteDatosException e) {
+			System.out.println("Error en la lectura de datos.");
+		}
 	}
 	static void mostrarNotas() {
-
-		ArrayList<Double> notas = service.obtenerNotas();
-		for(Double n:notas) {
-			System.out.println(n);
+		try {
+			System.out.println("Las notas son: "+ service.obtenerNotas());
+		} catch (ErrorFuenteDatosException e) {
+			System.out.println("Error en la lectura de datos.");
+			System.out.println(e.getMessage());
 		}
-		System.out.println("Las notas son: "+ service.obtenerNotas());
 	}
 }

@@ -1,16 +1,14 @@
 package service;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import exceptions.ErrorFuenteDatosException;
 
 public class NotasService {
 	
@@ -18,110 +16,99 @@ public class NotasService {
 	
 	String ruta = "notas.txt";
 	Path pt = Path.of(ruta);
-	
-	// Método nuevo, borrarNotas, eliminar el archivo
+
 	public void borrarNotas() {
 		// Creamos un objeto File apuntando al fichero y llamar al método delete
-		File file = new File("fichero");
-		file.delete();
+		try {
+			Files.deleteIfExists(pt);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void agregarNota(double nota) {
 		// Escribir en el fichero la nota que recibo
 		// Método append
 		try{
-			Files.writeString(pt, String.valueOf(nota) , StandardOpenOption.APPEND, StandardOpenOption.CREATE);
-		}
-		catch(IOException ex) {
+			Files.writeString(pt, nota+System.lineSeparator() , StandardOpenOption.APPEND, StandardOpenOption.CREATE);
+		}catch(IOException ex) {
 			ex.printStackTrace();
 		}
 	}
 	
-	public double media() {
+	public double media() throws ErrorFuenteDatosException {
+		// 2) Aqui se propaga para que se maneje poteriormente
 		
 		try{
 			return Files.lines(pt)
 			 .collect(Collectors.averagingDouble(n->Double.parseDouble(n)));
-
 		}
 		catch(IOException ex) {
 			ex.printStackTrace();
-			return 0.0;
+			// 1) para usar nuestra Exception, se crea una y se pasa a throw
+			// Es decir, provoca la Exception, y si queremos que se maneje en la capa de presentación, se hace un throws
+			throw new ErrorFuenteDatosException();
 		}
 	}
 	
 	
-	
-	public double max() {
+	public double max() throws ErrorFuenteDatosException {
 
 		try{
+			/*
 			return Double.parseDouble(Files.lines(pt)
 					.max(Comparator.comparingDouble(n -> Double.parseDouble(n)))
 					.orElse(null));
-
+			*/
+			return Files.lines(pt) // Stream<String>
+					.max(Comparator.comparingDouble(n -> Double.parseDouble(n))) // Optional<String>
+					.map(n -> Double.parseDouble(n)) // Optional<Double>
+					.orElse(0.0);
+					
 		}
 		catch(IOException ex) {
 			ex.printStackTrace();
-			return 0.0;
+			throw new ErrorFuenteDatosException();
 		}
-		
 	}
 	
-	public double min() {
-		// inicializamos al valor máximo de un double
-		// por si el fichero está vacío, siempre va a poder comparar con este valor inicial
-		// Por tanto, si devuelve el MAX_VALUE , me indica que no había ninguna nota en el fichero
-		double min = Double.MAX_VALUE;
-		String linea;
+	public double min() throws ErrorFuenteDatosException {
 
-		// Leo la nota, la guardo en un array
-		try(FileReader fr=new FileReader(fichero);
-			BufferedReader bf=new BufferedReader(fr);){
-			while((linea=bf.readLine())!=null) {
-				if(Double.parseDouble(linea) < min){
-					min= Double.parseDouble(linea);
-				}
-			}
+		try{
+			/*
+			return Double.parseDouble(Files.lines(pt)
+					.min(Comparator.comparingDouble(n -> Double.parseDouble(n)))
+					.orElse(null));
+			*/
+			return Files.lines(pt) // Stream<String>
+					.min(Comparator.comparingDouble(n -> Double.parseDouble(n))) // Optional<String>
+					.map(n -> Double.parseDouble(n)) // Optional<Double>
+					.orElse(0.0);
+					
 		}
 		catch(IOException ex) {
 			ex.printStackTrace();
+			throw new ErrorFuenteDatosException();
 		}
-		
-		return min;
 	}
 	
-	
-	/**
-	 * 
-	public double min() {
-		// tengo que guardar notas en array
-		double menor=notas.get(0);
-		for(Double n:notas) {
-			if(n<menor) {
-				menor=n;
-			}
+	public List<Double> obtenerNotas() throws ErrorFuenteDatosException{
+
+		try {
+			return Files.lines(pt)
+			.map(n -> Double.parseDouble(n))
+			.toList();
+		} catch (IOException e) {
+			e.printStackTrace();
+			throw new ErrorFuenteDatosException();
 		}
-		return menor;
+
 	}
-	 */
-	
-	public List<Double> obtenerNotas(){
-		ArrayList<Double> aux = new ArrayList<Double>();
-		String linea;
-
-		// Leo la nota, la guardo en un array
-		try(FileReader fr=new FileReader(fichero);
-			BufferedReader bf=new BufferedReader(fr);){
-			while((linea=bf.readLine())!=null) {
-				aux.add(Double.parseDouble(linea));
-				
-			}
-		}
-		catch(IOException ex) {
-			ex.printStackTrace();
-		}
-		return aux;
-	}
-
-
 }
+
+
+
+
+
+
+

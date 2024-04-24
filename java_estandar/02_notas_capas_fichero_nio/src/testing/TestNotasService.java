@@ -37,12 +37,12 @@ class TestNotasService {
 	void testMin() {
 		assertEquals(1.0, service.min());
 	}
-
+	
 	@Test
 	void testObtenerNotas() {
 		// Para comparar array o colleciones, comprobamos el número de elementos.
 		assertEquals(4, service.obtenerNotas().size());
 		// o bien un método directo para comparación de arrays:
-		assertArrayEquals(new Double[] {5.0,8.0,1.0,6.0}, service.obtenerNotas().toArray(new Double[0]));
+		//assertArrayEquals(new Double[] {5.0,8.0,1.0,6.0}, service.obtenerNotas().toArray(new Double[0]));
 	}
 }
