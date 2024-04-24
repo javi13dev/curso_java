@@ -20,6 +20,8 @@ public class TestEscritura {
 			if(Files.notExists(pt)) {
 				Files.createFile(pt);
 			}
+			// Files.writeString(pt, "cadena1", StandardOpenOption.APPEND, StandardOpenOption.APPEND);
+			// la segunda condición sustituye el if
 			Files.writeString(pt, "cadena1", StandardOpenOption.APPEND);
 			Files.writeString(pt, "cadena2\n", StandardOpenOption.APPEND);
 			Files.writeString(pt, "cadena3", StandardOpenOption.APPEND);
