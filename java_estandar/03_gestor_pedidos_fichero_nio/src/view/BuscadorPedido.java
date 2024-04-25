@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Scanner;
 
 import model.Pedido;
@@ -11,7 +12,7 @@ import service.PedidoService;
 
 public class BuscadorPedido {
 	
-	static HashSet<Pedido> pedidos = new HashSet<Pedido>();
+	static List<Pedido> pedidos;
 	static PedidoService service = new PedidoService();
 
 	public static void main(String[] args) throws ParseException {
@@ -49,12 +50,15 @@ public class BuscadorPedido {
 					entreDosFechas();
 					break;
 				case 4:
+					eliminarPedido();
+					break;
+				case 5:
 					System.out.println("Adios!");
 					break;
 				default:
 					System.out.println("Opción no válida!");
 			}
-		}while(opcion!=4);
+		}while(opcion!=5);
 	}
 	
 	static void presentarMenu() {
@@ -62,7 +66,8 @@ public class BuscadorPedido {
 				1.- Agregar pedido
 				2.- Mostrar pedido más reciente
 				3.- Buscar pedidos 
-				4.- Salir
+				4.- Eliminar pedido
+				5.- Salir
 				
 				""");
 	}
@@ -94,6 +99,16 @@ public class BuscadorPedido {
 		//System.out.println("Fecha " + format.format(pedido.getFecha()));
 	}
 	
+	// Prueba eliminar:
+	static void eliminarPedido() {
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Ingresa el nombre del producto: ");
+		String producto = sc.nextLine();
+		service.eliminarPedido(producto);
+	}
+	
+	
 	static void entreDosFechas() throws ParseException {
 		Scanner sc = new Scanner(System.in);
 		DateTimeFormatter format=DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -108,8 +123,9 @@ public class BuscadorPedido {
 		LocalDate dateFinal=LocalDate.parse(fechaFinal, format);
 
 		
-		pedidos = service.buscarPedidos(dateInicio, dateFinal);
+		pedidos = service.pedidosEntreFechas(dateInicio, dateFinal);
 		// El otro método de ejemplo devolvia un arraylist que también habría que recorrer y mostrar
+		
 		
 		for(Pedido p:pedidos) {
 			System.out.print("Pedido: " + p.getProducto() +  " ");

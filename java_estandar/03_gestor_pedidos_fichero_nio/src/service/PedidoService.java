@@ -7,13 +7,11 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import java.time.LocalDate;
-import java.time.Period;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+import java.util.stream.Collectors;
 
 import model.Pedido;
 import utilidades.Util;
@@ -139,28 +137,50 @@ public class PedidoService {
 		return aux.get(0);
 	}
 	
-	public Pedido pedidoMasReciente() {
+	public Pedido pedidoMasReciente(LocalDate fecha) {
 		
-		Files.lines(pt)
-		.max(Comparator.comparingLong(Period.between(LocalDate.now(), (LocalDate p) -> p.getFechaPedido()))
-		.map(p -> Util.convertirCadenaAPedido(p))
-		.orElse(null);
-		
-
+		try {
+			return Files.lines(pt)
+			.map(p -> Util.convertirCadenaAPedido(p))
+			//.max(Comparator.comparingLong((LocalDate p) -> p.getFechaPedido()))
+			.min(Comparator.comparing(p-> Math.abs(ChronoUnit.DAYS.between(p.getFecha(), fecha))))
+			.orElse(null);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	
 	// Nuevos métodos:
 	public void eliminarPedido(String producto) {
-		return Files.lines(pt)
-				.filter(l -> l.contains(producto))
-				.
-	
+		
+		List<String> nueva;
+		try {
+			nueva = Files.lines(pt)
+			.map(p -> Util.convertirCadenaAPedido(p))
+			.filter(p -> !p.getProducto().equals(producto))
+			.map(s -> Util.convertirPedidoACadena(s))
+			// Filtro por los productos que no sean el producto
+			.toList();
+			Files.write(pt, nueva);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+				
 	}
 	
 	
 	public List<Pedido> pedidos(){
-		return Files.lines(pt)
-		.
+		try {
+			return Files.lines(pt)
+			.map(p -> Util.convertirCadenaAPedido(p))
+			.toList();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return List.of();
+		}
 	}
 }
