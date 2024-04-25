@@ -43,3 +43,15 @@ Una vez creado el proyecto maven, y generado el POM, hay que indicar dependencie
 		</dependency>
 	  </dependencies>
 	</project>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+** Para acceder a ficheros desde chrome :
+
+file:///c:/

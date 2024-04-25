@@ -22,15 +22,15 @@ public class LeerJson {
 		// Y llamar a un método fromJson()
 		
 	
-			// Como gson.fromJson, nos da un array, y queremos una lista, se usa el Arrays.asList
-			// El segundo parámetor indica a qué quiero convertirlo, en este caso, a un array de objetos java: Ciudad[].class
-			try {
-				List<Ciudad> ciudades = Arrays.asList(gson.fromJson(new FileReader(dir), Ciudad[].class));
-				ciudades.forEach(c -> System.out.println(c + " " + c.getCiudad()));
-			} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		// Como gson.fromJson, nos da un array, y queremos una lista, se usa el Arrays.asList
+		// El segundo parámetor indica a qué quiero convertirlo, en este caso, a un array de objetos java: Ciudad[].class
+		try {
+			List<Ciudad> ciudades = Arrays.asList(gson.fromJson(new FileReader(dir), Ciudad[].class));
+			ciudades.forEach(c -> System.out.println(c + " " + c.getCiudad()));
+		} catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 

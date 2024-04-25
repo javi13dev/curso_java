@@ -27,6 +27,25 @@ public class EmpleadosService {
 	Gson gson = new Gson();
 	List<Empleado> empleados;
 	
+	
+	/**
+	 * 
+	 Para reducir codigo, y tener un stream de empleados:
+	 
+	 String ruta="empleados.json";
+	private Stream<Empleado> getEmpleados(){
+		try {
+			Gson gson=new Gson();
+			return 
+			Arrays.stream(gson.fromJson(new FileReader(ruta), Empleado[].class));
+		}
+		catch (JsonSyntaxException | JsonIOException | FileNotFoundException e) {
+			e.printStackTrace();
+			return Stream.empty();
+		}
+	} 
+	 */
+	
 	public List<Empleado> mostrarEmpledaos(String departamento){
 		
 		try {
@@ -70,9 +89,13 @@ public class EmpleadosService {
 			return List.of();
 		}
 	}
-	
-	
-	
-	
-	
 }
+
+
+
+
+
+
+
+
+
