@@ -13,7 +13,7 @@ class TestPaisService {
 	
 	@Test
 	void testMostrarContinentes() {
-		assertEquals(7, service.mostrarContinentes().size());
+		assertEquals(8, service.mostrarContinentes().size());
 	}
 	
 	@Test
@@ -28,7 +28,7 @@ class TestPaisService {
 
 	@Test
 	void testPaisesPorContinente() {
-		assertEquals(7, service.paisesPorContinente().size());
+		assertEquals(8, service.paisesPorContinente().size());
 	}
 	
 	

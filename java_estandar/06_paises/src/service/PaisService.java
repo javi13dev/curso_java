@@ -1,4 +1,4 @@
-package principal;
+package service;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -78,8 +79,20 @@ public class PaisService {
 	
 	// Pais a partir de su capital
 
-	public Pais mostrarPais(String capital){
-		return (Pais) getPaises()
-				.filter(p -> p.getCapital().equals(capital));
+	public Optional<Pais> mostrarPaisPorCapital(String capital){
+		return getPaises()
+				.filter(p -> p.getCapital() != null && p.getCapital().equals(capital))//Stream<Pais>
+				.findFirst();//Optional<Pais>
+	
 	}
+	
+	public String getPaisFiltradoPor(String capital)  {
+		return getPaises()
+		.filter(p -> p.getCapital() != null && p.getCapital().equals(capital))//Stream<Pais>
+		.findFirst()//Optional<Pais>
+		.map(p->p.getNombre())//Optional<String>
+		.orElse("");
+	} 
+	
+
 }

@@ -55,3 +55,38 @@ Una vez creado el proyecto maven, y generado el POM, hay que indicar dependencie
 ** Para acceder a ficheros desde chrome :
 
 file:///c:/
+
+
+
+https://www.el-tiempo.net/api
+
+Proyecto comunidades:
+
+Realizar una aplicación que muestre el nombre de cada comunidad autónoma, y para cada una
+mostrará sus provincias y dentro de esta, sus municipios.
+
+Datos:
+
+- Provincia:
+	nombre
+	int codigo
+	CCAA
+	
+- Municipio:
+	nombre
+	provincia
+	poblacion
+	
+	
+Ej:
+
+Comunidad Madrid:
+	Madrid:
+		municipio 1
+		municipio 2
+		....
+		
+		
+		
+		
+		

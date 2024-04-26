@@ -1,0 +1,47 @@
+Acceso a base de datos:
+
+-JDBC
+
+api. dentro de java standard.
+
+	- Operaciones de Acción: Inserción, actualización y eliminación 
+	de registros
+	- Operaciones de selección: Recuperación de registros de una 
+	base de datos
+	
+	
+	la libreria la cargamos con maven: mysql connector, la más reciente.
+	
+	public class AgregarContacto {
+
+	public static void main(String[] args) {
+		
+		// Definimos la cadena necesaria para la conexión:
+		
+		String cadenaConexion = "jdbc:mysql://localhost:3306/agenda";
+		String usuario = "root";
+		String password = "root";
+		
+		// Ahora hay que crear el objeto Connection con DriverManager:
+
+		try(Connection conn = DriverManager.getConnection(cadenaConexion, usuario, password))  {
+			// Con el try con recursos no nos hace falta llamar al conn.close()
+			
+			// Siguiente paso ejecutar la consulta, st.
+			String sql = "insert into contactos (nombre, email, edad) values ('contacto3', 'probandoConexionjdbc@gmail.com', 20 )";
+			Statement st = conn.createStatement();
+			st.execute(sql);
+			System.out.println("Registro añadido");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+
+
+
+
+
+-JPA

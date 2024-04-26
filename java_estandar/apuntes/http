@@ -1,0 +1,57 @@
+
+clases que permiten conectarse y usar datos:
+
+	Nuevo cliente Http 
+	El paquete java.net.http incluye una serie de clases e interfaces para lanzar peticiones HTTP a 
+	un recurso remoto y gestionar las respuestas, tanto síncrona como asíncronamente. Las clases 
+	más importantes de este paquete son: 
+	 HttpRequest. Representa una petición HTTP 
+	 HttpClient. Se emplea para lanzar peticiones HTTP 
+	 HttpResponse. Representa una respuesta HTTP
+
+
+https://restcountries.com/v2/all
+
+Para acceder a esa ruta que proporciona info:
+
+
+1) >>>>>>>>>>>>  Creación de una petición HTTP 
+
+Un objeto HttpRequest contiene los datos que definen una petición HTTP, como la dirección 
+del recurso, método de envío, encabezados, etc. Estos objetos se crean a través de un Builder:
+ 
+	HttpRequest request = HttpRequest.newBuilder() 
+	.uri(//uri del recurso) 
+	.timeout(Duration.ofMinutes(2)) //timeout 
+	.header("nombre_encabezado", "valor") //encabezados 
+	.GET() //método de envío 
+	.build(); 
+	
+	Por ejemplo: 
+	HttpRequest request = HttpRequest.newBuilder() 
+	.uri(URI.create("https://restcountries.eu/rest/v2/all")) 
+	.timeout(Duration.ofMinutes(2)) 
+	.GET() 
+	.build();
+
+
+El objeto request contendrá la información.
+
+>>>> Teniendo la solicitud construida, se envía la llamada:
+
+2) >>>>>>>>>>>>> Envío de la petición 
+
+Para enviar una petición utilizamos el método send del objeto HttpClient, el cual se configura a 
+través de un builder. Al método send se le pasa como parámetro el objeto request con los 
+datos de la petición y una implementación de HttpResponse.BodyHandler, que define un 
+manejador para el cuerpo de la respuesta. La clase BodyHandlers proporciona 
+implementaciones de manejadores comunes. 
+Ejemplo:
+	HttpClient client = HttpClient.newBuilder() .version(Version.HTTP_1_1)
+	.followRedirects(Redirect.NORMAL) .connectTimeout(Duration.ofSeconds(20)) 
+	.build(); 
+	HttpResponse<String> response = client.send(request, 
+	BodyHandlers.ofString());
+	
+	
+3) >>>>>>>> Finalmente la response, (normalmente tratarlo como texto)
