@@ -25,16 +25,6 @@ public class AgendaService {
 	String usuario = "root";
 	String password = "root";
 	
-	public void connect() {
-		try {
-			Connection conn = DriverManager.getConnection(cadenaConexion, usuario, password);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	
 	// Nuevo contacto:
 	public void addContacto(Contacto contacto) {
 
