@@ -4,9 +4,11 @@ import java.util.Scanner;
 
 import model.Contacto;
 import service.AgendaService;
+import service.ContactosService;
 
 public class Agenda {
 	static AgendaService service = new AgendaService();
+	static ContactosService cservice = new ContactosService();
 
 	public static void main(String[] args) {
 		
@@ -40,13 +42,16 @@ public class Agenda {
 					actualizarContacto();
 					break;
 				case 4:
+					buscarId();
+					break;
+				case 5:
 					System.out.println("Adios!");
 					break;
 
 				default:
 					System.out.println("Opción no válida!");
 			}
-		}while(opcion!=4);
+		}while(opcion!=5);
 	}
 
 	
@@ -56,14 +61,15 @@ public class Agenda {
 				1.- Nuevo contacto
 				2.- Eliminar contacto
 				3.- Actualizar edad en contacto
-				4.- Salir
+				4.- Buscar por Id
+				5.- Salir
 				""");
 	}
 		
 
 	static void agregarContacto() {
 		Scanner sc = new Scanner(System.in);
-		
+
 		System.out.println("Agregar nombre: ");
 		String nombre = sc.nextLine();
 		System.out.println("email: ");
@@ -73,8 +79,9 @@ public class Agenda {
 
 		Contacto contacto = new Contacto(nombre, email, edad);
 		
-		service.addContacto(contacto);
-		System.out.println("Contacto agregado");
+		if(cservice.nuevoContacto(contacto)) {
+			System.out.println("Contacto agregado");
+		}
 	
 	}
 	
@@ -83,8 +90,9 @@ public class Agenda {
 		
 		System.out.println("Introduce el email del contacto: ");
 		String email = sc.nextLine();
-
-		service.eliminarContacto(email);
+		
+		cservice.eliminarContactoPrivado(email);
+		//service.eliminarContacto(email);
 		System.out.println("Contacto eliminado");
 		
 	}
@@ -99,6 +107,17 @@ public class Agenda {
 
 		service.actualizarEdad(email, edad);
 		System.out.println("Contacto actualizado");
+		
+	}
+	
+	static void buscarId() {
+		Scanner sc = new Scanner(System.in);
+		
+		System.out.println("Introduce el id: ");
+		int idContacto = Integer.parseInt(sc.nextLine());
+
+		//cservice.buscarContactoPorId(idContacto);
+		System.out.println("Nombre del contacto: " + cservice.buscarContactoPorId(idContacto).getNombre());
 		
 	}
 	

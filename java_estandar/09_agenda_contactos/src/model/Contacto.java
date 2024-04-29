@@ -1,15 +1,29 @@
 package model;
 
 public class Contacto {
+	private int idContacto;
 	private String nombre;
 	private String email;
 	private int edad;
 	
+	public Contacto(int idContacto, String nombre, String email, int edad) {
+		super();
+		this.idContacto = idContacto;
+		this.nombre = nombre;
+		this.email = email;
+		this.edad = edad;
+	}
 	public Contacto(String nombre, String email, int edad) {
 		super();
 		this.nombre = nombre;
 		this.email = email;
 		this.edad = edad;
+	}
+	public int getIdContacto() {
+		return idContacto;
+	}
+	public void setIdContacto(int idContacto) {
+		this.idContacto = idContacto;
 	}
 	public String getNombre() {
 		return nombre;
