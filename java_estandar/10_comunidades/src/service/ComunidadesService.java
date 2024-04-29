@@ -113,21 +113,16 @@ public class ComunidadesService {
 		}
 	} 
 	
-	/*
-	public Stream<Provincia> mostrarInfo(){
-		return getProvincias()
-				.flatMap(p -> p.getProvincias());
-	}
-	*/
-	
 	
 	public Stream<Provincia> mostrarProvinciasStream(){
 		return getProvincias();
 
 	}
 	
-	
-	
+	public Stream<Municipio> mostrarMunicipiosStream(String provincia){
+		return getMunicipios(provincia);
+
+	}
 	
 	
 	public List<String> mostrarProvincias(){
@@ -143,31 +138,12 @@ public class ComunidadesService {
 
 	}
 	
-	/*
-	
-	public List<Municipio> mostrarProvinciasPorCCAA(){
+	public Map<String, List<Provincia>> mostrarProvinciasPorCcaa(){
 		return getProvincias()
-				.flatMap(p -> p.getMunicipios().stream())
-				.map(p -> p)
-				.toList();
+				.collect(Collectors.groupingBy(p -> p.getCcaa()));
 
 	}
 	
-	*/
-	
-	
-	
-	/*
-	public List<Municipio> municipiosPorCodigoProvincia(){
-		// 
-		return getProvincias()
-				.map(p -> p.getCcaa())
-				.forEach(s -> getMunicipios(s))
-				.map(s -> s.);
-			
-
-	}
-	*/
 	
 	
 	public Map<String, List<Municipio>> mostrarMunicipiosPorProvincia(String provincia){
@@ -175,28 +151,5 @@ public class ComunidadesService {
 				.collect(Collectors.groupingBy(m -> m.getProvincia()));
 
 	}
-	
-	/*
-	public List<String> mostrarMunicipios(){
-		
-		mostrarProvincias()
-		.forEach(s -> mostrarMunicipios(s));
-		
-		return getProvincias()
-				.map(p -> p.getCcaa())
-				.distinct()
-				.forEach(s -> ComunidadesService.getMunicipios(s))
-	}
-	
-	public List<String> mostrarMunicipios(){
-		
-		mostrarProvincias()
-		.forEach(s -> mostrarMunicipios(s));
-		
-		return getProvincias()
-				.map(p -> p.getCcaa())
-				.distinct()
-				.forEach(s -> ComunidadesService.getMunicipios(s))
-	}
-	*/
+
 }

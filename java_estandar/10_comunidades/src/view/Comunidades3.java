@@ -2,12 +2,13 @@ package view;
 
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 import model.Municipio;
 import model.Provincia;
 import service.ComunidadesService;
 
-public class Comunidades {
+public class Comunidades3 {
 
 	static ComunidadesService service = new ComunidadesService();
 	
@@ -15,7 +16,43 @@ public class Comunidades {
 
 		// Para poder recorrerlas uso la interfaz Entry, me daba menos errores:
 		
-		Map<String, List<Provincia>> provinciasPorComunidad = service.mostrarProvinciasPorCcaa();
+		//Map<String, List<Provincia>> provinciasPorComunidad = service.mostrarProvinciasPorCcaa();
+		
+		/*
+		service.mostrarProvinciasStream()
+		.map(p -> p.getCcaa())
+		.distinct()
+		.forEach(n -> System.out.println("Comunidad Autónoma: " + n));
+		*/
+		
+		
+		service.mostrarProvinciasStream()
+		.map(p -> p.getCcaa())
+		.distinct()
+		.forEach(n -> {
+			System.out.println("Comunidad Autónoma: " + n);
+			
+			service.mostrarProvinciasStream()
+			.flatMap(mun -> mun.getMunicipios().stream())
+			.forEach(nom -> {
+				if(n.equals(nom.getNombre())) {
+					System.out.println("          Provincia: " + nom);
+				}
+			});
+		});
+		
+
+		service.mostrarProvinciasStream()
+		//.flatMap(n -> n.getMunicipios().stream())
+		.forEach(n ->{
+			service.mostrarMunicipiosStream(n.getNombre())
+			.forEach(muni ->{
+				System.out.println(muni);
+			});
+		});
+		
+		
+		/*
 		
 		for (Map.Entry<String, List<Provincia>> entry : provinciasPorComunidad.entrySet()) {
 			String ccaa = entry.getKey();
@@ -47,7 +84,7 @@ public class Comunidades {
 				});
 				
 			}
-		}
+		}*/
 	}
 
 }
