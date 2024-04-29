@@ -130,7 +130,9 @@ public class CursosService {
 						ps.setDouble(4,  c.getPrecio());
 						
 						ps.execute();
-						alumnosService.addAlumnos(c.getIdCurso());
+						
+						// Cómo rellenar los datos de alumnos:
+						// alumnosService.addAlumnos(c.getIdCurso());
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -107,3 +107,24 @@ diferencias Collection, Listas, Set,
 sobreescritura, sobrecarga métodos.
 interfaz funcional.
 		
+
+
+// Del ultimo ejercicio:
+		
+CREATE TABLE `alumnos` (
+  `dni` varchar(15) NOT NULL,
+  `nombre` varchar(45) DEFAULT NULL,
+  `edad` int DEFAULT NULL,
+  `nota` double DEFAULT NULL,
+  `idCurso` int DEFAULT NULL,
+  PRIMARY KEY (`dni`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+CREATE TABLE `cursos` (
+  `idcurso` int NOT NULL,
+  `curso` varchar(45) DEFAULT NULL,
+  `duracion` int DEFAULT NULL,
+  `precio` double DEFAULT NULL,
+  PRIMARY KEY (`idcurso`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
