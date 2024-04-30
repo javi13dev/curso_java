@@ -1,7 +1,10 @@
 package view;
 
-import service.CursosService;
+import java.util.List;
+
+import model.Curso;
 import service.AlumnosService;
+import service.CursosService;
 
 public class Formacion {
 
@@ -23,9 +26,23 @@ public class Formacion {
 		}
 		*/
 		
+		List<Integer> cursos = cservice.mostrarCursos();
+		
+		
+		for(Integer i: cursos) {
+			
+			service.getAlumnos(i)
+			.forEach(a -> System.out.println(a));
+		}
+
+
+
+		//.forEach(c -> service.getAlumnos(c))
+		//.toList();
+		
 		
 		// Volcar todos los alumnos
-		cservice.addCursos();
+		// cservice.addCursos();
 		//service.addAlumnos();
 	}
 

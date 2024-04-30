@@ -42,10 +42,10 @@ public class CursosService {
 	
 	// Leer cursos para añadir:
 	
-	public List<String> mostrarCursos(){
+	public List<Integer> mostrarCursos(){
 		
 		return getCursos()
-				.map( c -> c.getCurso())
+				.map( c -> c.getIdCurso())
 				.distinct()
 				.toList();
 	}
@@ -113,11 +113,9 @@ public class CursosService {
 		// Si hay un nuevo contacto con ese email, no se añadirá y devolverá false
 		try(Connection conn = DriverManager.getConnection(cadenaConexion, usuario, password))  {
 				
-				List<Curso> cursos = getCursos()
-				.toList();
 				
-				
-				cursos.forEach(c -> {
+	
+				getCursos().forEach(c -> {
 					
 					// sustituimos parámetros por valores:
 					String sqlInsert = "insert into cursos (idCurso, curso, duracion, precio) values (?, ?, ?, ?)";
@@ -131,8 +129,11 @@ public class CursosService {
 						
 						ps.execute();
 						
+						List<Alumno> alumnos = alumnosService.getAlumnos(c.getIdCurso());
+						
+						alumnos.forEach(a -> System.out.println(a.getNombre()));
 						// Cómo rellenar los datos de alumnos:
-						// alumnosService.addAlumnos(c.getIdCurso());
+						//alumnosService.addAlumnosList(c.getIdCurso(), alumnos);
 					} catch (SQLException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

@@ -128,3 +128,12 @@ CREATE TABLE `cursos` (
   `precio` double DEFAULT NULL,
   PRIMARY KEY (`idcurso`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci
+
+
+
+
+>>>>>>>> Ejercicio: volcar a bbdd las comunidades(cod, nombre), provincias(cod, nombre, comunidad), municipios(cod, nombre, superficie, poblacion,altura, codprovincia)
+
+
+
+

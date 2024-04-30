@@ -141,6 +141,51 @@ public class AlumnosService {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	public boolean addAlumnosList(int idCurso, List<Alumno> alumnos) {
+		
+		// Si hay un nuevo contacto con ese email, no se añadirá y devolverá false
+		try(Connection conn = DriverManager.getConnection(cadenaConexion, usuario, password))  {
+				
+				alumnos.forEach(a -> {
+					
+					// sustituimos parámetros por valores:
+					String sqlInsert = "insert into alumnos (nombre, edad, dni, nota, idCurso) values (?, ?, ?, ?, ?)";
+					PreparedStatement ps;
+					try {
+						ps = conn.prepareStatement(sqlInsert);
+						ps.setString(1, a.getNombre());
+						ps.setInt(2, a.getEdad());
+						ps.setString(3, a.getDni());
+						ps.setDouble(4,  a.getNota());
+						ps.setInt(5,  idCurso);
+						
+						ps.execute();
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					
+				});
+				// la primera llamada que no haya next, no devuelve nada. No sería error.
+				return true;
+				
+			// De esta forma la sql se ha proporcionado antes, no en la ejecución.
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	public List<Alumno> getAlumnos(int idCurso) {
+		
+		return getCursos()
+		.distinct()
+		.flatMap(c -> c.getAlumnos().stream())
+		.toList();
 
 	}
 	
