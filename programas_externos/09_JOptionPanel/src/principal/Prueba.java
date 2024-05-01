@@ -49,6 +49,7 @@ public class Prueba {
 		}else if(seleccion == 2) {
 			System.out.println("Has escogido la opcion 3");
 		}else {
+			
 			System.out.println("No has seleccionado opcion");
 		}
 		

@@ -30,6 +30,7 @@ public class Prueba {
 		
 		}
 		
+		
 		try {
 			prueba.metodoConParametro(10);
 		} catch (MiException e) {
