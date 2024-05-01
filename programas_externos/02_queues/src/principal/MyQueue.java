@@ -13,10 +13,10 @@ public class MyQueue {
 		cajero.offer("Tontin");
 		
 		String primerCliente = cajero.poll(); // Para sacar el primer elemento añadido.
-		System.out.println("Cliente atendido: " + primerCliente);
+		System.out.println("Cliente atendido: " + primerCliente); // Vaneas
 		// Para mostrar un cliente pero sin sacarlo de la la lista:
 		String cliente = cajero.peek();
-		System.out.println("Primer cliente: " + cliente);
+		System.out.println("Primer cliente: " + cliente); // Tontin
 		
 	}
 

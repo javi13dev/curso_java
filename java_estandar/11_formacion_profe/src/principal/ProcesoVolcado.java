@@ -18,6 +18,7 @@ public class ProcesoVolcado {
 		//y también sus alumnos. Si el curso está, no lo añadimos y recorremos sus alumnos
 		//para ver si hay alguno nuevo que añadir
 		cursos.forEach(c->{
+			// Comprueba si el curso ya está en la bbdd
 			if(cursosService.cursoPorId(c.getIdCurso())==null) {
 				cursosService.altaCurso(c);
 				c.getAlumnos().forEach(a->{
@@ -27,6 +28,7 @@ public class ProcesoVolcado {
 				});
 			}else {
 				c.getAlumnos().forEach(a->{
+					// En este caso como el  curso no es nuevo, comprueba primero si el alumno está ya inscrito
 					if(alumnosService.alumnoPorDni(a.getDni())==null) {
 						//le asignamos al alumno el idCurso al que pertenece
 						a.setIdCurso(c.getIdCurso());
