@@ -12,7 +12,7 @@ public class MunicipioService {
 	
 	String cadenaConexion="jdbc:mysql://localhost:3306/administraciones";
 	String usuario="root";
-	String password="12345";
+	String password="root";
 	
 	public Municipio municipioPorId(int idCodigo) {
 		try(Connection con=DriverManager.getConnection(cadenaConexion,usuario,password);){		
@@ -45,6 +45,7 @@ public class MunicipioService {
 		try(Connection con=DriverManager.getConnection(cadenaConexion,usuario,password);){		
 			String sql="insert into municipios(codigo,nombre,superficie,poblacion,altura,provincia) values(?,?,?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(sql);
+			
 			//sustituimos parámetros por valores
 			ps.setInt(1, municipio.getCodigo());
 			ps.setString(2, municipio.getNombre());

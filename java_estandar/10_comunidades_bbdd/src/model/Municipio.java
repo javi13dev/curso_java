@@ -29,5 +29,4 @@ public class Municipio {
 	@SerializedName(value="NOMBRE_PROVINCIA")
 	private String provincia;
 
-
 }

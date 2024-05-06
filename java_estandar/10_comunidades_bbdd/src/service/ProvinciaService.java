@@ -12,7 +12,7 @@ public class ProvinciaService {
 	
 	String cadenaConexion="jdbc:mysql://localhost:3306/administraciones";
 	String usuario="root";
-	String password="12345";
+	String password="root";
 	
 	public Provincia provinciaPorId(String idCodigo) {
 		try(Connection con=DriverManager.getConnection(cadenaConexion,usuario,password);){		

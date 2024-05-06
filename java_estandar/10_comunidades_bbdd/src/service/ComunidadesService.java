@@ -18,35 +18,6 @@ import model.InfoProvincias;
 import model.Municipio;
 import model.Provincia;
 
-/**
- * Proyecto comunidades:
-
-	Realizar una aplicación que muestre el nombre de cada comunidad autónoma, y para cada una
-	mostrará sus provincias y dentro de esta, sus municipios.
-	
-	Datos:
-	
-	- Provincia:
-		nombre
-		int codigo
-		CCAA
-		
-	- Municipio:
-		nombre
-		provincia
-		poblacion
-		
-		
-	Ej:
-	
-	Comunidad Madrid:
-		Madrid:
-			municipio 1
-			municipio 2
-			....
-			
-	https://www.el-tiempo.net/api
- */
 
 
 public class ComunidadesService {

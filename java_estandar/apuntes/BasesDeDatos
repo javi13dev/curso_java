@@ -40,6 +40,9 @@ api. dentro de java standard.
 	}
 
 
+>>>>>>> transacciones: se ejcutan las operaciones de forma compacta, si una falla, no se ejecuta.
+
+Ya que jbc realiza autocommit.
 
 
 

@@ -42,28 +42,9 @@ public class Comunidades {
 						});
 					} 
 				 });
-				/*
-				c.getAlumnos().forEach(a->{
-					//le asignamos al alumno el idCurso al que pertenece
-					a.setIdCurso(c.getIdCurso());
-					alumnosService.guardarAlumno(a);
-				});
-				*/
-			}/*else {
-				c.getAlumnos().forEach(a->{
-					// En este caso como el  curso no es nuevo, comprueba primero si el alumno está ya inscrito
-					if(alumnosService.alumnoPorDni(a.getDni())==null) {
-						//le asignamos al alumno el idCurso al que pertenece
-						a.setIdCurso(c.getIdCurso());
-						alumnosService.guardarAlumno(a);
-					}
-				});
-			}*/
-			
-			
-			
+			}
 		});
-		// System.out.println(c.getCodigo() + " " + c.getNombre())
+
 
 	}
 
