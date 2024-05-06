@@ -1,0 +1,20 @@
+fin: para solucionar problemas
+objetivo: codigo limpio
+
+DTO: Problema de cómo enviar un paquete de 
+datos desde una capa a otra: encapsulando los datos en un JavaBean
+
+
+SINGLETON: problema de cómo crear una única instancia de 
+una clase y todos los clientes utilicen dicha instancia.
+
+	- EJ: en apps webs, para consumir menos recursos.
+	
+	
+SERVICE LOCATOR: Cuando se necesita hacer uso de un determinado objeto o servicio 
+en diferentes partes de la aplicación, las instrucciones para localizar 
+dicho servicio se codifican en un único lugar.
+
+	- Ej: objeto connection, streams que se van a reutilizar.
+	
+	Se aisla en una clase para poder disponer.
