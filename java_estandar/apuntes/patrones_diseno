@@ -1,14 +1,19 @@
 fin: para solucionar problemas
 objetivo: codigo limpio
 
+
+
 DTO: Problema de cómo enviar un paquete de 
 datos desde una capa a otra: encapsulando los datos en un JavaBean
+
 
 
 SINGLETON: problema de cómo crear una única instancia de 
 una clase y todos los clientes utilicen dicha instancia.
 
 	- EJ: en apps webs, para consumir menos recursos.
+	
+	
 	
 	
 SERVICE LOCATOR: Cuando se necesita hacer uso de un determinado objeto o servicio 
@@ -18,3 +23,37 @@ dicho servicio se codifican en un único lugar.
 	- Ej: objeto connection, streams que se van a reutilizar.
 	
 	Se aisla en una clase para poder disponer.
+	
+	
+	
+	
+	
+FACTORY: Permite, a través de una interfaz, utilizar una serie de métodos en 
+una app cliente, abstrayéndose de la implementación de los mismos. 
+Una clase abstracta define el método para obtener la 
+implementación, dejando a las subclases la implementación.
+
+												----> Paises dd
+	 EJ: cliente  ---> interfaz(paises)   ---->
+	 											----> Paises json
+	 											
+	 Al cliente le debe dar igual de dónde vienen los datos, porque trabajará con la interfaz.
+	 
+	 EJ: 17_agenda_contactos_factory
+	 
+	 >>>>>>> importante: // Esta va a ser la clase que implemente la interfaz : (la clase Service)refactor --> extract Interface
+	Ej: 16_cursos_alumnos_factory
+
+
+
+DAO: Consiste en aislar las operaciones de acceso a datos en una capa 
+independiente, fuera de la lógica de negocio, aislado a esta de la 
+tecnología de acceso a datos empleada.
+
+
+
+
+
+
+
+
