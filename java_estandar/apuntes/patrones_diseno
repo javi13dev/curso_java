@@ -54,6 +54,11 @@ tecnología de acceso a datos empleada.
 
 
 
+BUILDER: Consiste en utilizar un objeto simple para crear uno objeto 
+completo, que puede requerir diferentes pasos para su creación. 
+Adecuado cuando la clase no dispone de constructores.
 
+No se usa constructor, sino llamamos a métodos según los datos que vaya a  usar.
+// 20_patron_builder
 
 

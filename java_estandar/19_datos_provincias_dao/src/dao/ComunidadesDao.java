@@ -7,7 +7,7 @@ import model.Municipio;
 import model.Provincia;
 
 public interface ComunidadesDao {
-	void saveComunidades(List<Comunidad> comunidades);
-	void saveProvincias(List<Provincia> provincias);
-	void saveMunicipios(List<Municipio> municipios);
+	void save(List<Comunidad> comunidades);
+	void save(Comunidad comunidad);
+	boolean existComunidad(String codigo);
 }
