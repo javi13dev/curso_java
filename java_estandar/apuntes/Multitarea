@@ -33,11 +33,6 @@ Java para que ponga los objetos en ejecución concurrente:
 	t2.start();
 	// Así se ejecutan concurrentemente.
 	
-	
-	
-	2) Implmentando interfaz Runnable (más usada)
-	
-	
 	Ej: 22_ejemplo_multitarea
 	
 	definimos un ejemplo:
@@ -49,6 +44,33 @@ Java para que ponga los objetos en ejecución concurrente:
 			public void run() {
 			}
 		}
+		
+		
+		
+		
+	
+	2) Implmentando interfaz Runnable (más usada)
+	
+	Ya que heredar Thread no permite heredar otra clase.
+	
+Incluye el método run() y permite a las clases que la 
+implementan poder heredar otras clases:
+
+	public class Tarea implements Runnable{
+		 public void run(){
+		 //código de la tarea
+		 }
+	}
+	
+	
+Para poner las tareas en ejecución, se crearán instancias de 
+Thread a partir del objeto Runnable:
+	
+	Tarea obj=new Tarea();
+	Thread t1=new Thread(obj);
+	Thread t2=new Thread(obj);
+	t1.start();
+	t2.start();
 
 
 

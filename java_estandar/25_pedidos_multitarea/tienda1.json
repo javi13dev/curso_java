@@ -1,0 +1,9 @@
+[{"producto":"pan",
+"fechaPedido":"2023-10-11",
+"precio":1.2},
+{"producto":"mantequilla",
+"fechaPedido":"2023-12-01",
+"precio":3.2},
+{"producto":"mesa",
+"fechaPedido":"2022-08-04",
+"precio":120.7}]

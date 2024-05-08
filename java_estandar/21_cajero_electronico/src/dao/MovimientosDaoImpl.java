@@ -40,9 +40,9 @@ class MovimientosDaoImpl implements MovimientosDao {
 			String sql="insert into movimientos(idMovimientos,idCuenta,fecha,cantidad,operacion) values(?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setInt(1, movimiento.getIdCuenta());
-			ps.setTimestamp(3, Timestamp.valueOf(movimiento.getFecha()));
-			ps.setDouble(4, movimiento.getCantidad());
-			ps.setString(5, movimiento.getOperacion());
+			ps.setTimestamp(2, Timestamp.valueOf(movimiento.getFecha()));
+			ps.setDouble(3, movimiento.getCantidad());
+			ps.setString(4, movimiento.getOperacion());
 			ps.execute();
 		}
 		catch(SQLException ex) {
