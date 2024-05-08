@@ -10,25 +10,27 @@ import java.util.List;
 import locator.LocatorConnection;
 import model.Cliente;
 
-public class ClienteDaoImpl implements ClienteDao {
+class ClienteDaoImpl implements ClienteDao {
 
 	@Override
 	public List<Cliente> findByCuenta(int idCuenta) {
 		List<Cliente> clientes = new ArrayList<>();
 		try (Connection con= LocatorConnection.getConnection();){
-			String sql="select *  from clientes where numeroCuenta=?";
+			String sql="select clientes.*  from clientes, titulares where titulares.idCuenta = ? and titulares.idCliente = clientes.dni?";
 			Statement st=con.createStatement();
 			ResultSet rs = st.executeQuery(sql);
 			
 			while(rs.next()) {
-				codigos.add(rs.getString(1));
+				clientes.add(new Cliente(rs.getInt("dni"),
+						rs.getString("nombre"),
+						rs.getString("direccion"),
+						rs.getInt("telefono")));
 			}
 			
 		}
 		catch(SQLException ex) {
 			ex.printStackTrace();
 		}
-		return codigos;
+		return clientes;
 	}
-
 }

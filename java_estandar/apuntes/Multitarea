@@ -1,0 +1,79 @@
+Multitarea:
+
+Ejecución de varios procesos simultáneamente. 
+
+A diferencia de la ejecución secuencial, el gestor de 
+multitarea de Java reparte el tiempo de CPU entre los 
+procesos.
+
+3 formas:
+
+>>>>>>>>>> clásica
+
+	1) mediante herencia, extendiendo la clase Thread
+	
+Proporciona el método run(), que debe ser sobrescrito para 
+incluir el código de la tarea/tareas.
+
+	public class Tarea extends Thread{
+		 public void run(){
+		 //código de la tarea
+		 }
+	}
+	// Para cada tarea se crea un run()
+	
+Para poner en ejecución concurrente las tareas, se llamará al 
+método start() de Thread, que invoca al gestor de multitarea de 
+Java para que ponga los objetos en ejecución concurrente:
+
+
+	Tarea t1=new Tarea();
+	Tarea t2=new Tarea();
+	t1.start();
+	t2.start();
+	// Así se ejecutan concurrentemente.
+	
+	
+	
+	2) Implmentando interfaz Runnable (más usada)
+	
+	
+	Ej: 22_ejemplo_multitarea
+	
+	definimos un ejemplo:
+	
+	package tareas:
+		
+		public class TareaAscendente extends Thread {
+			@Override
+			public void run() {
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-moderna
+
+-desde java 21: virtual

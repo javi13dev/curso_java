@@ -9,28 +9,26 @@ import java.sql.SQLException;
 import locator.LocatorConnection;
 import model.Cuenta;
 
-public class CuentaDaoImpl implements CuentaDao {
+class CuentaDaoImpl implements CuentaDao {
 
 	@Override
 	public Cuenta findById(int idCuenta) {
-		Cuenta cuenta = null;
 		try (Connection con=LocatorConnection.getConnection();){
 			String sql="select * from cuentas where numeroCuenta=?";
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setInt(1, idCuenta);			
 			ResultSet rs=ps.executeQuery();
-			while(rs.next()) {
-				cuenta =  new Cuenta(rs.getInt("numeroCuenta"),
+			if(rs.next()) {
+				return  new Cuenta(rs.getInt("numeroCuenta"),
 						rs.getDouble("saldo"),
 						rs.getString("tipocuenta"));
 				
 			}
-			return cuenta;
 		}
 		catch(SQLException ex) {
 			ex.printStackTrace();
-			return null;
 		}
+		return null;
 	}
 
 
@@ -49,13 +47,9 @@ public class CuentaDaoImpl implements CuentaDao {
 		try(Connection conn = LocatorConnection.getConnection())  {
 			String sql = "update  cuentas set saldo = ? where numeroCuenta = ?";
 			PreparedStatement ps = conn.prepareStatement(sql);
-			// sustituimos parámetros por valores:
 			ps.setDouble(1, nuevoSaldo);
 			ps.setInt(2, idCuenta);
 			ps.execute();
-			
-			// si queremos que sea boolean :
-			// return ps.executeUpdate() >0;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
