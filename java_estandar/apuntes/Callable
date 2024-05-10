@@ -2,13 +2,53 @@ Interfaz Callable:
 
 Implementa una tarea que va a ser ejecutada 
 concurrentemente con otras. 
-Similar a Runnable, aunque su método puede devolver un 
-resultado 
- 
- 
- 
- 
+Similar a Runnable, aunque su método puede devolver un 
+resultado. 
  
 	public interface Callable<T>{
 		T call() throws Exception;
 	}
+	
+*Future no permite la programación reactiva, porque pregunta si el proceso ha terminado.
+
+CompletableFuture sí permite programación reactiva.
+Permite lanzar hilos sin ExecutorService
+	
+	CompletableFuture (Java 8)
+	Permite trabajar con futuros completos, proporcionando bastante más funcionalidad que 
+	Future. Se puede crear un futuro de este tipo sin tener que llamar a submit de Executor, sino a 
+	través de alguno de los métodos estáticos de esta clase:
+	
+		CompletableFuture<Void> futureRunAsync = CompletableFuture.runAsync(
+		() -> {
+		 :
+		}, executor);
+		o
+		CompletableFuture<String> futureSupplyAsync = 
+		CompletableFuture.supplyAsync(() -> {
+		 :
+		}, executor);
+		
+	Una vez creado el futuro, se puede acceder a su valor sin necesidad de bloquearse a él. En el 
+	siguiente ejemplo, ejecutará la BiFunction cuando el resultado esté disponible:
+	
+		futureAsync.whenCompleteAsync((s, e) -> LOGGER.info("Resultado 
+		supplyAsync: " + s), executor);
+	
+	tiene dos métodos estáticos para lanzar tareas:
+	 - runAsync // cuando no devuelve
+	 - supplyAsync // cuando devuelve algo, un future.
+	 
+Prepara la ejecución cuando las tareas han terminado.
+
+Una vez ahí, se llama al método(se le pasa un BiConsumer): // una ejecución, y una exception cuando no se ha completado. 
+
+		futureAsync.whenCompleteAsync((s, e) -> LOGGER.info("Resultado 
+		supplyAsync: " + s), executor);
+		
+		
+* Relativo a pub/sub
+		
+		
+		
+		
