@@ -136,4 +136,10 @@ CREATE TABLE `cursos` (
 
 
 
+>>>>>>>>>>>> 10/05
 
+java.util.concurrent: Hay clases como:
+
+CopyOnWriteArrayList<E> (thread seguro), evita bloques sincronizados. Permite trabajar varios hilos sobre el mismo conjunto.
+
+En caso de tablas: ConcurrentMap, equivalente al HashMap pero ThreadSeguro.
