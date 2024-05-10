@@ -1,0 +1,14 @@
+Interfaz Callable:
+
+Implementa una tarea que va a ser ejecutada 
+concurrentemente con otras. 
+Similar a Runnable, aunque su método puede devolver un 
+resultado 
+ 
+ 
+ 
+ 
+ 
+	public interface Callable<T>{
+		T call() throws Exception;
+	}
