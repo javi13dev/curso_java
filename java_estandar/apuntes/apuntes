@@ -143,3 +143,36 @@ java.util.concurrent: Hay clases como:
 CopyOnWriteArrayList<E> (thread seguro), evita bloques sincronizados. Permite trabajar varios hilos sobre el mismo conjunto.
 
 En caso de tablas: ConcurrentMap, equivalente al HashMap pero ThreadSeguro.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>>>>>>>>>>>> 13/05
+
+Capa de presentación Swing
+
+La ejecución será por eventos.
+
+
+
+https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/package-summary.html
+
+
+
+
+

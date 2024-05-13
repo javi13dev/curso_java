@@ -74,7 +74,32 @@ Thread a partir del objeto Runnable:
 
 
 
+>>>>>>>>>>>> 10/05
 
+java.util.concurrent: Hay clases como:
+
+CopyOnWriteArrayList<E> (thread seguro), evita bloques sincronizados. Permite trabajar varios hilos sobre el mismo conjunto.
+
+En caso de tablas: ConcurrentMap, equivalente al HashMap pero ThreadSeguro.
+
+
+>>>>>>>>>>>> 13/05
+
+Paquete: package java.util.concurrent.atomic
+
+https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/concurrent/atomic/package-summary.html
+
+Las clases Atomic, con thread seguro.
+
+Por ejemplo para tener un contador como del 26_recursos_compartidos, mejor usar un AtomicInteger.
+Ej: si hay mil hilos llamando al incrementAndGet(), se realizará correctamente en cada uno. (usan variables volátiles)
+
+34_recursos-compartidos_atomic
+
+
+>>>>>> stremas paralelos
+
+35_streams_paralelos
 
 
 

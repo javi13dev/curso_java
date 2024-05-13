@@ -2,7 +2,7 @@ package recursos;
 
 public class Contador {
 	private int valor;
-	public synchronized void incrementar() {
+	public synchronized void incrementar() { // Aqui es thread seguro por el synchronized. 
 		//synchronized (this) {
 			int temp=valor;
 			temp=temp+1;
