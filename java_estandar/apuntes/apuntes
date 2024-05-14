@@ -174,5 +174,19 @@ https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/pack
 
 
 
+>>>>>>>>>>>>>>> 14/05
+
+Clase anónima, que implementa la interfaz. // Sobre todo se usa en este ámbito de aplicaciones gráficas.
+
+Cómo se usa: new NombreInterfaz()
 
 
+PLugin de eclipse: 
+
+>help>eclipse marketplace> window builder> windowbuilder current
+
+para crearlo: new>other>windowbuilder> swing designer> jframe
+
+
+Para desactivar el layout:
+- Dentro de la clase > design > layout > absolute (supone desactivarlo para tener libertad para el diseño).
