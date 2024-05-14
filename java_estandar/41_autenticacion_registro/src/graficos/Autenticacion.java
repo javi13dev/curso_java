@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import service.UsuarioService;
 import service.UsuarioServiceFactory;
 
 public class Autenticacion extends JFrame {
@@ -19,6 +20,9 @@ public class Autenticacion extends JFrame {
 	private JPanel contentPane;
 	private JTextField jt1;
 	private JTextField jt2;
+	
+	private JLabel lblResultado;
+	private JButton btnReg;
 	
 	
 	/**
@@ -36,7 +40,6 @@ public class Autenticacion extends JFrame {
 			}
 		});
 		
-		var userService = UsuarioServiceFactory.getUsuarioService();
 	}
 
 	/**
@@ -69,12 +72,38 @@ public class Autenticacion extends JFrame {
 		jt2.setBounds(176, 83, 86, 20);
 		contentPane.add(jt2);
 		
+		
+		lblResultado = new JLabel("");
+		lblResultado.setBounds(138, 198, 171, 14);
+		contentPane.add(lblResultado);
+		
 		JButton btnComprobar = new JButton("Ingresar");
 		btnComprobar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				UsuarioService userService = UsuarioServiceFactory.getUsuarioService();
+
+				if(userService.existeUsuario(jt1.getText(), jt2.getText())) {
+					lblResultado.setText("Usuario ya registrado");
+				}else {
+					lblResultado.setText("Usuario no existe");
+				}
+				
 			}
 		});
-		btnComprobar.setBounds(103, 151, 89, 23);
+		btnComprobar.setBounds(152, 150, 89, 23);
 		contentPane.add(btnComprobar);
+		
+		btnReg = new JButton("Resgistrar");
+		btnReg.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//Autenticacion.this.dispose(); 
+
+				Registro frame2 = new Registro();
+				frame2.setVisible(true);
+			}
+		});
+		btnReg.setBounds(10, 227, 89, 23);
+		contentPane.add(btnReg);
+
 	}
 }

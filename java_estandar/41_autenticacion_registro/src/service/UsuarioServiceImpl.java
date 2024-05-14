@@ -14,6 +14,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 	
 	public boolean existeUsuario(String usuario, String password) {
+		/*
 		if(userDao.findUsuario(usuario)!=null) {
 			return false;
 		}
@@ -21,10 +22,23 @@ public class UsuarioServiceImpl implements UsuarioService {
 			return false;
 		}
 		return true;
+		*/
 		
-		// Usuario usuario = userDao.findUsuario(usuario);
-		// return usuario!=null&&usuario.getPassword().equals(password);
+		Usuario user = userDao.findUsuario(usuario);
+		return user!=null&&user.getPassword().equals(password);
 	
+	}
+
+	@Override
+	public boolean saveUser(String usuario, String password, String email, int telefono) {
+		
+		if(userDao.findUsuario(usuario)!=null) {
+			return false;
+		}
+		
+		userDao.save(new Usuario(0,usuario, password,email,telefono));
+		return true;
+		
 	}
 
 

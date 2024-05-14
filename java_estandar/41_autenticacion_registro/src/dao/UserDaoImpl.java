@@ -32,4 +32,25 @@ public class UserDaoImpl implements UserDao {
 		}
 		return null;
 	}
+
+	@Override
+	public void save(Usuario usuario) {
+		try (Connection con=LocatorConnection.getConnection();){
+			String sql="insert into clientes(usuario, password, email,telefono) values(?,?,?,?)";
+			PreparedStatement ps=con.prepareStatement(sql);
+			con.setAutoCommit(false);
+			
+			ps.setString(1, usuario.getUsuario());
+			ps.setString(2, usuario.getPassword());
+			ps.setString(3, usuario.getEmail());
+			ps.setInt(4, usuario.getTelefono());
+			ps.execute();
+			
+			con.commit();
+		
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+		}
+	}
 }
