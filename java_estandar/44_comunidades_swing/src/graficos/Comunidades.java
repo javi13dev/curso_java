@@ -15,6 +15,7 @@ import javax.swing.border.EmptyBorder;
 import adaptadores.ComboBoxModelComunidadesImpl;
 import adaptadores.ComboBoxModelProvinciasImpl;
 import adaptadores.TableModelMunicipiosImpl;
+import model.Provincia;
 
 
 public class Comunidades extends JFrame {
@@ -22,6 +23,7 @@ public class Comunidades extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTable table;
+	private JTable tableMunicipios;
 
 	/**
 	 * Launch the application.
@@ -64,54 +66,47 @@ public class Comunidades extends JFrame {
 		lblProvincias.setBounds(150, 71, 181, 14);
 		contentPane.add(lblProvincias);
 		
+		JComboBox<String> comboBoxProvincias = new JComboBox<>();
+		comboBoxProvincias.setBounds(101, 90, 241, 20);
+		contentPane.add(comboBoxProvincias);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(30, 170, 564, 213);
+		contentPane.add(scrollPane_1);
+		
+		tableMunicipios = new JTable();
+		scrollPane_1.setViewportView(tableMunicipios);
+		
+		JLabel lblNewLabel = new JLabel("Municipios:");
+		lblNewLabel.setBounds(179, 132, 152, 14);
+		contentPane.add(lblNewLabel);
 
 		
 		comboBoxComunidades.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				
 				// El evento se produce dos veces al seleccionar y deseleccionar:
 				if(e.getStateChange() == ItemEvent.SELECTED) { // Así controlamos que no pase dos veces.					
-					JComboBox comboBoxProvincias = new JComboBox();
-					
-					comboBoxProvincias.setBounds(101, 90, 241, 20);
-					contentPane.add(comboBoxProvincias);
-					System.out.println(comboBoxComunidades.getSelectedItem());
 					comboBoxProvincias.setModel(new ComboBoxModelProvinciasImpl((String)comboBoxComunidades.getSelectedItem()));
-					
-					comboBoxProvincias.addItemListener(new ItemListener() {
-						
-						public void itemStateChanged(ItemEvent e) {
-							System.out.println("En el evento municipios");
-							JScrollPane scrollPane = new JScrollPane();
-							scrollPane.setBounds(28, 143, 598, 237);
-							contentPane.add(scrollPane);
-							
-							table = new JTable();
-							scrollPane.setColumnHeaderView(table);
-							
-							// El evento se produce dos veces al seleccionar y deseleccionar:
-							if(e.getStateChange() == ItemEvent.SELECTED) { // Así controlamos que no pase dos veces.	
-								
-								System.out.println("evento " + comboBoxProvincias.getSelectedItem());
-								
-								var adaptador = new TableModelMunicipiosImpl(comboBoxProvincias.getSelectedItem());
-								table.setModel(adaptador);
-							}
-							
-							
-							
-						}
-					});
-					
-				}
-				
-				
-				
+				}	
 			}
+				
 		});
 		
-		//////
-		
+		comboBoxProvincias.addItemListener(new ItemListener() {
+			public void itemStateChanged(ItemEvent e) {
+				JScrollPane scrollPane = new JScrollPane();
+				scrollPane.setBounds(28, 143, 598, 237);
+				contentPane.add(scrollPane);
+				
+				// El evento se produce dos veces al seleccionar y deseleccionar:
+				if(e.getStateChange() == ItemEvent.SELECTED) { // Así controlamos que no pase dos veces.						
+					System.out.println("evento " + comboBoxProvincias.getSelectedItem());
+					
+					var adaptador = new TableModelMunicipiosImpl((String)comboBoxProvincias.getSelectedItem());
+					tableMunicipios.setModel(adaptador);
+				}
+	
+			}
+		});	
 	}
-
 }

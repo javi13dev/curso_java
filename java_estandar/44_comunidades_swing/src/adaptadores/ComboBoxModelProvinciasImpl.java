@@ -25,7 +25,12 @@ public class ComboBoxModelProvinciasImpl extends DefaultComboBoxModel<String> {
 	@Override
 	public String getElementAt(int index) {
 		// TODO Auto-generated method stub
-		return provincias.get(index).getNombreProvincia();
+		return provincias.get(index).getCodigoProvincia();
 	}
+
+
+	
+	
+	
 
 }
