@@ -1,0 +1,50 @@
+>>>>>>>>>>>>>>   Jlist y JComboBox
+
+Trabajan con objetos, no con textos:
+
+Class JList<E>
+Interface ListModel<E>
+
+
+Jlist --> ListModel(Adaptador) de aqui obtiene los datos  --> Service --> Dao
+
+En Jlist no se guardan los datos, sino que los solicita a través del ListModel.
+
+* Hay clases que implementan ListModel y los métodos relacionados a los listener: 
+	Se puede heredar DefaultListModel o AbstractListModel
+	
+Cómo se asocia ListModel a la lista: 
+	JList()   setModel(ListModel<E> model)
+	
+	
+> Interacción con la lista:
+	- Elemento seleccionado
+	
+	Hay métodos propios de JList, ej:
+		- getSelectedValue()
+		- getSelectedIndex()
+		
+	El evento que más interesa con las lista es el cambio de selección: listSelection : valueChanged
+	La interfaz es ListSelectionListener (funcional)  :  valueChanged(ListSelectionEvent e)
+	
+	
+	
+Interacción con tablas:
+	Se genera con la clase JTable 
+	
+	Los datos se obtienen mediante implementaciones de TableModel (la tabla no almacena los datos).
+	 
+	La clase DefaultTableModel proporciona una implementación por defecto. 
+	(Veremos posible problema en DefaultTableModel o AbstractTableModel) Son clases que implementan la interfaz.
+	
+	Para personalizar la obtención de datos, se hereda esta clase y se sobrescriben los métodos que interesen. 
+	
+	https://docs.oracle.com/en/java/javase/17/docs/api/java.desktop/javax/swing/table/TableModel.html
+	
+	* Primero se crea el adaptador: Ej JTableModelPaisesImpl extends AbstractTableModel  (La DefaultTableModel da error en el size())
+	
+	
+	
+	
+	
+	

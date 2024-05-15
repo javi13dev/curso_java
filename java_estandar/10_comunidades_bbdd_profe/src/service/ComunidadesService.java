@@ -12,7 +12,7 @@ import model.Municipio;
 import model.Provincia;
 
 public class ComunidadesService {
-	String cadenaConexion="jdbc:mysql://localhost:3306/comunidades";
+	String cadenaConexion="jdbc:mysql://localhost:3306/administraciones";
 	String usuario="root";
 	String password="root";
 	

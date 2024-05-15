@@ -98,8 +98,9 @@ public class Autenticacion extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				//Autenticacion.this.dispose(); 
 
-				Registro frame2 = new Registro();
-				frame2.setVisible(true);
+				// Registro frame2 = new Registro();
+				new Registro();
+				// frame2.setVisible(true);
 			}
 		});
 		btnReg.setBounds(10, 227, 89, 23);

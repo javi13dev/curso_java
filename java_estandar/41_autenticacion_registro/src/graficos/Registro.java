@@ -101,7 +101,7 @@ public class Registro extends JFrame {
 					System.out.println(telefono);
 
 				} catch (NumberFormatException ex) {
-
+					ex.printStackTrace();
 				}
 				
 				if(userService.saveUser(userText.getText(),passText.getText(), emailText.getText(),telefono)) {
@@ -117,6 +117,7 @@ public class Registro extends JFrame {
 		});
 		btnRegistrar.setBounds(124, 171, 89, 23);
 		contentPane.add(btnRegistrar);
+		this.setVisible(true);
 	}
 
 }
