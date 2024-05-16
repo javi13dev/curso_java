@@ -7,7 +7,7 @@ import javax.swing.DefaultComboBoxModel;
 import model.Provincia;
 import service.DatosProvinciasServiceFactory;
 
-public class ComboBoxModelProvinciasImpl extends DefaultComboBoxModel<String> {
+public class ComboBoxModelProvinciasImpl extends DefaultComboBoxModel<Provincia> {
 	List<Provincia> provincias;
 	
 	public ComboBoxModelProvinciasImpl (String comunidad) {
@@ -23,9 +23,9 @@ public class ComboBoxModelProvinciasImpl extends DefaultComboBoxModel<String> {
 	}
 
 	@Override
-	public String getElementAt(int index) {
+	public Provincia getElementAt(int index) {
 		// TODO Auto-generated method stub
-		return provincias.get(index).getCodigoProvincia();
+		return provincias.get(index);
 	}
 
 
