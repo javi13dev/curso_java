@@ -1,0 +1,269 @@
+Tipos:
+	-primitivos
+	-objetos
+
+Conversión:
+	-implícita
+	-explícita
+	- Los boolean no se castean.
+
+Literales:
+	Los literales enteros se pueden representar en: 
+	Decimal: 289 
+	Octal: 0453 
+	Hexadecimal: 0xAF7 
+	Binario: 0b100011 
+
+
+Se puede utilizar el símbolo _ para representar un literal 
+numérico: (No pueden ir delante o detrás ni junto a un punto)
+
+	int n=2_345;
+	double d= 45.6_9;
+
+
+>>>>>>>>>>> Diapo 2 - Inferecia de tipos
+
+sobre variables:
+	- no usar palabras reservadas, no se puede iniciar como número.
+	* main (o nombres de métodos) no son palabras reservadas.
+	* goto , es palabra reservada.
+	
+	Válidos números, letras, _ y $
+
+	* inferencia tipos:
+
+	Para una variable no le indicamos el tipo y queremos que el compilador infiera su tipo:
+		var num = 10;
+	En este caso establece que es un int.
+	Son variables locales.
+
+	No se pueden usar con atributos, sólo variables locales.
+	No puede dejarse la variable sin asignar. No vale el valor null.
+
+	No es posible utilizar inferencia de tipos en declaraciones múltiples:
+		var a,c=10; //incorrecto
+		var b=5,x=30; //incorrecto
+
+
+* extra: inicialización implícita de variables:
+Depende:
+- de dónde esté: si es variable local(No se inicializa implícitamente) 
+o atributo (sí tiene valor implícito).
+	atributos: enteros = 0;
+		   decimales = 0.0;
+		   boolean = false;
+		   char = '';
+		   objetos = null;
+
+	Ej: si se imprime, qué muestra.
+
+
+
+
+
+>>>>>>>>>>> Diapo 3 - Operadores
+
+
+
+Aritméticos 
+
+Se emplean con tipos numéricos primitivos para realizar 
+operaciones aritméticas en un programa:+,-,*,/,%,++,-- 
+
+	int a=3;
+	a++; //equivale a =(int)(a+1);
+	int x=6, y=10, z;
+	z=y/x; //el resultado es 1, la división entre enteros es un entero
+ 
+Los operadores ++ y –- se aplican solo con tipos enteros y 
+pueden ir delante o detrás de la variable: 
+ 
+
+	int a=3, b;
+	b=++a; //b toma el valor 4
+
+// Primero se asigna, y luego se opera
+	int a=3, b;
+	b=a++; //b toma el valor 3
+	
+	
+	
+	
+>>>>>>>>>>> bit-wise operators
+
+Se pueden aplicar con enteros.
+
+Operador &
+
+	Realiza la operación AND a nivel de bits, es decir, aplica la 
+	operación AND a cada pareja de bits: 
+ 
+  
+	int a=7;
+	int b=10;
+	System.out.println(a&b); //2
+
+
+	Se puede utilizar también con boolean 
+
+
+
+	boolean x=true;
+	boolean y=false;
+	System.out.println(x&y); //false
+	
+	
+	No trabajan en modo cortocircuito, evalúan ambos valores.
+	
+Operador |
+
+	Realiza la operación OR a nivel de bits, aplicando la operación 
+	a cada pareja de bits: 
+ 
+	int a=8;
+	int b=10;
+	System.out.println(a|b); //10
+	Se puede utilizar también con boolean 
+ 
+
+	boolean x=true;
+	boolean y=false;
+	System.out.println(x|y); //true
+	
+	
+	
+Operador XOR
+
+	Realiza la operación XOR a nivel de bits. Con este tipo de 
+	operación, el resultado es false si ambos bits son iguales y true 
+	si son diferentes: 
+ 
+	int a=5;
+	int b=9;
+	System.out.println(a^b); //12
+ 
+	Se puede utilizar también con boolean 
+ 
+
+	boolean x=true;
+	boolean y=false;
+	System.out.println(x^y); //true
+	System.out.println(!x^y); //false
+	
+	
+	
+	
+	
+	
+	
+>>> Strings  
+
+Inmutbales, los métodos que aplican nos muestran valores, pero el objeto como tal es inmutbale.
+
+* pool de String.
+
+>>>>> Stringbuilder
+
+Sí es mutable.
+
+
+
+	Fundamentos StringBuilder 
+	Representa cadenas de caracteres mutables, se pueden 
+	modificar a través de los métodos de la clase 
+	Los métodos operan sobre el propio objeto 
+	
+	Se crean: 
+ 		 
+		StringBuilder sb=new StringBuilder(“cadena mutable”);
+		
+	No admite concatenación entre ellos, pero si con String 
+	(llamada a toString()) (como todos los objetos tienen el toString), devolviendo un nuevo String: 
+ 
+		String s=“hola “+sb;
+		System.out.println(s);//muestra: hola cadena mutable
+		
+		
+		
+		Método compareTo 
+		
+		Nuevo en Java 11 para poder comparar dos StringBuilder 
+		
+		int compareTo​(StringBuilder another). Devuelve 1 si la cadena 
+		pasada como parámetro es menor (lexicográficamente) que la 
+		principal, -1 si es mayor y 0 si son iguales: 
+ 
+ 
+		StringBuilder sb=new StringBuilder(“cadena nueva");
+		StringBuilder sb2=new StringBuilder(“otra cadena nueva");
+		//muestra: sb menor que sb2
+		System.out.println(sb.compareTo(sb2)<0?"sb menor que sb2":"sb mayor o igual que sb2");
+
+	* El equals lo tienen todos los objetos de java, algunos lo tienen sobreescrito y otros no, como StringBuilder.
+	* Por eso se usa el compareTo
+	
+	
+	StringBuilder sb1=new StringBuilder("hola");
+	StringBuilder sb2=new StringBuilder("hola");
+	System.out.println(sb1==sb2); //false
+	System.out.println(sb1.equals(sb2)); //false
+	System.out.println(sb1.compareTo(sb2)); //0 
+	
+	
+	Métodos comunes con String 
+	
+	char charAt(int pos) 
+	int indexOf(String s) 
+	int length() 
+	String substring(int a, int b)
+	
+	Hay un constructor que acepta int, significa reservar la capacidad de memoria, peor no es limitante.
+	Sería un string vacío hasta que no se rellene.
+	
+	* equals()  Si no se le pasa un Objeto del mismo objeto inicial que se va a comparar, es falso.
+	
+		String s="hola";
+		StringBuilder sb=new StringBuilder("hola");
+		System.out.println(sb.equals(s)); 
+		System.out.println(s.equals(sb));
+
+		truetrue
+		*falsefalse. Al ser tipos diferentes, equals directamente false
+		truefalse
+		falsetrue
+		Error de compilación 
+	
+	** Indentacion y stripIndent() no entran.
+	
+	** Clases envoltorio tienen sobreescrito equals.
+	Si se usa el == hace un unboxing y un autoboxing.
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

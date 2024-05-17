@@ -1,0 +1,101 @@
+Tipos:
+	-primitivos
+	-objetos
+
+Conversión:
+	-implícita
+	-explícita
+	- Los boolean no se castean.
+
+Literales:
+	Los literales enteros se pueden representar en: 
+	Decimal: 289 
+	Octal: 0453 
+	Hexadecimal: 0xAF7 
+	Binario: 0b100011 
+
+
+Se puede utilizar el símbolo _ para representar un literal 
+numérico: (No pueden ir delante o detrás ni junto a un punto)
+
+	int n=2_345;
+	double d= 45.6_9;
+
+
+>>>>>>>>>>> Diapo 2 - Inferecia de tipos
+
+sobre variables:
+	- no usar palabras reservadas, no se puede iniciar como número.
+	* main (o nombres de métodos) no son palabras reservadas.
+	* goto , es palabra reservada.
+	
+	Válidos números, letras, _ y $
+
+	* inferencia tipos:
+
+	Para una variable no le indicamos el tipo y queremos que el compilador infiera su tipo:
+		var num = 10;
+	En este caso establece que es un int.
+	Son variables locales.
+
+	No se pueden usar con atributos, sólo variables locales.
+	No puede dejarse la variable sin asignar. No vale el valor null.
+
+	No es posible utilizar inferencia de tipos en declaraciones múltiples:
+		var a,c=10; //incorrecto
+		var b=5,x=30; //incorrecto
+
+
+* extra: inicialización implícita de variables:
+Depende:
+- de dónde esté: si es variable local(No se inicializa implícitamente) 
+o atributo (sí tiene valor implícito).
+	atributos: enteros = 0;
+		   decimales = 0.0;
+		   boolean = false;
+		   char = '';
+		   objetos = null;
+
+	Ej: si se imprime, qué muestra.
+
+
+
+
+
+>>>>>>>>>>> Diapo 3 - Operadores
+
+
+
+Aritméticos 
+
+Se emplean con tipos numéricos primitivos para realizar 
+operaciones aritméticas en un programa:+,-,*,/,%,++,-- 
+
+	int a=3;
+	a++; //equivale a =(int)(a+1);
+	int x=6, y=10, z;
+	z=y/x; //el resultado es 1, la división entre enteros es un entero
+ 
+Los operadores ++ y –- se aplican solo con tipos enteros y 
+pueden ir delante o detrás de la variable: 
+ 
+
+	int a=3, b;
+	b=++a; //b toma el valor 4
+
+// Primero se asigna, y luego se opera
+	int a=3, b;
+	b=a++; //b toma el valor 3
+
+
+
+
+
+
+
+
+
+
+
+
+
