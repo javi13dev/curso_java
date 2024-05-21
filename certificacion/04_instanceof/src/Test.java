@@ -28,12 +28,38 @@ public class Test {
 		
 		Object obj = "200";
 		
-		System.out.println(obj instanceof Integer);
-		System.out.println(obj instanceof String);
+		System.out.println(obj instanceof Integer); // false
+		System.out.println(obj instanceof String); // True
 		System.out.println(obj instanceof CharSequence); // true porque esta interfaz la implementa String
-		System.out.println(obj instanceof List);
+		System.out.println(obj instanceof List); // False
 		
+		/*
+		 * Desde Java 16 se puede utilizar instanceof para asignar el 
+			objeto a una variable del tipo específico, sin realizar un cast:
+			
+			Coincidencia de patrones. (Pattern match)
+		 */
 		
+		/*
+		 * Antes de java 16:
+		 * 
+		 * 	Object obj=new String("Mi cadena");
+			if(obj instanceof String) {
+				 String s=(String)obj;
+				 System.out.println("Longitud: "+s.length());
+			}
+
+		 */
+		
+		/*
+		 *  A partir de java 16
+		 * 
+		 *  Object obj=new String("Mi cadena");
+			if(obj instanceof String s) {
+			 	System.out.println("Longitud: "+s.length());
+			}
+
+		 */
 		
 
 	}
