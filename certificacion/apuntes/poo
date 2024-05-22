@@ -1,0 +1,91 @@
+// Diapo: 01_sobre_metodos_constructores.pdf
+
+* promoción de tipos, no se puede a un objeto Long.
+
+
+class A{
+	void m(){
+	
+	}
+
+}
+class B extends A{ //correcta sobrecarga del método m en clase B
+	int m(int c){
+	
+	}
+}
+-------------------------------------
+
+class A{
+	void m(int...p){System.out.println("A");}
+}
+class B extends A{
+	void m(int a, int b){System.out.println("B");}
+}
+class C extends B{
+	void m(double a, int b){System.out.println("C");}
+}
+
+
+C c=new C();
+c.m(8,11); //muestra B por coincidencia exacta
+
+----------------------------------------------------
+class A{
+	void m(int...p){System.out.println("A");}
+}
+class B extends A{
+	void m(double a, double b){System.out.println("B");}
+}
+class C extends B{
+	void m(double a, int b){System.out.println("C");}
+}
+
+
+C c=new C();
+c.m(8,11); //muestra C por promoción de tipos
+
+--------------------------------------------------
+
+class A{
+	void m(int...p){System.out.println("A");}
+}
+class B extends A{
+	void m(double a, double b){System.out.println("B");}
+}
+class C extends B{
+	void m(Integer a, int b){System.out.println("C");}
+}
+
+
+C c=new C();
+c.m(8,11); //muestra B promoción de tipos, va antes que el autoboxing de Integer 
+-----------------------------------------------------------------------
+class A{
+	void m(int...p){System.out.println("A");}
+}
+class B extends A{
+	void m(Long a, double b){System.out.println("B");}
+}
+class C extends B{
+	void m(Integer a, Long b){System.out.println("C");}
+}
+
+
+C c=new C();
+c.m(8,11); //muestra A,  promoción de tipos, no se puede a un objeto Long.
+
+--------------------------------------------------------------
+class A{
+	void m(int...p){System.out.println("A");}
+}
+class B extends A{
+	void m(int[] datos){System.out.println("B");} //Error de compilación por método duplicado
+}
+class C extends B{
+	void m(Integer a, Long b){System.out.println("C");}
+}
+
+
+C c=new C();
+c.m(8,11); // 

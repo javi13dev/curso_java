@@ -1,0 +1,251 @@
+Sobre constructores:
+
+El default, sólo estará si no se define un constructor en la clase.
+
+
+
+class A{
+	A(){
+		System.out.println("A");
+	}
+	A(int n){
+		System.out.println("2A");
+	}
+}
+class B extends A{
+	B(){}
+	B(int x){
+		this();
+		System.out.println("B");
+	}
+}
+
+B b=new B(10); //AB
+----------------------------------------------------------
+class A{
+	A(){
+		System.out.println("A");
+	}
+	A(int n){
+		System.out.println("2A");
+	}
+}
+class B extends A{
+	B(){}
+	B(int x){
+		this(x);
+		System.out.println("B");
+	}
+}
+
+B b=new B(10); //StackOverflowError!!!!!!
+
+-----------------------------------------------------
+class X{
+	X(int r){
+		System.out.println("2X");
+	}
+}
+
+class A extends X{
+	A(){  //error de compilación
+		System.out.println("A");
+	}
+	A(int n){ //error de compilación
+		System.out.println("2A");
+	}
+}
+class B extends A{
+	B(){super(2);}
+	B(int x){
+		this();
+		System.out.println("B");
+	}
+}
+
+B b=new B(10);
+-----------------------------------------------------
+class X{
+	
+}
+
+class A extends X{
+	A(){  
+		System.out.println("A");
+	}
+	A(int n){ 
+		System.out.println("2A");
+	}
+}
+class B extends A{
+	B(){super(2);}
+	B(int x){
+		this();
+		System.out.println("B");
+	}
+}
+
+B b=new B(10); //2AB
+
+-----------------------------------------------------
+class X{
+	X(int r){
+		System.out.println("2X");
+	}
+	X(){
+		this(1);
+	}
+}
+
+class A extends X{
+	A(){  
+		System.out.println("A");
+	}
+	A(int n){ 
+		System.out.println("2A");
+	}
+}
+class B extends A{
+	B(){super(2);}
+	B(int x){
+		this();
+		System.out.println("B");
+	}
+}
+
+B b=new B(10);//2X2AB 
+
+
+** Ojo con los super() , que siempre están.
+** No pueden coincidir super() y this().
+
+
+
+
+>>>>>>>>>>>> Bloques de inicialización de instancia:
+
+Bloque de inicialización instancia 
+
+Son bloque de código que se ejecutan cada vez que se crea un 
+objeto de la clase, antes del constructor. 
+Se delimitan por llaves 
+ 
+ 
+ 
+class Test{
+	 { 
+	 	System.out.println(“bloque”); // Este bloque se ejecuta antes que el constructor.
+	 }
+	 
+	 public Test(){ 
+	 	System.out.println(“constructor”);
+	 }
+}
+
+
+class Prueba{
+	 public static void main(String[] ar){
+		 Test t1=new Test();
+		 Test t2=new Test();
+	 }
+}
+
+Se imprimirá:
+bloque
+constructor
+bloque
+constructor
+
+
+class A{
+	int x;
+	{
+		x++;
+		System.out.print(x);
+	}
+	A(int n){
+		x+=n;
+	}
+}
+
+A a=new A(2);
+A b=new A(3);
+System.out.print(b.x);
+System.out.print(a.x);
+
+R: 1143 
+
+
+
+
+>>>>>>>>>>>>>>>>>>> Bloques estáticos::
+
+Se ejecutan una vez durante la vida de una clase. 
+Solo puede acceder a otros miembros estáticos 
+ 
+ 
+
+class Test{
+	 static int n=0;
+	 static{
+	 n++;
+	 }
+	 public int getN(){return n;}
+}
+
+class Prueba{
+	 public static void main(String[] ar){
+		 Test t1=new Test();
+		 Test t2=new Test();
+		 System.out.println(t1.getN());//1
+		 System.out.println(t2.getN());//1
+	 }
+}
+
+
+
+Ej:
+
+class A{
+	int x;
+	static int y=1;
+	{
+		x++;
+		y++;
+		System.out.print(x);
+	}
+	static{
+		y--;
+	}
+	A(int n){
+		x+=n;
+	}
+}
+A a=new A(2);
+A b=new A(3);
+System.out.print(b.y);
+System.out.print(a.x);
+
+R: 1123 // En el bloque static entra una sola vez.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
