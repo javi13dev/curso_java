@@ -234,6 +234,289 @@ R: 1123 // En el bloque static entra una sola vez.
 
 
 
+Ej:
+
+class A{
+	Number metodo(String arg) throws Exception{}
+	
+}
+
+class B extends A{
+	//aquí
+}
+
+A. public int metodo(String arg) throws Exception{}
+*B. Integer metodo(String arg) {}
+*C. public Number metodo(String arg) throws NumberFormatException{}
+D. private Integer metodo(String arg) throws IOException{}
+*E. private Number metodo(Integer arg){} //Ok sobrecarga 
+
+
+
+15.	Dada la siguiente clase:
+
+class MyClass{
+	void myMethod(int number){}
+}
+¿Cual de lo siguientes métodos no podría estar definido dentro de la misma clase?
+a)	int myMethod(Integer number){}
+b)	void myMethod(){}
+c)	int myMethod(int value){} // esta.
+d)	void myMethod(String arg){} 
+
+
+
+13.	¿Cual de los siguientes métodos no está correctamente definido?
+
+a)	void metodo(int...datos){}
+b)	void metodo(int a, int...datos){}
+c)	private void metodo(Object ob, int datos[]){}
+d)	public void metodo(int...datos[], boolean con){} // Esta, porque deberia ser el ultimo argumento los ...
+
+
+16.	Which of the following classes is an index-based collection?:
+a)	ArrayList  // Correcto
+b)	HashMap
+c)	HashSet
+d)	Collections 
+
+
+
+
+18.	Which of the following local variable declarations is correct?:
+a)	var n=1_000; // Ok
+b)	int s=5.1;
+c)	var c;
+d)	var k=5._25; 
+
+
+
+
+12.	¿Cual de las siguientes excepciones es de tipo RuntimeException?
+a)	IOException // No, las específicas no son runtime
+b)	SQLException // No, las específicas no son runtime
+c)	LambdaException
+d)	ClassCastException  // ok
+
+
+
+30.	Which of the following is not a Java keyword:
+a)	main // esta
+b)	static
+c)	public
+d)	final 
+
+
+************
+
+String a = "100";
+Integer n = (Integer) a; // error de compilación. Como NO hay relación de herencia no compila.
+
+Object a = "100";
+Integer n = (Integer) a; // ClassCastException. Hay relación de herencia, compila, pero no lo convierte.
+************
+
+
+
+
+
+10.	¿Cuál de las siguientes declaraciones/creaciones de arrays es correcta?
+a)	int[10] a=new int[];
+b)	int[] b={4,8,1,20};  // ok
+c)	int c=new int[10];
+d)	int d[]=int[10]; 
+
+
+
+4.	Si C1 es una clase y I1 es una interfaz, indica cual de las siguientes declaraciones es correcta:
+a)	class C2 extends C1, I1
+b)	Inteface I2 implements I1
+c)	class C2 extends C1 implements I1  // ok
+d)	class C2 extends I1 implements C1 
+
+
+9.	Indica cuál de las siguientes reglas para la sobrescritura de métodos es incorrecta:
+
+a)	El nombre del nuevo método debe coincidir con el original
+b)	El tipo de devolución del nuevo método debe ser diferente al del original // ok
+c)	La lista de parámetros del nuevo método debe ser idéntica a la del original
+d)	El ámbito del nuevo método debe ser igual o superior al del original 
+
+
+27.	If Model is a class, which of the following is a valid constructor of that class?:
+a)	public Model(){} // esta
+b)	public void Model(){}
+c)	public int Model(){}
+d)	public void New(){} 
+
+
+
+29.	Given:
+class A{}
+interface B{}
+class C extends A implements B{}
+
+Which is correct?
+a)	A a=new B();
+b)	C c=new A();
+c)	B b=new C(); // ok
+d)	C c=new B(); 
+
+
+*****************************************************************************************
+*****************************************************************************************
+*****************************************************************************************
+*****************************************************************************************
+*****************************************************************************************
+*****************************************************************************************
+
+
+
+
+
+interface I1{}
+class A implements I1{}
+abstract class B implements I1{}
+class C extends B{}
+
+a.- I1 a=new C();//SI
+b.- B b=new A();//NO
+c.- B c=new B();//NO
+d.- I1 d=new A(); //SI
+e.- C e=new I1(); //NO
+f.- B i=new C(); SI 
+
+------------------------------------
+
+
+interface I1{}
+class A implements I1{}
+abstract class B implements I1{}
+class C extends B{}
+
+a.- I1 a=new C();//SI
+d.- I1 d=new A(); //SI
+f.- B i=new C(); SI 
+
+
+a instanceof B // true
+d instanceof C // false
+i instanceof I1 // true
+i instanceof A // error de compilación, porque no hay relación de herencia.
+
+
+
+--------------------------------------
+
+class A{
+	public void m(){
+		System.out.print("A");
+	}
+}
+class B extends A{
+	public void m(){
+		System.out.print("B");
+	}
+}
+class C extends B{
+	public void m(){
+		System.out.print("C");
+	}
+}
+
+
+A a=new C();
+a.m();
+B b=(B)a; // No transforma el objeto, simplemente guarda en variable b.
+b.m(); 
+
+
+CC  //  porque sigue siendo un objeto C.
+
+
+--------------------------------------
+
+class A{
+	public void m(){
+		System.out.print("A");
+	}
+}
+class B extends A{
+	public void m(){
+		System.out.print("B");
+	}
+}
+class C extends B{
+
+}
+
+
+A a=new C();
+a.m();
+B b=(B)a; 
+b.m(); 
+
+
+BB, porque se ejecutará el método m() que hereda de class B.
+
+
+
+--------------------------------------
+
+class A{
+	public void m(){
+		System.out.print("A");
+	}
+}
+class B extends A{
+	public void m(){
+		System.out.print("B");
+	}
+}
+class C extends B{
+	public void m(){
+		System.out.print("C");
+	}
+	public void p(){
+		System.out.print("pC");
+	}
+}
+
+
+A a=new C();
+a.m();
+B b=(B)a; 
+b.p(); // error de compilación, el método p() no existe en clase B. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
 
 
 
