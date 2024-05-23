@@ -91,15 +91,6 @@ C c=new C();
 c.m(8,11); // 
 
 
-
-
-
-
-
-
-
-
-
 ------------------------------------------------------------   23/05
 
 void a(){}
@@ -110,6 +101,124 @@ protected int r();
 *private void f(){}
 abstract void v(){}
 *public int m();
+
+
+------------------------------------------------------------
+
+23.	Which of the following is a RuntimeException?
+
+a)	NumberFormatException // Correcta.
+b)	IOException
+c)	SQLException
+d)	ClassNotFoundException // Cuando no llevamos la libreria, y en ejecución no compila.
+
+
+
+
+------------------------------------------------------------
+
+
+
+
+
+19.	Which of the following interface definitions is valid?:
+a)	interface I1{ private int m();}
+b)	interface I2{public abstract void print(){}}
+c)	interface I3{static void met(){}} // correcta
+d)	interface I4{protected void k();} 
+
+
+
+------------------------------------------------------------
+
+
+
+14.	Para crear una lista que sólo admita números dobles utilizamos:
+a)	List<Double> lst=new ArrayList<>();  // Correcta
+b)	List lst=new List<Double>();
+c)	ArrayList<Double> lst=new List<Double>();
+d)	ArrayList lst=new ArrayList();
+
+
+------------------------------------------------------------
+
+
+
+
+9.	Indica cuál de las siguientes reglas para la sobrescritura de métodos es incorrecta:
+a)	El nombre del nuevo método debe coincidir con el original
+b)	El tipo de devolución del nuevo método debe ser diferente al del original  // Correcta
+c)	La lista de parámetros del nuevo método debe ser idéntica a la del original
+d)	El ámbito del nuevo método debe ser igual o superior al del original
+
+
+
+
+
+------------------------------------------------------------
+
+
+
+22.	Which of the following is false about abstract classes?:
+a)	An abstract class can´t be instantiated
+b)	An abstract class can't have any constructor // Correcta
+c)	An abstract class can have implemented methods
+d)	An abstract class can't be final
+
+------------------------------------------------------------
+
+
+26.	The interface that provides support for multithreading is:
+a)	ResultSet
+b)	Randomize
+c)	MultiTask
+d)	Runnable // Correcta
+
+------------------------------------------------------------
+
+28.	An interface:
+a)	Can implements one or more interfaces
+b)	Can extends only one class
+c)	Can extends one or more classes
+d)	Can extends one or more interfaces // Correcta
+
+
+
+------------------------------------------------------------
+
+
+
+6.	¿Qué objeto se utiliza para acceder a los datos de una base de datos?
+a)	Statement
+b)	Connection
+c)	DriverManager
+d)	ResultSet // Correcta
+
+
+-----------------------------------------------
+** Enum :
+
+enum A{
+	ONE(10), TWO(8);
+	int s;
+	A(int x){
+		s=x;
+	}
+}
+
+main(){
+	/*A a=new A(3);
+	a.s=1;*/
+	A a=A.TWO;
+	System.out.println(a.s);//8
+	a.s=1;
+	System.out.println(a.s);//1
+} 
+
+
+**
+-----------------------------------------------
+
 
 
 

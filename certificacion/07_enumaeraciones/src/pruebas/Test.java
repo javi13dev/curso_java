@@ -23,6 +23,7 @@ public class Test {
 			case SUR -> "sur";
 			case ESTE -> "este";
 			case OESTE -> "oeste";
+			// default -> "CENTRO"; No genera problema.
 		};// aqui como son todos los valores posible no hace falta el default.
 		
 		// norte
