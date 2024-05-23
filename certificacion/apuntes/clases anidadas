@@ -1,0 +1,9 @@
+Clases anidadas, es decir, clases que se definen dentro de otras clases.
+
+
+cuatro situaciones: 
+
+ Clases estándares 
+ Clases estáticas 
+ Clases locales a método 
+ Clases anónimas (expresiones lambdas son un ejemplo)

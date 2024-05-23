@@ -89,3 +89,35 @@ class C extends B{
 
 C c=new C();
 c.m(8,11); // 
+
+
+
+
+
+
+
+
+
+
+
+------------------------------------------------------------   23/05
+
+void a(){}
+*int b();
+*static void c(){}
+default int d();
+protected int r();
+*private void f(){}
+abstract void v(){}
+*public int m();
+
+
+
+
+
+
+
+
+
+
+
