@@ -41,7 +41,104 @@ s[0]=b ;//OK
 
 
 
------------------------------------------------
+-----------------------------------------------  27/05
+¿Compilan los siguientes ejemplos?
+
+
+List<String> lst1=List.of("e","a","x");
+
+a.-ArrayList<String> ar=lst1; // No compila
+b.-Collection<String> col=lst1; // Si
+c.-Iterable<String> it=lst1; // Si
+d.-HashSet<String> hst=new HashSet<>(lst1); // Si, porque en su constructor se le puede pasar un Collection.
+e.-Collections<String> cols=lst1; // No compila, porque es una clase con métodos estáticos, para hacer operaciones con listas (Como Arrays.)
+f.-List<String> list2=List.copyOf(lst1); // Si.
+e.-ArrayList<String> ar=(ArrayList<String>)lst1; // Compila, pero ClassCastException dado que esa lista No es un ArrayList.
+
+
+------------------------------------------------
+
+
+// Errores de compilación?
+
+List<String> lst1=List.of("e","a","x");
+Set<String> st1=new HashSet<>();
+Map<String,String> mp=new HashMap<>();
+Set<String> set2=Set.of(); //l1  Conjunto vacío, no hay error
+st1.add(lst1.get(0)); //l2
+mp.put(null,lst1.get(1));  //l3 Es posile meter claves nulas.
+set2.add(lst1.get(2));  //l4  Ojo, compila, aunque como un set.of() genera un objeto inmutable, será un error, pero no en compilación.
+
+// Errores de ejecución?
+// l4, porque es inmutable.
+
+		
+		
+		
+
+-------------------------------------------------
+
+
+
+List<Integer> l1=List.of(1,null,3,1); // NullPointerException, el método of() no admite valores nulos.
+Set<Integer> st=new HashSet(l1);
+System.out.println(st.size()); 
+
+
+
+------------------------------------------------
+
+List<Integer> l1=List.of(1,0,3,1); 
+Set<Integer> st=new HashSet(l1);
+System.out.println(st.size()); // 3, porque el 1 se repite, y sólo reflejaría 1,0,3.
+// El valor duplicado lo ignora.
+
+
+------------------------------------------------
+
+
+List<Integer> l1=new ArrayList<>();
+l1.add(6);
+l1.add(null);
+l1.add(8);
+l1.add(null);
+Set<Integer> st=new HashSet(l1);
+System.out.println(st.size);  // devuelve 3, porque un null es repetido y lo ignoraría.
+
+
+
+------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
