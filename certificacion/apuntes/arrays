@@ -111,6 +111,59 @@ System.out.println(st.size);  // devuelve 3, porque un null es repetido y lo ign
 
 
 
+List<Integer> lst=List.of(6,1,2,8);
+List<Integer> lst2=List.copyOf(lst);
+lst.sort((a,b)->b-a);
+System.out.println(lst.get(0)+":"+lst2.get(0));
+
+Excepción l3 porque List.of() es inmutable.
+
+
+
+------------------------------------------------
+
+
+List<Integer> lst=new ArrayList<>(List.of(6,1,2,8));
+List<Integer> lst2=List.copyOf(lst);
+lst.sort((a,b)->b-a);
+System.out.println(lst.get(0)+":"+lst2.get(0));
+
+R: 8:6 
+
+
+------------------------------------------------
+Sobre comparación de arrays
+
+int [] x={2,6,3,8};
+int [] y={2,9};
+int [] z={2,6,3};
+int [] w={2,6,3,8,5,9,3};
+
+System.out.println(Arrays.compare(x,y));//-1
+System.out.println(Arrays.compare(z,x));//-1
+System.out.println(Arrays.compare(y,z));//1
+System.out.println(Arrays.compare(x,w));//-3  Porque va a mostrar la diferencia de elementos 
+System.out.println(Arrays.compare(z,w));//-4  Porque va a mostrar la diferencia de elementos 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
