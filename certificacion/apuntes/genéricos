@@ -1,0 +1,157 @@
+
+>>>>>>>>>>>>>>>>>>>>>>>>  28/05
+
+m(new ArrayList<Integer>());//NOOO
+m(new ArryList<Number>());//SIII
+
+
+//método que pueda recibir una lista de cualquier cosa
+//Esto no
+
+public m(List<Object> lst){
+
+}
+m(new ArrayList<Integer>());//NOOO
+m(new ArryList<Number>());//NOOO
+
+//método que pueda recibir una lista de cualquier cosa
+//Esto si
+
+public m(List<?> lst){
+
+}
+m(new ArrayList<Integer>());//SIII
+m(new ArryList<String>());//SIIII
+
+CUidado con esto!!!
+
+List<?> lst=new ArrayList<?>();//NO compila 
+
+
+
+---------------------------------------------
+
+Ejemplo de genéricos:
+
+List<? extends Number> lst; // Sólo admitirá objetos relacionados con Number
+
+lst = new ArrayList<Double>();
+lst = new ArrayList<Integer>();
+lst = new ArrayList<String>(); // Esto no es posible.
+
+
+
+List <? super Number> lst2;
+
+lst2 = new ArrayList<Object>();
+lst2 = new ArrayList<Integer>(); // Eso no valdría.
+
+
+
+
+---------------------------------------------
+
+Genéricos con sobecarga y sobreescritura.
+
+
+Sobrecarga:
+
+class ClasA{
+
+	public void m(List<Integer> datas){
+	}
+	
+	public void m(List<String> datas){
+	}
+	
+	// NO compila.
+	// En la sobrecarga, el tipo genérico no lo tiene en cuenta, el compilador lo ignora.
+	// Deben diferenciarse el tipo de parámetros.
+}
+
+
+Sobreescritura:
+
+class A{
+
+	public void m(List<Integer> datas){
+	}
+
+}
+
+class B extends A{
+	@Override
+	public void m(List<String> datas){  // La sobreescritura requiere que los parámetros sean idénticos(inlcuido genérico). NO compila.
+	}
+
+}
+
+---------------
+
+
+class A{
+
+	public List<Number> m(List<Integer> datas){
+	}
+
+}
+
+class B extends A{
+	@Override
+	public List<Integer> m(List<Integer> datas){  // No compila, porque un List<Integer> no es subtipo de List<Number>.
+	}
+
+}
+
+----------------
+
+
+class A{
+
+	public List<Number> m(List<Integer> datas){
+	}
+
+}
+
+class B extends A{
+
+	public List<Integer> m(ArrayList<String> datas){  //SI compila, porque un List<Integer>, no hay sobreescritura, y en la sobrecarga los parámetros son diferentes.
+	}
+
+}
+
+
+----------------
+
+
+
+
+
+class A{
+	public List<Serializable> get(Set<? extends Number> lst){return null;}
+}
+class B extends A{
+	//Aquí
+}
+
+A. public ArrayList<Serializable> get(Set<? extends Number> lst){return null;}
+B. public ArrayList<Serializable> get(List<? extends Number> lst){return null;}
+C. public List<String> get(Set<? extends Number> lst){return null;}
+D. public List<Serializable> get(Set<Number> lst){return null;}
+E. public ArrayList<Serializable> get(HashSet<? extends Number> lst){return null;}
+F. public Vector<Serializable> get(Set<? super Number> lst){return null;} 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
