@@ -1,0 +1,14 @@
+
+
+Una excepción es una situación anómala que se puede 
+producir durante la ejecución de un programa 
+
+Se producen debido a fallos de programación unas veces, y 
+otras son debidas a situaciones que escapan al control del 
+programador (error en la introducción de un dato de usuario, 
+corrupción de un fichero, etc.) 
+
+Un programa puede recuperarse de una excepción a través de 
+una gestión de excepciones.
+
+
