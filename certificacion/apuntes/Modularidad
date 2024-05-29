@@ -1,0 +1,63 @@
+
+
+Qué es un módulo? 
+
+Nivel de división superior al de paquete 
+
+Agrupa un conjunto de paquetes e incluye información de 
+dependencia de los mismos
+
+public 
+module // Da un nivel visibilidad superior al de paquetes.
+protected
+default
+private
+
+---------------------------
+
+
+* Para poder usar una clase/proyecto por otra necesitamos su jar.
+
+También hay otra forma que permite Eclipse, sin necesidad de generar el .jar
+
+module modulo_operaciones {
+	exports operaciones;
+}
+
+
+module modulo_uso_calculadora {
+	requires modulo_operaciones;
+}
+
+// Cómo añadir librerias/proyectos externos que no stán en un .jar
+// >properties>Build Path>Projects>Module Path>Nuestro modulo.
+Calculadora cal = new Calculadora();
+
+System.out.println("La suma es: " + cal.sumar(n1, n2));
+
+
+>>>>>>>>>>>  Se exportan paquetes, se requieren módulos.
+---------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

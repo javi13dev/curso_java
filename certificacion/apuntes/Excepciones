@@ -12,3 +12,62 @@ corrupción de un fichero, etc.)
 una gestión de excepciones.
 
 
+
+
+------------------------------------------ 29/05
+
+Try con recursos.
+
+Se pueden tener try sin catch, siempre que los objetos que usamos no lancen excepciones obligadas de controlar.
+
+Class A {
+	public void close() {
+		System.out.println("Cerrando");
+	}
+}
+
+
+try( A a = new A();){ // Es posible, porque la clase A no lanza ninguna exception que estemos obligados a controlar.
+					  //  Y lo que me interesa es crear ese objeto y cerrarlo.
+}
+
+
+-------------------------------------------
+
+
+class A implements AutoCloseable{
+	public void close(){
+		System.out.println("cerrando A");
+	}
+}
+class B implements AutoCloseable{
+	public void close(){
+		System.out.println("cerrando B");
+	}
+}
+
+try(A a=new A();
+	B b=new B()){
+	b.close();
+} // En este momento se llama al close() de b y a.
+
+
+
+A. Error compilación
+B. Excepcion
+C. Cerrando A cerrando B
+D. Cerrando B cerrando A
+E. Cerrando B cerrando A cerrando B
+*F. Cerrando B cerrando B cerrando A 
+
+
+
+
+
+
+
+
+
+
+
+
