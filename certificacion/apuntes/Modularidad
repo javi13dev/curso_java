@@ -83,7 +83,7 @@ module servicio{
 	//otros módulos a requerir
 }
 
-Modulo proveedor (el que crea la implementación de la interfaz)😦provider.jar)
+Modulo proveedor (el que crea la implementación de la interfaz):(provider.jar)
 
 module provider{
 	requires servicio;
