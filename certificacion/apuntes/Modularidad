@@ -24,6 +24,9 @@ module modulo_operaciones {
 	exports operaciones;
 }
 
+*module modulo_operaciones {
+} // Puede estar vacío, solo que no exportas nada.
+
 
 module modulo_uso_calculadora {
 	requires modulo_operaciones;
@@ -38,6 +41,70 @@ System.out.println("La suma es: " + cal.sumar(n1, n2));
 
 >>>>>>>>>>>  Se exportan paquetes, se requieren módulos.
 ---------------------------
+
+
+Módulos anónimos y automáticos (Mezclar apps modulares y no modulares).
+
+Módulos anónimos son aquellos que no son modulares.
+
+Las clases que no sean modulares, tienen acceso a las modulares. Porque no entiende de 
+restricciones modulares.
+Se deben añadir esos módulos al ClassPath.
+
+
+
+Para que desde un módulo podamos usar un módulo anónimo, la solución es hacerlo automático.
+Es decir, añadirlo al ModulePath, que lo convierte en automático y accesible.
+
+
+
+
+>>>>>>>>
+>>>>>>>>
+>>>>>>>> Servicios:
+>>>>>>>>
+>>>>>>>>
+
+
+
+
+
+
+Para exportar Interfaz de Servicio, hay que exportarla explícitamente.
+
+
+
+
+Modulo servicio: (service.jar)
+
+module servicio{
+	exports com.interfaces.Interfaz1; //la interfaz con los métodos del servicio
+	//otros paquetes a exportar
+	//otros módulos a requerir
+}
+
+Modulo proveedor (el que crea la implementación de la interfaz)😦provider.jar)
+
+module provider{
+	requires servicio;
+	provides com.interfaces.Interfaz1 with provs.implementations.ClaseServiceImpl;
+}
+Module-path: service.jar
+
+
+Modulo consumidor (el que utiliza las implementaciones para llamar a métodos): (consumer.jar)
+
+module consumer{
+	requires servicio; //solo es necesario requerir el módulo del servicio
+	uses com.interfaces.Interfaz1;
+}
+
+Module-path: service.jar;provider.jar 
+
+
+
+
+
 
 
 

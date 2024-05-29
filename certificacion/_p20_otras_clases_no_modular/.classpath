@@ -6,15 +6,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/_17_operaciones_modular">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/_p20_otras_clases_no_modular">
-		<attributes>
-			<attribute name="module" value="true"/>
-		</attributes>
-	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
