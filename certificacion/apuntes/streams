@@ -1,0 +1,11 @@
+()->"hello"           				Supplier<String>
+(a,b)->Integer.parseInt(a)+b		Function<String,Integer>
+v->System.out.println(v)			Consumer<Object>
+String::equals						BiPredicate<Object> // Porque equals se aplica a dos parámetros
+(a,b)->a.length()>b 				BiPredicate<String,Integer>
+
+
+------------------------------------------------
+
+
+
