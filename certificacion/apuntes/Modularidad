@@ -43,7 +43,7 @@ System.out.println("La suma es: " + cal.sumar(n1, n2));
 ---------------------------
 
 
-Módulos anónimos y automáticos (Mezclar apps modulares y no modulares).
+Módulos anónimos y automáticos (Mezclar apps modulares y no modulares). (Pregunta exámen)
 
 Módulos anónimos son aquellos que no son modulares.
 
@@ -61,7 +61,7 @@ Es decir, añadirlo al ModulePath, que lo convierte en automático y accesible.
 
 >>>>>>>>
 >>>>>>>>
->>>>>>>> Servicios:
+>>>>>>>> Servicios: (Pregunta examen) 
 >>>>>>>>
 >>>>>>>>
 
@@ -104,6 +104,45 @@ Module-path: service.jar;provider.jar
 
 
 
+------------------------------------  30/05
+
+Acceso por reflexión:
+
+Es posible especificar que los paquetes especificados del 
+módulo son accesibles vía reflexión a otros módulos : 
+ 
+module moduloX{
+	// Es necesario el exports, porque el opens solo no sirve. 
+	 opens com.paquete;
+}
+ 
+Incluso, que lo sean solo a ciertos módulos:  
+ 
+module moduloX{ 
+	 opens com.paquete to modA, modB
+}
+
+
+-------------------------------------
+
+Migración de aplicaciones (Pregunta exámen)
+
+Cuando una app no modularizada y queremos convertirla en modular:
+
+Se pueden seguir dos estrategias para realizar esta operación:
+
+>>>>>>>>> Estrategia Buttom-Up (ascendente). Adecuada cuando se tiene la 
+posibilidad de convertir cualquier .jar no modular en modular
+
+	Aproximación Buttom-Up
+	
+	Se comienza migrando el .jar que no tiene ninguna dependencia a módulo 
+	estándar (named). 
+	
+	Se continúa con el siguiente que menos dependencias tiene, y así hasta el 
+	más alto en la jerarquía (más dependencias tiene)
+	
+	*Es decir, se empieza migrando por la que tiene menos dependencias hacia la que más.
 
 
 
@@ -112,6 +151,25 @@ Module-path: service.jar;provider.jar
 
 
 
+>>>>>>>>> Estrategia Top-Down (descendente). Adecuada cuando no tenemos 
+control sobre todos los .jar usados por la aplicación
+
+Aunque lo más normal es:
+	Aproximación Top-Down
+	
+	Se llevan todas las librerías al module path como módulos automáticos
+	
+	Se van migrando a módulo estándar uno a uno, comenzando por el que 
+	más dependencias tiene
+
+
+Ej: Del workspace de java_estandar, proyecto 18, usamos mysql y queremos migrarla a modular.
+
+
+1º) Pasar las librerias de ClassPath a ModulePath  > ApplyAndClose
+
+2º) Ya podemos hacer el top-down, para crear el module-info:
+Proyecto>configure>Module-info> elegir nombre, normalmente se ponen por puntos: ej modulo.agenda
 
 
 
