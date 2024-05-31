@@ -1,0 +1,87 @@
+-----------------------------------------------------------
+
+
+Assuming com.txt exists and is not empty, and sales.txt doesn't exits, which is true about the following code? (choose 2)
+
+		var fro=new FileWriter("sales.txt");
+		try(var fri=new FileReader("com.txt");
+				var br=new BufferedReader(fri);fro){
+			fro.write(br.readLine());		
+		}
+		fro.write("");
+
+a)	The sales.txt file will be created with the first line of com.txt file  // SI
+b)	The sales.txt will be created and will be empty
+c)	The com.txt will be empty after running the code 
+d)	The code will not compile
+e)	There will be an IOException											// SI, porque estba cerrado. (No porque no esté en el try)
+f)	The sales.txt file will never be created 
+
+
+
+
+----------------------------------------------
+
+
+*** Sobre InputStream
+
+https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html
+
+mark() : Si estamos leyendo, en el punto donde estemos, ponemos una marca, que será válida durante 
+el número de lecturas que le pasemos como parámetro.
+
+Y podemos volver a esa marca, como?
+
+Con reset()
+
+
+Mientras no se haya superado el número de lecturas pasadas como parámetro.
+
+
+skip() para saltarse lecturas.
+
+
+
+--------------------------------------------------
+
+
+What will the following code print when run?
+
+import java.io.Reader;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+public class MarkTest {
+    public static void main(String[] args) {
+        try (Reader r = new BufferedReader(new FileReader("c:\\temp\\test.txt"))) {
+            if (r.markSupported()) {
+                BufferedReader in = (BufferedReader) r;
+                System.out.print(in.readLine());
+                in.mark(100);
+                System.out.print(in.readLine());
+                System.out.print(in.readLine());
+                in.reset();                   
+                System.out.print(in.readLine());
+                in.reset();                     
+                System.out.println(in.readLine());
+            }else{
+                System.out.println("Mark Not Supported");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+
+Assume that the file test.txt contains:
+A
+B
+C
+D
+E
+
+A.	Mark not supported. 
+B.	ABCB <exception stack trace> 
+C.	ABC <exception stack trace> 
+D.	ABCBB			// SI, porque apunta a ese momento. No porque vuelva su ejecución.
+E.	ABCCBD 
