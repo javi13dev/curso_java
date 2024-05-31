@@ -5,7 +5,229 @@ String::equals						BiPredicate<Object> // Porque equals se aplica a dos paráme
 (a,b)->a.length()>b 				BiPredicate<String,Integer>
 
 
-------------------------------------------------
+------------------------------------------------  31/05
+REDUCE
+
+Optional<T> reduce(BinaryOperator<T> accumulator). 
+Realiza la reducción de los elementos del stream a un único 
+v<alor, utilizando la función proporcionada como parámetro: 
+
+reduce(BinaryOperator<T> accumulator)
+Performs a reduction on the elements of this stream, using an associative accumulation function, 
+and returns an Optional describing the reduced value, if any.
+ 
+	 
+	Stream<Integer> nums=Stream.of(20,5,8,3,9);
+	//Calcula la suma de todos los elementos del Stream
+	System.out.println(nums
+		 .reduce((a,b)->a+b)
+		 .get());
+
+
+
+- Hay otro método reduce()
+
+
+reduce(T identity, BinaryOperator<T> accumulator)
+
+Performs a reduction on the elements of this stream, using the provided identity 
+value and an associative accumulation function, and returns the reduced value.
+
+
+
+- Y otro
+
+reduce(U identity, BiFunction<U,? super T,U> accumulator, BinaryOperator<U> combiner)
+Performs a reduction on the elements of this stream, using the provided identity, accumulation and combining functions.
+
+
+// Se usa cuando se tratan tipos diferentes del resultado.
+// El stream es un tipo diferente al resultado que voy a obtener.
+
+
+// En este ejemplo:
+// U es un String
+// T Integer
+// El tipo de resultado no es Optional.
+// En este caso U, diferente al del Stream.
+
+Given:
+public class TestCars {
+	public static void main(String[] args) {
+		String [] names= {"Anne ","Peter ","Cristine ","Oli ","Marcus "};
+		Integer[] pos= {1,3,0,4,2};
+	
+		String 	reduce=Arrays.stream(pos)
+				.reduce("", (a, b)->a+names[b], (x,y)->x+y); // "" significa el tipo de resultado que va a ser un String. (Es una variable auxiliar)
+															// La segunda parte, une cadena vacia con el nombre de la posición. (El primer elemento del stream y los siguientes). // Peter
+															// La tercera parte, la variable resultado, "Peter " // En la segunda vuelta "Peter Oli"
+															// x es la variable auxiliar para el resultado en cada vuelta.
+															// y es el resultado de toda la operación en total.
+		System.out.println(reduce);
+	}
+}
+
+What is the result? 
+
+
+
+
+
+----------------------------------------------------
+
+
+List<Integer> lst=List.of(1,2,3,4,5,6,7,8);
+
+Which code fragment prints different value?
+a)	System.out.println(lst.parallelStream()
+		.reduce(5, Integer::sum)); // OJO, al ser paralelo a cada hilo le va a sumar 5.
+b)	System.out.println(lst.stream()
+		.reduce(5, (a,b)->a+b));
+c)	System.out.println(lst.stream()
+		.reduce(Integer::sum).get()+5);
+d)	System.out.println(lst.parallelStream()
+		.reduce((a,b)->a+b).orElse(0)+5);
+e)	System.out.println(lst.stream()
+		.reduce(0,Integer::sum)+5);
+
+
+
+
+
+----------------------------------------------------
+
+
+
+
+Stream.of(3,11,-8,5,2,4,-2,5,7,-2)
+		.parallel()
+		.distinct()
+		.filter(a->a>0)
+		.forEach(n->System.out.print(n+" ")
+		.toList()
+		.sort(Integer::compare);
+
+a)	It will prints 3 11 5 2 4 7 in any order
+b)	It will prints 3 11 5 2 4 7 in exactly that order
+c)	It will prints nothing
+d)	There is a compilation error  // forEach() es método final.
+e)	It will throws an UnsupportedOperationException
+
+
+
+
+
+
+----------------------------------------------------
+
+
+
+List<Integer> list=List.of(8,11,3,5,3,2,45,4);
+Which of the following instructions shows the sum of unduplicated odd(impar) numbers? (choose 2)
+
+a)	System.out.println(list.select(n->n%2!=0).sum());
+
+b)	System.out.println(list.stream().filter(n->n%2!=0).distinct().collect(Collectors.summingInt(n->n))); // SI
+
+c)	System.out.println(list.stream().distinct().filter(n->n%2!=0).sum().get()); // No, porque sum() no es de map().
+
+d)	System.out.println(list.stream().distinct().map(n->n).filter(n->n%2!=0).sum().getAsInt());
+
+e)	System.out.println(list.stream().distinct().mapToInt(n->n).sum(n->n%2!=0)); // No, porque .sum() no recibe parámetros.
+
+f)	System.out.println(list.stream().mapToInt(n->n).distinct().filter(n->n%2!=0).reduce((a,b)->a+b).getAsInt()); // SI
+
+
+
+
+
+------------------------------------------------------
+
+
+class Student{
+	String name;
+	List<String> subjects;
+	int age;
+	public Student(String name, List<String> subjects, int age) {
+		super();
+		
+		this.name = name;
+		this.subjects = subjects;
+		this.age = age;
+	}
+	
+}
+
+And then:
+
+List<Student> students=List.of(
+	new Student("Paul",List.of("Math","History","Philosophy"),25),
+	new Student("Joe",List.of("Physics","Programming","Math","Languages"),31),
+	new Student("Mary",List.of("History","Math","Philosophy"),19),
+	new Student("Louis",List.of("Chemistry","Physics"),28),
+	new Student("Helen",List.of("Languages","Chemistry","Math"),22));
+
+Which of the following statements prints
+
+Chemistry
+History
+Languages
+Math
+?
+
+a)	
+students.stream()
+		.flatMap(s->s.subjects)
+		.sorted()
+		.distinct()
+		.forEach(System.out::println);
+b)												// Correcta.
+students.stream()
+		.flatMap(s->s.subjects.stream())
+		.distinct()
+		.sorted()
+		.limit(4)
+		.forEach(System.out::println);
+c)	
+students.stream()
+		.flatMap(s->s.subjects.stream())
+		.filter(n->n>4)
+		.sorted()
+		.map(n->n)
+		.forEach(System.out::println);
+d)	
+students.stream().distinct()
+		.filter(s->s.subjects.distinct())
+		.sorted()
+		.limit(4)
+		.forEach(System.out::println); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
