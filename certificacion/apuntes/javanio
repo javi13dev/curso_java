@@ -1,0 +1,106 @@
+
+
+-------------------------------------------  03/06
+
+Consider the following classes:
+class Boo {
+    public Boo(){ System.out.println("In Boo"); }
+}
+class BooBoo extends Boo {
+    public BooBoo(){ System.out.println("In BooBoo"); }
+}
+
+class Moo extends BooBoo implements Serializable {
+    int moo = 10; { System.out.println("moo set to 10"); }
+    public Moo(){ System.out.println("In Moo"); }
+}
+
+First, the following code was executed and the file moo1.ser was created successfully:
+
+  Moo moo = new Moo();
+  moo.moo = 20;
+  FileOutputStream fos = new FileOutputStream("c:\\temp\\moo1.ser");
+  ObjectOutputStream os = new ObjectOutputStream(fos);
+  os.writeObject(moo);
+  os.close();
+
+Next, the following code was executed.
+
+  FileInputStream fis = new FileInputStream("c:\\temp\\moo1.ser");
+  ObjectInputStream is = new ObjectInputStream(fis);
+  Moo moo = (Moo) is.readObject();
+  is.close();
+  System.out.println(moo.moo);
+  
+>>>>>>>>> Una vez que se lee, se llama a los constructores de las superclases no serializables.
+El readObject() está recuperando el objeto.
+
+Which of the following will be a part of the output of the second piece of code?
+
+A.	In Boo // Si
+B.	In BooBoo // Si
+C.	In Moo
+D.	20 // Si
+E.	10
+F.	moo set to 10 
+
+
+--------------------------------------------------------------
+
+
+Connection connection = dataSource.getConnection(); 
+String s= "select * from CUSTOMER where EMAILID='bob@gmail.com'";       
+Statement stmt = connection.createStatement();         
+ResultSet rs = stmt.executeQuery(s); 
+String sql="insert into customer(name,emailid) values=('a','bob@gmail.com')";
+Statement st=connection.createStatement();
+st.execute(sql); //si lanzas otra consulta con mismo Statement, el ResultSet se cierra   
+//st.close();    
+while(rs.next()){             
+	System.out.println(rs.getString("EMAILID")); //LINE 12        
+}         
+connection.close();  
+
+¿Cuantas filas se imprimen en linea 12? 
+
+
+
+// Cerrado el resulSet, lanzaría una exception en el while.
+
+
+
+
+-------------------------------------------------------------------------
+
+Consider the following code written to generate a report containing course data. 
+     
+    String sql = "select course,duration,timetable from courses";
+    PreparedStatement stmt = connection.prepareStatement(sql);
+    stmt.execute(); //Line 1
+    ResultSet rs = stmt.getResultSet(); //Line 2
+    do {
+        System.out.println(rs.getString(1)+"|"+rs.getString(2)+"|"+rs.getString(3));
+    } while(rs.next());
+    
+    connection.close();
+        
+Identify the correct statement about this code.
+(Assume that items not specified such as import statements and try/catch block are all valid.)
+A.	It will print the data as expected.
+B.	Compilation error at line 1
+C.	Compilation error at line2
+D.	It will throw an exception only if there is at least 1 record in the table
+E.	It will throw an exception in any case 
+
+e) Porque el puntero no apunta a ningún sitio.
+   Si no se ha movido el puntero, no se puede acceder.
+
+
+
+-------------------------------------------------------------------------
+
+
+
+
+
+
