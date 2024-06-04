@@ -16,7 +16,7 @@ class CuentaDaoImpl implements CuentaDao {
 		try (Connection con=LocatorConnection.getConnection();){
 			String sql="select * from cuentas where numeroCuenta=?";
 			PreparedStatement ps=con.prepareStatement(sql);
-			ps.setInt(1, idCuenta);			
+			ps.setInt(1, idCuenta);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
 				return  new Cuenta(rs.getInt("numeroCuenta"),
