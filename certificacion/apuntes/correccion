@@ -1,0 +1,282 @@
+47.- Given:
+interface IFace {
+	public void m1();
+	public default m2() {
+		System.out.println("m2");
+	}
+	public static void m3() {
+		System.out.println("m3");
+	}
+	private void m4() {
+		System.out.println("m3");
+	}
+}
+
+class MyC implements IFace {
+	public void m1() {
+		System.out.println("Hello");
+	}
+}
+
+Witch two methods invocation execute?
+
+a) Iface myClassObj =new MyC();
+   myClassObj.m4();
+
+b) IFace.m4();
+
+c) Iface myClassObj =new MyC();
+   myClassObj.m3();
+
+ d) new MyC.m2();
+
+ e) IFace.m2();
+
+ f) IFace.m3();
+
+ #########################
+ 
+ 
+ .-------------------------------------------------
+ 
+ 
+ 46.- Given the code fragment:
+ abstract sealed interface SInt permits Story, Art {
+ 	default String getTitle() {return "Book Title"; }
+ }
+
+ Witch set of class definitions compile?
+a) sealed interface Story exteds SInt()
+   non-sealed class Art implements SInt()
+
+b) interface Story extends SInt ()
+   interface Art extends SInt()
+
+c) public interface Story extends SInt()
+   public interface Art extends SInt()
+
+d) non-sealed interface Story extends SInt()
+   non-sealed interface Art extends SInt()
+
+e) non-sealed interface Story extends SInt()
+   class Art implements SInt()
+
+ ######################### 
+ 
+ 
+ 
+ 40.- Given:
+ package 
+com.transport.vehicles.cars
+;
+ public interface Car {
+   int getSpeed();
+ }  
+
+ and 
+ package com.transport.vehicles.cars.impl;
+ 	import 
+com.transport.vehicles.cars.Car
+;
+
+ public class CarImpl implements Car {
+ 	private int speed;
+
+ 	public CarImpl() {
+ 		this(10);
+ 	}
+ 	public CarImpl( int speed) {
+ 		this.speed = speed;
+ 	}
+
+ 	@Override
+ 	public int getSpeed() {
+ 		return this.speed;
+ 	}
+ }
+
+
+ Wich two should the module-info include for it to represent the service provider interface?
+
+a) provides com.transport.vehicles.cars.CarImpl to
+    
+com.transport.vehicles.cars.Cars
+;
+
+b) provides com.transport.vehicles.cars.CarImpl with
+    com.transport.vehicles.cars.impl.;
+
+c) exports com.transport.vehicles;
+
+d) requires 
+com.transport.vehicles.cars
+;
+
+e) exports 
+com.transport.vehicles.cars
+;
+
+f) exports 
+com.transport.vehicles.cars.Car
+;
+
+g) requires 
+com.transport.vehicles.cars.Car
+;
+
+ ######################### 
+ 
+ 39.- Witch statements are true about modules?
+
+a) Automatic and named-modules are on the module path
+b) Only automatic modules are on tehe module path
+c) Automatic and unmnamed modules are on the module path
+d) Only named modules are on the module path
+e) Only unnamed modules are on the module path
+######################### 
+
+
+
+38.- Given
+public class Test{
+	public satic void main (String [] args) {
+		final int x=2;
+		int y=x;
+		while (y❤️) {
+			swicht (y) {
+				case 0+x:
+				y++;
+				case 1:
+				y++;
+			}
+		}
+		Systemout.println (y);
+	}
+}
+
+What is the result?
+a) 2
+b) 5
+c) Nothing is printed because an indefinition loop
+*d) 4
+e) A runtime error exception is throw
+f) 3
+g) 6
+h) Compilation fails
+######################### 
+
+
+36.- Given the code fragment
+List lst = new ArrayList();
+lst.add ("e1");
+lst.add ("e3");
+lst.add ("e2");
+
+int x1=Collections.binarySearch(lst, "e3");
+System.out.println (x1);
+Collections.sort (lst);
+int x2=Collections.binarySearch(lst, "e3");
+System.out.println (x2);
+
+Collections.reserve(lst);
+int x3=Collections.binarySearch(lst, "e3");
+System.out.println (x3);
+
+What is the result?
+a) 	0
+	2
+	-2
+
+b)	2
+	2
+	0
+
+*c)	1
+	2
+	-4
+
+d)	1
+	1
+	1
+#################### 
+
+Fellow Jitster dice:35.- Given the code fragment:
+class Book {
+	String author;
+	String title;
+	Book( String authorName, String title) {
+		
+this.author
+ = authorName;
+		this.title = title;
+	}
+}
+class SortBook {
+	
+	public static void main (String [] args) {
+		List books = List.of (new Book ("A1", "T1"), new Book ("A2", "T2"), new Book("A1", "T2")); 														   //line n1
+		Books.sort((Book a, Book b)->a.title.CompareTo(b.title));		//line n2
+		System.out.println(books);
+	}
+}
+
+Witch action sorts the book list?
+
+a) At line n1, convert books type to mutable array type
+
+b) At line n1, convert books type to mutable ArrayList type
+
+c) At line n1, replace books.sort() with 
+books.stream
+().sort().
+
+d) At line n2, replace CompareTo() with Compare();
+#########################
+
+
+
+33.- Given the code fragments
+class Car implemens Serializable {
+	private static long serialVersionUID= 454L;
+	String name;
+	public Car (String name) {this.name=name;}
+}
+class LuxuriCar extends Car {					//line 1
+	int flag_HHC;
+	public LuxuryCar(String name, int flagHHC) {
+		super(name);
+		his.flag_HHC = flagHHC;
+	}
+	public String toString(){
+		return name + " : " + flagHHC;
+	}
+}
+
+and
+
+public static void main (String[] args) {			//line 2
+	Car b = new LuxuryCar("Wagon", 200);
+	try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("car.ser"));
+		ObjectInputStream ois = new ObjectInputStream(new FileInputStream("car.ser"))😉 {
+			oos.writeObject(b);
+			System.out.prinln((Car)(ois.readObject()));		//line 3
+		}
+}
+
+Witch action prints Wagon:200?
+
+a) At line n1, implements the java.io.Serializable interface
+b) At line n3, replacr readObject() with readLine()
+c) At line n2, in the main method signature, add throws IOException, ClassCastException
+d) At line n2, in the main method IOException, ClassNotFoundException
+e) At line n1, implements the java.io.AutoCloseable interface.
+f) At line n3, replace Car with LuxuryCar. 
+
+
+
+
+
+
+
+ 
+ 
