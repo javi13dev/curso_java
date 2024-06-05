@@ -28,7 +28,7 @@ public class User extends JFrame {
 	CajeroService service = CajeroServiceFactory.getCajeroService();
 	Cuenta cuenta;
 	List<Cliente> titulares;
-	//List<Cliente> titulares = service.obtenerTitulares(cuenta.getNumeroCuenta());
+
 
 	/**
 	 * Create the frame.
