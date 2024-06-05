@@ -16,9 +16,7 @@ class ClienteDaoImpl implements ClienteDao {
 	public List<Cliente> findByCuenta(int idCuenta) {
 		List<Cliente> clientes = new ArrayList<>();
 		try (Connection con= LocatorConnection.getConnection();){
-			// String sql="select clientes.*  from clientes, titulares where titulares.idCuenta = ?";
-			String sql="select * from clientes c join titulares t  where t.idCuenta = ?";
-			// Esto me está devolviendo todos los clientes.
+			String sql = "select clientes.* from clientes, titulares  where titulares.idCuenta = ? and titulares.idCliente = clientes.dni";
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setInt(1, idCuenta);	
 			ResultSet rs = ps.executeQuery();

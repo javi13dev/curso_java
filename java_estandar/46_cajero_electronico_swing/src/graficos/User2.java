@@ -62,7 +62,7 @@ public class User2 extends JFrame {
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
-		JMenu jmOptions = new JMenu("Acciones");
+		JMenu jmOptions = new JMenu("Operaciones");
 		jmOptions.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// Desplegar la visualización de las demás pestañas de opciones

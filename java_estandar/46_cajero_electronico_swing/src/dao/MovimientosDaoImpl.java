@@ -37,7 +37,7 @@ class MovimientosDaoImpl implements MovimientosDao {
 	@Override
 	public void save(Movimiento movimiento) {
 		try (Connection con=LocatorConnection.getConnection();){
-			String sql="insert into movimientos(idMovimientos,idCuenta,fecha,cantidad,operacion) values(?,?,?,?)";
+			String sql="insert into movimientos(idCuenta,fecha,cantidad,operacion) values(?,?,?,?)";
 			PreparedStatement ps=con.prepareStatement(sql);
 			ps.setInt(1, movimiento.getIdCuenta());
 			ps.setTimestamp(2, Timestamp.valueOf(movimiento.getFecha()));

@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -20,7 +21,7 @@ public class Cajero extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField jtNumCuenta;
-	static Cuenta cuentaUser;
+	private Cuenta cuentaUser;
 
 	/**
 	 * Launch the application.
@@ -51,7 +52,7 @@ public class Cajero extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Número de cuenta");
-		lblNewLabel.setBounds(152, 27, 88, 14);
+		lblNewLabel.setBounds(152, 28, 113, 14);
 		contentPane.add(lblNewLabel);
 		
 		jtNumCuenta = new JTextField();
@@ -73,7 +74,16 @@ public class Cajero extends JFrame {
 				System.out.println("Desde cajero");
 				System.out.println(jtNumCuenta.getText());
 				cuentaUser = service.obtenerCuenta(Integer.parseInt(jtNumCuenta.getText()));
-				new User();
+				String mensaje = "";
+				
+				if(cuentaUser == null) {
+					mensaje = "La cuenta no existe";
+					JOptionPane.showMessageDialog(Cajero.this, mensaje);
+					
+				}else {
+					new User(cuentaUser);
+				}
+				
 			}
 		});
 		btnNewButton.setBounds(152, 115, 89, 23);

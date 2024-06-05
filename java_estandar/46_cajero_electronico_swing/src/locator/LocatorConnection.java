@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class LocatorConnection {
 	static String cadenaConexion="jdbc:mysql://localhost:3306/bancabd";
 	static String usuario="root";
-	static String password="12345";
+	static String password="root";
 	
 	// lo normal es que este método sea estático, o bien se cree mediante singleton
 	public static Connection getConnection() throws SQLException {
